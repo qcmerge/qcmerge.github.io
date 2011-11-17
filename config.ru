@@ -2,7 +2,7 @@ use Rack::Static,
   :urls => ["/stylesheets", "/images"],
   :root => "public"
 
-run lamba { |env|
+run lambda { |env|
   [
     200, 
     {

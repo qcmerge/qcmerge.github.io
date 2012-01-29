@@ -1,0 +1,73 @@
+@import ZURB-foundation
+
+$logo-color: rgb(206, 0, 111)
+
+body
+  background:
+    color: #eee
+    image: url(../images/backgrounds/body.jpg)
+    repeat: repeat
+
+header, #main, footer
+  max-width: 1037px
+  .container
+    max-width: 840px
+
+header
+  padding-top: 19px
+  .row.twitter
+    margin-bottom: 2em
+    a
+      display: block
+      color: black
+      padding-left: 60px
+      height: 31px
+      text-transform: uppercase
+      background:
+        color: transparent
+        image: url(../images/twitter.png)
+        repeat: no-repeat
+  background:
+    color: #eee
+    image: url(../images/backgrounds/header.png)
+    repeat: no-repeat
+    position: top left
+
+#main
+  padding: 2em 0
+  background:
+    color: #eee
+    image: url(../images/backgrounds/container.png)
+    repeat: repeat-y
+
+footer
+  min-height: 240px
+  background:
+    color: #eee
+    image: url(../images/backgrounds/footer-header-color.png)
+    repeat: no-repeat
+    position: 0% 95%
+  p
+    margin: 10px 0 0 0
+    color: white
+    font-size: 90%
+
+form.nice
+  & > ul > li
+    & > label
+      font-size: 20px
+      font-weight: bold
+    & > span > input
+      padding-bottom: 0 !important
+      margin-bottom: 0
+  input.button
+    background-color: $logo-color
+    width: 100%
+    border:
+      color: $logo-color
+
+@media only screen and (max-width: 767px)
+  .row.twitter a
+    float: right
+  form.nice
+    margin-top: 2em

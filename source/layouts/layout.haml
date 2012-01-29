@@ -1,0 +1,39 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title Queen City Merge
+    %meta{:content => "text/html", :charset => "utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+
+    %link{:href => "images/flame-32x32.png", :rel => "shortcut icon"}/
+    %link{:href => "images/flame-57x57.png", :rel => "apple-touch-icon-precomposed"}/
+    %link{:href => "images/flame-72x72.png", :rel => "apple-touch-icon-precomposed", :sizes => "72x72"}/
+    %link{:href => "images/flame-114x114.png", :rel => "apple-touch-icon-precomposed", :sizes => "114x114"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+
+    = stylesheet_link_tag 'screen'
+
+    %meta{:content => "IyaCGg-xM_Jog7EU7DFfSr7HArCr7AL-smUYJCVZUlw", :name => "google-site-verification"}/
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "Queen City Merge is a uniquely different kind of web conference.", :name => "description"}/
+    %meta{:content => "The Organizers", :name => "author"}/
+
+  %body
+    %header
+      .container
+        .row.twitter
+          .three.columns.offset-by-nine
+            = link_to('Share on Twitter', 'https://twitter.com/qcmerge')
+        .row
+          .twelve.columns
+          = link_to(image_tag('logo.png'), '#')
+    #main
+      .container
+        .row
+          .columns.twelve
+            = yield
+    %footer
+    /[if lt IE 10]
+      = javascript_include_tag 'https://html5shiv.googlecode.com/svn/trunk/html5.js'
+    = javascript_include_tag 'modernizr.min.js'
+    = javascript_include_tag '/wufoo/scripts/wufoo.js'

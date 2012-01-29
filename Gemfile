@@ -8,7 +8,7 @@ group :development do
   gem 'haml'
 end
 
-if RUBY_PLATFORM =~ /darwin/
+group :osx do
   gem 'rb-fsevent'
   gem 'growl'
 end

@@ -1,4 +1,5 @@
 .DS_Store
-vendor/ruby
 .bundle
+.sass-cache
 bin
+vendor/ruby

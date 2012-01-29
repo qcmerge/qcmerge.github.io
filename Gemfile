@@ -1,9 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'middleman'
-gem 'compass'
+gem 'ZURB-foundation', :git => 'https://github.com/zurb/foundation-sass.git', :require => 'ZURB-foundation'
 gem 'haml'
-gem 'html5-boilerplate'
 
 if RUBY_PLATFORM =~ /darwin/
   gem 'rb-fsevent'

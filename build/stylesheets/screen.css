@@ -1961,7 +1961,6 @@ form.nice > ul > li > label {
   font-size: 20px;
   font-weight: bold; }
 form.nice > ul > li > span > input {
-  padding-bottom: 0 !important;
   margin-bottom: 0; }
 form.nice input.button {
   background-color: #ce006f;

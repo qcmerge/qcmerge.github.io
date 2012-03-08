@@ -247,12 +247,13 @@ h1,h2,h3,h4,h5,h6 {
   text-indent: -9999px;
   margin: 50px 50px 0;
   float: left;
+  position: fixed;
 }
 
 #container header #tagline {
   float: left;
   width: 480px;
-  margin: 50px 0 0 0;
+  margin: 50px 0 0 153px;
 }
 
 #container header #tagline p {
@@ -797,6 +798,8 @@ h1,h2,h3,h4,h5,h6 {
   position: absolute;
   bottom: -58px;
   right: 365px;
-  display: none;
 }
 
+#venuemap {
+  display: none;
+}

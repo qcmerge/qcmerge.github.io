@@ -379,6 +379,23 @@ h1,h2,h3,h4,h5,h6 {
 	text-indent: -9999px;
 }
 
+#socialside {
+  font-size: 30px;
+  padding: 10px 0 0 46px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);   
+}
+
+#socialside a {
+  color: #fff;
+  display: block;
+  float: left;
+  margin: 0 7px 0 0;
+}
+
+#socialside a .icon-envelope {
+  font-size: 27px;
+}
+
 /*
  * Content
  */

@@ -776,7 +776,7 @@ h1,h2,h3,h4,h5,h6 {
 #venue {
   padding: 50px 0 48px 150px;
   width: 730px;
-  margin: 0 0 0 0; 
+  margin: 0; 
   background: url(../img/schedulebg.png);
 }
 
@@ -802,4 +802,16 @@ h1,h2,h3,h4,h5,h6 {
 
 #venuemap {
   display: none;
+}
+
+#reds {
+  padding: 50px 0 48px 150px;
+  width: 730px;
+  margin: 0;
+}
+
+#redsmap {
+  position: absolute;
+  bottom: -58px;
+  right: 365px;  
 }

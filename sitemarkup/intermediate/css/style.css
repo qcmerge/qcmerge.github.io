@@ -216,7 +216,7 @@ td { vertical-align: top; }
  */
 
 body {
-  background: url(../img/woodbackground.jpg); 
+  background: url(../img/background.png); 
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -428,47 +428,6 @@ h1,h2,h3,h4,h5,h6 {
   margin: 0 10px 10px 0;
   padding: 0;
   float: left;
-  position: relative;
-}
-
-#speakerlist ul li a {
-  width: 175px;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: transparent;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-#speakerlist ul li a .speakername, #speakerlist ul li a .speakertitle {
-  display: none;
-}
-
-#speakerlist ul li a:hover {
-  -webkit-box-shadow: 0px 0px 18px 0px #999;
-  -moz-box-shadow: 0px 0px 18px 0px #999;
-  box-shadow: 0px 0px 18px 0px #999;
-  padding: 20px;
-  top: -20px;
-  left: -20px;
-  z-index: 2000; 
-  background: url(../img/sponsorbg.png);
-  text-transform: uppercase;
-}
-
-#speakerlist ul li a:hover .speakername {
-  font-size: 19px;
-  color: #000;
-  display: block;
-  padding: 15px 0 0 0;
-}
-
-#speakerlist ul li a:hover .speakertitle {
-  color: #eb008b;
-  font-size: 14px;
-  display: block;
 }
 
 #main li.last {
@@ -577,6 +536,7 @@ h1,h2,h3,h4,h5,h6 {
   margin: -230px 0 0 60px;
 }
 
+
 #sponsors {
   padding: 50px 0 0 150px;
   width: 730px;
@@ -601,25 +561,15 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .newrelic {
-  width: 188;
-  height: 45px;
-  margin: 10px 0 0 0;
-  background: url(../img/sponsors/newrelicsprite.png) 0 -45px no-repeat;
-}
-
-.newrelic:hover {
-  background: url(../img/sponsors/newrelicsprite.png) 0 0 no-repeat;
+  width: 213px;
+  height: 67px;
+  background: url(../img/sponsors/newrelic.png) no-repeat;
 }
 
 .gaslight {
-  width: 235px;
-  height: 52px;
-  margin: 5px;
-  background: url(../img/sponsors/gaslightsprite.png) 0 0 no-repeat;
-}
-
-.gaslight:hover {
-  background: url(../img/sponsors/gaslightsprite.png) 0 -52px no-repeat;
+  width: 256px;
+  height: 67px;
+  background: url(../img/sponsors/gaslight.png) no-repeat;
 }
 
 .engineyard {
@@ -628,18 +578,10 @@ h1,h2,h3,h4,h5,h6 {
   background: url(../img/sponsors/engineyard.png) no-repeat;
 }
 
-.engineyard:hover {
-  background: url(../img/sponsors/engineyard.png) 0 -110px no-repeat;
-}
-
 .edgecase {
   width: 256px;
   height: 107px;
   background: url(../img/sponsors/edgecase.png) no-repeat;
-}
-
-.edgecase:hover {
-  background: url(../img/sponsors/edgecase.png) 0 -110px no-repeat;
 }
 
 .github {
@@ -648,21 +590,11 @@ h1,h2,h3,h4,h5,h6 {
   background: url(../img/sponsors/github.png) no-repeat;
 }
 
-.github:hover {
-  background: url(../img/sponsors/github.png) 0 -100px no-repeat;
-}
-
-
 .pusher {
   width: 256px;
   height: 107px;
   background: url(../img/sponsors/pusher.png) no-repeat;
 }
-
-.pusher:hover {
-  background: url(../img/sponsors/pusher.png) 0 -110px no-repeat;
-}
-
 
 .tatelucas {
   width: 213px;
@@ -766,37 +698,3 @@ h1,h2,h3,h4,h5,h6 {
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
-
-/* until we have things, hide 'em */
-#attending, #schedule, #information {
-  display: none;
-}
-
-#venue {
-  padding: 50px 0 48px 150px;
-  width: 730px;
-  margin: 0 0 0 0; 
-  background: url(../img/schedulebg.png);
-}
-
-#cacslides {
-  position: relative;
-  margin: 0 0 0 -45px;
-}
-
-#cacslides a {
-  float: left;
-}
-
-#cacslides img {
-  margin: 0;
-  padding: 0;
-}
-
-#venuemap { 
-  position: absolute;
-  bottom: -58px;
-  right: 365px;
-  display: none;
-}
-

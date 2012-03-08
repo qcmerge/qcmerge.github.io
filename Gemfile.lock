@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/zurb/foundation-sass.git
-  revision: fc3efc7242b6039884a55b64761dbcfd89867437
-  specs:
-    ZURB-foundation (2.1.5.2)
-      compass (>= 0.11.5)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -113,7 +106,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ZURB-foundation!
   growl
   haml
   middleman

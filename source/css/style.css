@@ -611,11 +611,29 @@ h1,h2,h3,h4,h5,h6 {
  display: block;
  float: left;
  width: 40%;
+ text-align: center;
+}
+
+#sponsors ul li.firstrow {
+  height: 90px;
+}
+
+#sponsors ul li.secondrow {
+  height: 120px;
+}
+
+#sponsors ul li.thirdrow {
+  height: 90px;
+}
+
+#sponsors ul li.fourthrow {
+  height: 100px;
 }
 
 #sponsors ul li a {
   display: block;
   text-indent: -9999px;
+  margin: 0 auto;
 }
 
 .newrelic {
@@ -636,15 +654,19 @@ h1,h2,h3,h4,h5,h6 {
   background: url(../img/sponsors/gaslightsprite.png) 0 0 no-repeat;
 }
 
+.gaslight:hover {
+  background: url(../img/sponsors/gaslightsprite.png) 0 -52px no-repeat;
+}
+
 .ample {
-  width: 235px;
-  height: 52px;
-  margin: 5px;
+  width: 125px;
+  height: 84px;
+  margin: 10px 0 0 0;
   background: url(../img/sponsors/amplesprite.png) 0 0 no-repeat;
 }
 
-.gaslight:hover {
-  background: url(../img/sponsors/ample.png) 0 -52px no-repeat;
+.ample:hover {
+  background: url(../img/sponsors/amplesprite.png) 0 -84px no-repeat;
 }
 
 .engineyard {
@@ -660,6 +682,7 @@ h1,h2,h3,h4,h5,h6 {
 .edgecase {
   width: 256px;
   height: 107px;
+  margin: 0 0 0 63px !important;  
   background: url(../img/sponsors/edgecase.png) no-repeat;
 }
 
@@ -690,9 +713,14 @@ h1,h2,h3,h4,h5,h6 {
 
 
 .tatelucas {
-  width: 213px;
-  height: 130px;
-  background: url(../img/sponsors/tatelucas.png) no-repeat;
+  width: 121px;
+  height: 95px;
+  margin: 45px 0 0 65px  !important;
+  background: url(../img/sponsors/tatelucassprite.png) no-repeat;
+}
+
+.tatelucas:hover {
+  background: url(../img/sponsors/tatelucassprite.png) 0 -95px no-repeat;
 }
 
 

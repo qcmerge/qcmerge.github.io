@@ -1,13 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rack-contrib'
+gem "thin"
+gem "middleman", "3.0.0.beta.1"
 
 group :development do
-  gem 'middleman'
-  gem 'haml'
-end
-
-group :osx do
-  gem 'rb-fsevent'
-  gem 'growl'
+  gem "foreman"
+  gem "heroku"
+  gem "watchr"
+  gem "rb-fsevent"
+  gem "growl_notify"
 end

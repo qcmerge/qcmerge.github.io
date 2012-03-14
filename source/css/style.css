@@ -266,7 +266,7 @@ h1,h2,h3,h4,h5,h6 {
   line-height: 50px;
 }
 
-#container header #tagline p strong {
+#container header #tagline p span {
   font-style: normal;
   font-weight: 900;
 }

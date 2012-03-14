@@ -636,8 +636,15 @@ h1,h2,h3,h4,h5,h6 {
   background: url(../img/sponsors/gaslightsprite.png) 0 0 no-repeat;
 }
 
+.ample {
+  width: 235px;
+  height: 52px;
+  margin: 5px;
+  background: url(../img/sponsors/amplesprite.png) 0 0 no-repeat;
+}
+
 .gaslight:hover {
-  background: url(../img/sponsors/gaslightsprite.png) 0 -52px no-repeat;
+  background: url(../img/sponsors/ample.png) 0 -52px no-repeat;
 }
 
 .engineyard {

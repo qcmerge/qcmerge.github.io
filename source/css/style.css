@@ -460,7 +460,13 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: 600;
 }
 
-#speakerlist ul li a .speakername, #speakerlist ul li a .speakertitle {
+#speakerlist ul li a img {
+  width: auto;
+  height: 100%;
+}
+
+#speakerlist ul li a .speakername, #speakerlist ul li a .speakertitle,
+#speakerlist ul li a .company {
   display: none;
 }
 
@@ -486,6 +492,12 @@ h1,h2,h3,h4,h5,h6 {
 #speakerlist ul li a:hover .speakertitle {
   color: #eb008b;
   font-size: 14px;
+  display: block;
+}
+
+#speakerlist ul li a:hover .company {
+  color: #333;
+  font-size: 10px;
   display: block;
 }
 
@@ -866,4 +878,25 @@ h1,h2,h3,h4,h5,h6 {
   position: absolute;
   bottom: -58px;
   right: 365px;  
+}
+
+.reveal-modal h2 {
+  font-size: 2.5rem;
+}
+
+.reveal-modal h3 {
+  font-size: 1.25rem;
+}
+
+.reveal-modal h4 {
+  font-size: 0.8rem;
+}
+
+.reveal-modal .row {
+  margin-top: 10px;
+}
+
+.reveal-modal p {
+  font-size: 1rem;
+  line-height: 1.25rem;
 }

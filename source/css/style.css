@@ -274,7 +274,6 @@ h1,h2,h3,h4,h5,h6 {
 #container header #confdesc {
   float: left;
   width: 190px;
-  font-size: 14px;
   color: #eb008b;
   font-style: normal;
   font-weight: 700;  
@@ -282,6 +281,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #container header #confdesc p {
+  font-size: 14px;
   margin: 0;
   padding: 0 0 20px 0;
   text-transform: uppercase;
@@ -332,6 +332,7 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: 700;
   line-height: 55px;
   background: url(../img/navdivider.png) 0 bottom no-repeat; 
+  margin-bottom: 0;
 }
 
 #topnav li a {

@@ -1234,9 +1234,6 @@ ul.orbit-bullets li.active.has-thumb {
 		.row .row .column, .row .row .columns { padding: 0; }
 		.column, .columns { width: auto !important; float: none; margin-left: 0; margin-right: 0; }
 		.column:last-child, .columns:last-child { margin-right: 0; float: none; }
-		[class*="column"] + [class*="column"]:last-child { float: none; }
-		[class*="column"]:before, [class*="column"]:after { content:""; display:table; }
-		[class*="column"]:after { clear: both; }
 		
 		.offset-by-one, .offset-by-two, .offset-by-three, .offset-by-four, .offset-by-five, .offset-by-six, .offset-by-seven, .offset-by-eight, .offset-by-nine, .offset-by-ten, .offset-by-eleven, .centered { margin-left: 0 !important; }
 		

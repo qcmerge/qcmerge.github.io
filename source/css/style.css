@@ -623,47 +623,19 @@ h1,h2,h3,h4,h5,h6 {
 #sponsors ul li {
  display: block;
  float: left;
- width: 40%;
+ width: 45%;
  text-align: center;
-}
-
-#sponsors ul li.firstrow {
-  height: 90px;
-}
-
-#sponsors ul li.secondrow {
-  height: 120px;
-}
-
-#sponsors ul li.thirdrow {
-  height: 90px;
-}
-
-#sponsors ul li.fourthrow {
-  height: 100px;
 }
 
 #sponsors ul li a {
   display: block;
   text-indent: -9999px;
-  margin: 0 auto;
-}
-
-.newrelic {
-  width: 188;
-  height: 45px;
-  margin: 10px 0 0 0;
-  background: url(../img/sponsors/newrelicsprite.png) 0 -45px no-repeat;
-}
-
-.newrelic:hover {
-  background: url(../img/sponsors/newrelicsprite.png) 0 0 no-repeat;
 }
 
 .gaslight {
-  width: 235px;
+  width: 230px;
   height: 52px;
-  margin: 5px;
+  margin: 5px auto;
   background: url(../img/sponsors/gaslightsprite.png) 0 0 no-repeat;
 }
 
@@ -674,7 +646,7 @@ h1,h2,h3,h4,h5,h6 {
 .ample {
   width: 125px;
   height: 84px;
-  margin: 10px 0 0 0;
+  margin: 10px auto;
   background: url(../img/sponsors/amplesprite.png) 0 0 no-repeat;
 }
 
@@ -683,9 +655,10 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .engineyard {
-  width: 213px;
-  height: 107px;
-  background: url(../img/sponsors/engineyard.png) no-repeat;
+  width: 133px;
+  height: 80px;
+  margin: 0 auto 0 !important;
+  background: url(../img/sponsors/engineyard.png) 0 0 no-repeat;
 }
 
 .engineyard:hover {
@@ -693,47 +666,58 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .edgecase {
-  width: 256px;
-  height: 107px;
-  margin: 0 0 0 63px !important;  
-  background: url(../img/sponsors/edgecase.png) no-repeat;
+  width: 160px;
+  height: 45px;
+  margin: 28px auto 7px !important;  
+  background: url(../img/sponsors/edgecase.png) 0 0 no-repeat;
 }
 
 .edgecase:hover {
-  background: url(../img/sponsors/edgecase.png) 0 -110px no-repeat;
+  background: url(../img/sponsors/edgecase.png) 0 -45px no-repeat;
 }
-
-.github {
-  width: 213px;
-  height: 107px;
-  background: url(../img/sponsors/github.png) no-repeat;
-}
-
-.github:hover {
-  background: url(../img/sponsors/github.png) 0 -100px no-repeat;
-}
-
-
-.pusher {
-  width: 256px;
-  height: 107px;
-  background: url(../img/sponsors/pusher.png) no-repeat;
-}
-
-.pusher:hover {
-  background: url(../img/sponsors/pusher.png) 0 -110px no-repeat;
-}
-
 
 .tatelucas {
   width: 121px;
   height: 95px;
-  margin: 45px 0 0 65px  !important;
+  margin: 15px auto 0 !important;
   background: url(../img/sponsors/tatelucassprite.png) no-repeat;
 }
 
 .tatelucas:hover {
   background: url(../img/sponsors/tatelucassprite.png) 0 -95px no-repeat;
+}
+
+.heroku {
+  width: 178px;
+  height: 54px;
+  margin: 50px auto 0  !important;
+  background: url(../img/sponsors/heroku.png) 0 -54px no-repeat;
+}
+
+.heroku:hover {
+  background: url(../img/sponsors/heroku.png) 0 0 no-repeat;
+}
+
+.brandery {
+  width: 164px;
+  height: 138px;
+  margin: 30px auto 0  !important;
+  background: url(../img/sponsors/brandery.png) 0 -138px no-repeat;
+}
+
+.brandery:hover {
+  background: url(../img/sponsors/brandery.png) 0 0 no-repeat;
+}
+
+.rockfish {
+  width: 174px;
+  height: 79px;
+  margin: 58px auto 0 !important;
+  background: url(../img/sponsors/rockfish.png) 0 -79px no-repeat;
+}
+
+.rockfish:hover {
+  background: url(../img/sponsors/rockfish.png) 0 0 no-repeat;
 }
 
 

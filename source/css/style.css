@@ -50,9 +50,9 @@ body, button, input, select, textarea { font-family: "brandon-grotesque", sans-s
    Links
    ========================================================================== */
 
-a { color: #00e; }
-a:visited { color: #551a8b; }
-a:hover { color: #06e; }
+a { color: #df0084; }
+a:visited { color: #df0084; }
+a:hover { color: #56d2d4; }
 a:focus { outline: thin dotted; }
 
 /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
@@ -216,7 +216,8 @@ td { vertical-align: top; }
  */
 
 body {
-  background: url(../img/woodbackground.jpg); 
+  background: url(../img/woodbackground.jpg);
+
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -318,7 +319,7 @@ h1,h2,h3,h4,h5,h6 {
   position: fixed;
   width: 246px;
   height: 380px;
-  top: 100px;
+  top: 50px;
   left: 884px;
 }
 
@@ -350,10 +351,27 @@ h1,h2,h3,h4,h5,h6 {
   height: 87px;
   display: block;
   text-indent: -9999px;
-  width: 100%;
   background: url(../img/register2.png) no-repeat;
   width: 246px;
   margin: 0 0 0 -46px;
+}
+
+#topnav li.price {
+  border: none;
+  padding: 0;
+  padding: 0;
+  background: none;
+  text-align: center;
+}
+
+#topnav li.price a {
+  height: 131px;
+  display: block;
+  text-indent: -9999px;
+  width: 131px;
+  background: url(../img/pricestamp.png) no-repeat;
+  margin: 0 20px 30px;
+  border: none;
 }
 
 #message a
@@ -362,7 +380,7 @@ h1,h2,h3,h4,h5,h6 {
 	display: block;
  
 	/* link is above all other elements */
-	z-index: 999; 
+	z-index: 9; 
  
 	/* link doesn't hide text behind it */
 	opacity: .8;
@@ -370,7 +388,7 @@ h1,h2,h3,h4,h5,h6 {
 	/* link stays at same place on page */
 	position: fixed;
  
-	top: 600px;
+	top: 660px;
 	left: 980px;
 
  
@@ -478,7 +496,7 @@ h1,h2,h3,h4,h5,h6 {
   padding: 20px;
   top: -20px;
   left: -20px;
-  z-index: 2000; 
+  z-index: 20; 
   background: url(../img/sponsorbg.png);
   text-transform: uppercase;
 }

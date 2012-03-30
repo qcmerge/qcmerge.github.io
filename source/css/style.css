@@ -388,7 +388,7 @@ h1,h2,h3,h4,h5,h6 {
 	/* link stays at same place on page */
 	position: fixed;
  
-	top: 660px;
+	top: 730px;
 	left: 980px;
 
  
@@ -573,25 +573,27 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #schedule table {
-  width: 100%;
+  width: 75%;
 }
 
 #schedule table tr {
   font-weight: 700;
-  font-size: 20px;
-  color: #0e4d4e;
-  line-height: 50px;
   border-bottom: 1px solid #0e4d4e;
 }
 
-#schedule table tr th {
-  width: 50%;
-  text-align: left;
-  color: #fff;
+#schedule table tr th, #schedule table tr td {
+  text-align: center;
+  padding: 9px 10px;
+  font-size: 14px;
+  line-height: 1.5em;
 }
 
-#schedule table tr td {
-  width: 50%;
+#schedule table tr td[colspan="2"] {
+  background-color: #ccc;
+}
+
+#schedule table.speakers tbody th {
+  width: 40%;
 }
 
 #information {
@@ -847,7 +849,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 /* until we have things, hide 'em */
-#attending, #schedule, #information {
+#attending, #information {
   display: none;
 }
 
@@ -855,7 +857,7 @@ h1,h2,h3,h4,h5,h6 {
   padding: 50px 0 48px 150px;
   width: 730px;
   margin: 0; 
-  background: url(../img/schedulebg.png);
+  background: url(../img/sponsorbg.png);
 }
 
 #cacslides {
@@ -895,7 +897,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .reveal-modal h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .reveal-modal h3 {

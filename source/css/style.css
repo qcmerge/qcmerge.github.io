@@ -730,12 +730,23 @@ h1,h2,h3,h4,h5,h6 {
 .rockfish {
   width: 174px;
   height: 79px;
-  margin: 58px auto 0 !important;
+  margin: 58px auto 31px !important;
   background: url(../img/sponsors/rockfish.png) 0 -79px no-repeat;
 }
 
 .rockfish:hover {
   background: url(../img/sponsors/rockfish.png) 0 0 no-repeat;
+}
+
+.godutch {
+  width: 120px;
+  height: 115px;
+  margin: 58px auto 0 !important;
+  background: url(../img/sponsors/godutch.png) 0 -115px no-repeat;
+}
+
+.godutch:hover {
+  background: url(../img/sponsors/godutch.png) 0 0 no-repeat;
 }
 
 

@@ -17,7 +17,7 @@
   <meta name="author" content="">
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
@@ -41,26 +41,28 @@
     <header id="top">
       <div id="twittershare"><a href="http://www.twitter.com/qcmerge">Share on Twitter</a></div>
       <div id="logo"><a href="#top">Queen City Merge</a></div>
-      <div id="tagline">
-        <p>Social media,<br />
-        marketing,<br />
-        design,<br />
-        development &amp;<br />
-        <span class="randomWord">winning</span></p>
-      </div><!--/tagline-->
-      <div id="confdesc">
-        <p>A uniquely different kind of web conference.</p>
-        <p>
-        cincinnati, ohio.<br />
-        may 10<span>th</span> &amp; 11<span>th</span>, 2012</p>
-      </div><!--/confdesc-->
+      <div class="wrap">
+        <div id="tagline">
+          <p>Social media,<br />
+          marketing,<br />
+          design,<br />
+          development &amp;<br />
+          <span class="randomWord">winning</span></p>
+        </div><!--/tagline-->
+        <div id="confdesc">
+          <p>A uniquely different kind of web conference.</p>
+          <p>
+          cincinnati, ohio.<br />
+          may 10<span>th</span> &amp; 11<span>th</span>, 2012</p>
+        </div><!--/confdesc-->
+      </div><!--/.wrap-->
     </header>
 
     <nav id="topnav">
       <ul>
         <li class="price"><a href="http://qcmerge.eventbrite.com/">Early Bird Price $199</a></li>
         <li class="register"><a href="http://qcmerge.eventbrite.com/">Register</a></li>
-        <li><a href="#top">Home</a></li>
+        <li class="home"><a href="#top">Home</a></li>
         <li><a href="#speakers">Speakers</a></li>
         <li><a href="#schedule">Schedule</a></li>
         <li><a href="#venue">Venue</a></li>
@@ -322,7 +324,8 @@
     </div> <!--/main-->
 
     <footer>
-      Made by Gaslight
+      Made by Gaslight<br>
+      Mobile development by <a href="http://twitter.com/p9k">Paul Henrich</a>
     </footer>
   </div> <!--! end of #container -->
 

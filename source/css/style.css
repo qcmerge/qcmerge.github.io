@@ -1,5 +1,5 @@
 /* 
- * HTML5 ✰ Boilerplate
+ * HTML5 ✰ Boilerplate {
  *
  * What follows is the result of much research on cross-browser styling. 
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
@@ -206,37 +206,30 @@ input:invalid, textarea:invalid { background-color: #f0dddd; }
 table { border-collapse: collapse; border-spacing: 0; }
 td { vertical-align: top; }
 
+/* } end of boilerplate */
 
-/* ==|== primary styles =====================================================
+
+/* ===== primary styles =====================================================
    Author: 
    ========================================================================== */
 
 /*
  * Base Styles
  */
-
 body {
-  background: url(../img/woodbackground.jpg);
-
+  background: url(../img/bg_mobile.jpg);
 }
-
 h1,h2,h3,h4,h5,h6 {
   text-transform: uppercase;
 }
 
-#container {
-  width: 1130px;
-}
-
-
-
 /*
  * Header
  */
-
 #container header {
-  background: url(../img/structurehead.png) no-repeat;
-  min-height: 231px;
+  background: #f3dfbe url(../img/structurehead_mobile.jpg) no-repeat;
+  position:relative;
+  min-height: 290px;
   padding: 19px 0 0 0;
 }
 
@@ -246,60 +239,18 @@ h1,h2,h3,h4,h5,h6 {
   height: 120px;
   background: url(../img/logo.png) no-repeat;
   text-indent: -9999px;
-  margin: 50px 50px 0;
+  margin: 25px 25px 0;
   float: left;
-  position: fixed;
 }
-
-#container header #tagline {
-  float: left;
-  width: 480px;
-  margin: 50px 0 0 153px;
-}
-
-#container header #tagline p {
-  margin: 0;
-  padding: 0;;
-  font-style: normal;
-  font-weight: 500;  
-  font-size: 56px;
-  text-transform: uppercase;
-  line-height: 50px;
-}
-
-#container header #tagline p span {
-  font-style: normal;
-  font-weight: 900;
-}
-
-#container header #confdesc {
-  float: left;
-  width: 190px;
-  color: #eb008b;
-  font-style: normal;
-  font-weight: 700;  
-  margin: 50px 0 0 0;
-}
-
-#container header #confdesc p {
-  font-size: 14px;
-  margin: 0;
-  padding: 0 0 20px 0;
-  text-transform: uppercase;
-}
-
-#container header #confdesc p span {
-  text-transform: lowercase;
-}
-
 #twittershare {
-  margin: 0 0 0 710px;
+  margin: 0 0 0 250px;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;  
 }
 
 #twittershare a {
+  text-indent:-9999em;
   color: #000;
   text-decoration: none;
   text-transform: uppercase;
@@ -307,33 +258,74 @@ h1,h2,h3,h4,h5,h6 {
   height: 31px;
   padding: 0 0 0 66px;
   display: block;
-  width: 180px;
+  width: 50px;
+}
+#container header div.wrap {
+  position:absolute;
+  left: 100px;
+  padding-top:25px;
 }
 
+#tagline { 
+  margin-right:20px;
+  margin-bottom: 10px;
+}
+#tagline, #confdesc {
+  float:left;
+}
+#container header #tagline p {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: 500;  
+  font-size: 24px;
+  text-transform: uppercase;
+  line-height: 28px;
+}
+#container header #tagline p span {
+  font-style: normal;
+  font-weight: 900;
+}
+#container header #confdesc {
+  float: left;
+  width: 190px;
+  color: #eb008b;
+  font-style: normal;
+  font-weight: 700;  
+  margin: 0;
+}
+
+#container header #confdesc p {
+  font-size: 14px;
+  margin: 0;
+  padding: 0 0 10px 0;
+  text-transform: uppercase;
+}
+
+#container header #confdesc p span {
+  text-transform: lowercase;
+}
 
 /*
  * Nav
  */
 
-#topnav {
-  position: fixed;
-  width: 246px;
-  height: 380px;
-  top: 50px;
-  left: 884px;
+#topnav { 
+  margin-bottom: 40px;
 }
 
 #topnav ul {
-  padding: 0 0 0 46px;
+  padding: 0 10px;
+  text-align:center;
 }
 
 #topnav li {
-  font-size: 20px;
+  display: inline;
+  font-size: 15px;
   text-transform: uppercase;
   font-weight: 700;
-  line-height: 55px;
-  background: url(../img/navdivider.png) 0 bottom no-repeat; 
-  margin-bottom: 0;
+  line-height: 35px;
+  margin:0 6px;
 }
 
 #topnav li a {
@@ -348,12 +340,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #topnav li.register a {
-  height: 87px;
-  display: block;
-  text-indent: -9999px;
-  background: url(../img/register2.png) no-repeat;
-  width: 246px;
-  margin: 0 0 0 -46px;
 }
 
 #topnav li.price {
@@ -363,58 +349,65 @@ h1,h2,h3,h4,h5,h6 {
   background: none;
   text-align: center;
 }
+#topnav li.home {
+  display:none;
+}
 
 #topnav li.price a {
   height: 131px;
   display: block;
   text-indent: -9999px;
   width: 131px;
-  background: url(../img/pricestamp.png) no-repeat;
-  margin: 0 20px 30px;
+  background: url(../img/pricestamp_mobile.png) no-repeat;
+  margin: 0 auto;
   border: none;
 }
-
-#message a
-{
-	/* display: block before hiding */
-	display: block;
- 
-	/* link is above all other elements */
-	z-index: 9; 
- 
-	/* link doesn't hide text behind it */
-	opacity: .8;
- 
-	/* link stays at same place on page */
-	position: fixed;
- 
-	top: 730px;
-	left: 980px;
-
- 
-	background: url(../img/toparrow.png) no-repeat;
-	height: 75px;
-	width: 75px;
-	text-indent: -9999px;
-}
-
 #socialside {
+  min-width: 200px;
+  clear:both;
+  text-align:center;
   font-size: 30px;
-  padding: 10px 0 0 46px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);   
 }
-
 #socialside a {
   color: #fff;
-  display: block;
-  float: left;
-  margin: 0 7px 0 0;
+  margin-left:20px;
+  margin-bottom: 40px;
+}
+#socialside:first-child {
+  margin-left:0;
+}
+#socialside {
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);   
 }
 
 #socialside a .icon-envelope {
   font-size: 27px;
 }
 
+/*
+ * Content Area
+ */
+
+#main h4 {
+  margin: 5px 0 0 0;
+  padding: 0 20px;
+  font-size: 32px;
+  font-weight: 500; 
+  line-height: 30px;
+  letter-spacing: -1px; 
+}
+
+#main p {
+  margin: 0 20px;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#speakerlist ul {
+  margin: 0 20px;
+  padding: 10px 0;
+}
 /*
  * Content
  */
@@ -423,38 +416,6 @@ h1,h2,h3,h4,h5,h6 {
   background: url(../img/structurebody.png) repeat-y;
   min-height: 1000px;
   padding: 1px 0 0 0;
-}
-
-#portrait {
-  background: url(../img/portrait.jpg) 0 bottom no-repeat;  
-  height: 1025px;
-}
-
-#speakers {
-  padding: 50px 0 0 150px;
-  width: 730px;
-  margin: -100px 0 0 0;
-}
-
-#main h4 {
-  margin: 0;
-  padding: 0;
-  font-size: 52px;
-  font-weight: 500; 
-  line-height: 50px;
-  letter-spacing: -1px; 
-}
-
-#main p {
-  margin: 0;
-  padding: 10px 150px 10px 0;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-#speakerlist ul {
-  margin: 0;
-  padding: 10px 0;
 }
 
 #speakerlist ul li {
@@ -525,8 +486,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #attending {
-  padding: 0 0 0 150px;
-  width: 730px;
   margin: 20px 0 50px 0; 
 }
 
@@ -562,8 +521,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #schedule {
-  padding: 50px 0 50px 150px;
-  width: 730px;
   margin: 20px 0 0 0; 
   background: url(../img/schedulebg.png);
 }
@@ -573,7 +530,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #schedule table {
-  width: 75%;
+  width: 100%;
 }
 
 #schedule table tr {
@@ -597,8 +554,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #information {
-  padding: 50px 0 0 150px;
-  width: 730px;
   margin: 0 0 0 0; 
 }
 
@@ -629,14 +584,12 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #sponsors {
-  padding: 50px 0 0 150px;
-  width: 730px;
-  margin: -10px 0 0 0;
+  margin:0;
   background: url(../img/sponsorbg.png);
 }
 
 #sponsors ul {
-  margin: 10px 0 0 0;
+  margin: 10px 0 0 20px;
   padding: 0;
 }
 
@@ -644,6 +597,7 @@ h1,h2,h3,h4,h5,h6 {
  display: block;
  float: left;
  width: 45%;
+ min-width: 180px;
  text-align: center;
 }
 
@@ -651,6 +605,274 @@ h1,h2,h3,h4,h5,h6 {
   display: block;
   text-indent: -9999px;
 }
+
+/*
+ * Footer
+ */
+
+#container footer {
+  color: #fff;
+  font-family: "brandon-grotesque",sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  font-size: .9em;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, .3);
+  background: url(../img/foot.png) no-repeat;
+  min-height: 50px;
+  padding: 190px 0 0 0;  
+  text-align: center;
+}
+#container footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+
+@media (min-width:768px) {
+  body {
+    background: url(../img/woodbackground.jpg);
+  }
+  #container {
+    width: 1130px;
+  }
+
+  /*
+   * Header
+   */
+
+  #container header {
+    background: url(../img/structurehead.png) no-repeat;
+    min-height: 231px;
+    padding: 19px 0 0 0;
+  }
+
+  #container header #logo a {
+    margin: 50px 50px 0;
+    position: fixed;
+  }
+
+  #container header div.wrap {
+    /* reset absolute positioned mobile styles */
+    position:static;
+    left:auto;
+    padding-top:0;
+  }
+  #container header #tagline {
+    float: left;
+    width: 480px;
+    margin: 50px 0 0 153px;
+  }
+
+  #container header #tagline p {
+    font-size: 56px;
+    line-height: 50px;
+  }
+
+
+  #container header #confdesc {
+    float: left;
+    width: 190px;
+    color: #eb008b;
+    font-style: normal;
+    font-weight: 700;  
+    margin: 50px 0 0 0;
+  }
+
+  #container header #confdesc p {
+    font-size: 14px;
+    margin: 0;
+    padding: 0 0 20px 0;
+    text-transform: uppercase;
+  }
+
+  #container header #confdesc p span {
+    text-transform: lowercase;
+  }
+
+  #twittershare {
+    margin: 0 0 0 710px;
+  }
+
+  #twittershare a {
+    text-indent:none;
+    width: 180px;
+  }
+  /*
+   * Nav
+   */
+
+  #topnav {
+    position: fixed;
+    width: 246px;
+    height: 380px;
+    top: 50px;
+    left: 884px;
+  }
+
+  #topnav ul {
+    padding: 0 0 0 46px;
+    text-align: left;
+  }
+
+  #topnav li {
+    display:block;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 55px;
+    background: url(../img/navdivider.png) 0 bottom no-repeat; 
+    margin-bottom: 0;
+    margin-left:0;
+  }
+
+  #topnav li a {
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);  
+  }
+
+  #topnav li.register {
+    margin: 0;
+    padding: 0;
+  }
+
+  #topnav li.register a {
+    height: 87px;
+    display: block;
+    text-indent: -9999px;
+    background: url(../img/register2.png) no-repeat;
+    width: 246px;
+    margin: 0 0 0 -46px;
+  }
+
+  #topnav li.home {
+    display:block;
+  }
+
+  #topnav li.price {
+    border: none;
+    padding: 0;
+    padding: 0;
+    background: none;
+    text-align: center;
+  }
+
+  #topnav li.price a {
+    height: 131px;
+    display: block;
+    text-indent: -9999px;
+    width: 131px;
+    background: url(../img/pricestamp.png) no-repeat;
+    margin: 0 20px 30px;
+    border: none;
+  }
+
+  #message a
+  {
+    /* display: block before hiding */
+    display: block;
+   
+    /* link is above all other elements */
+    z-index: 9; 
+   
+    /* link doesn't hide text behind it */
+    opacity: .8;
+   
+    /* link stays at same place on page */
+    position: fixed;
+   
+    top: 730px;
+    left: 980px;
+
+   
+    background: url(../img/toparrow.png) no-repeat;
+    height: 75px;
+    width: 75px;
+    text-indent: -9999px;
+  }
+
+  #socialside {
+    font-size: 30px;
+    padding: 10px 0 0 46px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);   
+  }
+
+  #socialside a {
+    color: #fff;
+    display: block;
+    float: left;
+    margin: 0 7px 0 0;
+  }
+
+  #socialside a .icon-envelope {
+    font-size: 27px;
+  }
+
+  #portrait {
+    background: url(../img/portrait.jpg) 0 bottom no-repeat;  
+    height: 1025px;
+  }
+
+  /*
+   * Content Area
+   */
+
+  #main h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 52px;
+    font-weight: 500; 
+    line-height: 50px;
+    letter-spacing: -1px; 
+  }
+
+  #main p {
+    margin: 0;
+    padding: 10px 150px 10px 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  #speakers {
+    margin: -100px 0 0 0;
+  }
+
+  #speakerlist ul {
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  #schedule table {
+    margin:0;
+    width: 75%;
+  }
+  #sponsors{
+    margin: -10px 0 0 0;
+  }
+  #sponsors ul {
+    margin: 10px 0 0 0;
+    padding: 0;
+  }
+
+  /* define container widths, padding in one place */
+  #speakers, #attending, #schedule, #venue, #reds, #information, #sponsors {
+    width:730px;
+    padding: 50px 0 0 150px;
+  }
+  #attending {
+    padding: 0 0 0 150px;
+  }
+  #reds {
+    padding: 50px 0 48px 150px;
+  }
+  #container footer{
+    padding: 190px 240px 0 0;  
+    width: 890px;
+  }
+
+} /* end 768 */
 
 .gaslight {
   width: 230px;
@@ -764,25 +986,6 @@ h1,h2,h3,h4,h5,h6 {
 
 
 
-/*
- * Footer
- */
-
-#container footer {
-  color: #fff;
-  font-family: "brandon-grotesque",sans-serif;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 12px;
-  font-size: .9em;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, .3);
-  background: url(../img/foot.png) no-repeat;
-  min-height: 50px;
-  padding: 190px 240px 0 0;  
-  text-align: center;
-  width: 890px;
-}
 
 
 
@@ -865,8 +1068,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #venue {
-  padding: 50px 0 48px 150px;
-  width: 730px;
   margin: 0; 
   background: url(../img/sponsorbg.png);
 }
@@ -896,8 +1097,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #reds {
-  padding: 50px 0 48px 150px;
-  width: 730px;
   margin: 0;
 }
 

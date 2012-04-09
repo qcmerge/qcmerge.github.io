@@ -696,7 +696,7 @@ h1,h2,h3,h4,h5,h6 {
   }
 
   #twittershare a {
-    text-indent:none;
+    text-indent:0;
     width: 180px;
   }
   /*

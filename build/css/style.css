@@ -1,3 +1,5 @@
+@import "../zurb/stylesheets/foundation.css";
+
 /* 
  * HTML5 ✰ Boilerplate
  *
@@ -434,6 +436,11 @@ h1,h2,h3,h4,h5,h6 {
   padding: 50px 0 0 150px;
   width: 730px;
   margin: -100px 0 0 0;
+}
+
+#speakers h4 span {
+  display: block;
+  clear: right;
 }
 
 #main h4 {

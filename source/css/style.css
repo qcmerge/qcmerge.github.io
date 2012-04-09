@@ -438,6 +438,11 @@ h1,h2,h3,h4,h5,h6 {
   margin: -100px 0 0 0;
 }
 
+#speakers h4 span {
+  display: block;
+  clear: right;
+}
+
 #main h4 {
   margin: 0;
   padding: 0;

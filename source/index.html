@@ -21,49 +21,40 @@
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-  <!-- CSS: implied media=all -->
-  <!-- CSS concatenated and minified via ant build script-->
-  <link rel="stylesheet" href="zurb/stylesheets/foundation.css">
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/font-awesome.css">
-  <!-- end CSS-->
-
-  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
-
-  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
-       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
-       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
-  <script src="js/libs/modernizr-2.0.6.min.js"></script>
-  <script src="js/libs/respond.min.js"></script>
+  <link rel="stylesheet" media="screen and (min-device-width: 767px)" href="css/style.css">
+  <link rel="stylesheet" media="screen and (max-device-width: 480px)" href="css/mobile.css">
+  <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 
 <body>
   <div id="container">
     <header id="top">
-      <div id="twittershare"><a href="http://www.twitter.com/qcmerge">Share on Twitter</a></div>
+      <div id="twittershare"><a href="https://twitter.com/share?url=http://qcmerge.com&text=I%27m+attending+%40QCMerge%2C+May+10th-11th+in+Cincinnati!" target="_blank" data-url="https://dev.twitter.com/pages/tweet_button" data-via="your_screen_name">Share on Twitter</a></div>
       <div id="logo"><a href="#top">Queen City Merge</a></div>
-      <div class="wrap">
-        <div id="tagline">
-          <p>Social media,<br />
-          marketing,<br />
-          design,<br />
-          development &amp;<br />
-          <span class="randomWord">winning</span></p>
-        </div><!--/tagline-->
-        <div id="confdesc">
-          <p>A uniquely different kind of web conference.</p>
-          <p>
-          cincinnati, ohio.<br />
-          may 10<span>th</span> &amp; 11<span>th</span>, 2012</p>
-        </div><!--/confdesc-->
-      </div><!--/.wrap-->
+      <div id="tagline">
+        <p>Social media,<br />
+        marketing,<br />
+        design,<br />
+        development &amp;<br />
+        <span class="randomWord">winning</span></p>
+      </div><!--/tagline-->
+      <div id="confdesc">
+        <p>A uniquely different kind of web conference.</p>
+        <p>Two full days of learning and socializing in the Queen City.</p>
+        <p>Cincinnati, Ohio.<br />
+        May 10<span>th</span> &amp; 11<span>th</span>, 2012</p>
+      </div><!--/confdesc-->
     </header>
 
     <nav id="topnav">
       <ul>
         <li class="price"><a href="http://qcmerge.eventbrite.com/">Early Bird Price $199</a></li>
         <li class="register"><a href="http://qcmerge.eventbrite.com/">Register</a></li>
-        <li class="home"><a href="#top">Home</a></li>
+        <li><a href="#top">Home</a></li>
         <li><a href="#speakers">Speakers</a></li>
         <li><a href="#schedule">Schedule</a></li>
         <li><a href="#venue">Venue</a></li>
@@ -73,7 +64,7 @@
       </ul>
       <div id="socialside">
         <a href="http://www.twitter.com/qcmerge"><i class="icon-twitter-sign"></i></a>
-        <a href="https://www.facebook.com/pages/Queen-City-Merge/275186082523113"><i class="icon-facebook-sign"></i></a>
+        <a href="https://www.facebook.com/qcmerge"><i class="icon-facebook-sign"></i></a>
         <a href="http://gaslight.wufoo.com/forms/z7x3k1/" onclick="window.open(this.href,  null, 'height=340, width=680, toolbar=0, location=0, status=1, scrollbars=1, resizable=1'); return false"><i class="icon-envelope"></i></a>
       </div>
     </nav>
@@ -83,72 +74,28 @@
         &nbsp;
       </div>
       <div id="speakers">
-        <h4>Who will be <br />speaking? tell me!</h4>
+        <h4><span>Who will be</span> speaking? Tell me!</h4>
         <p>We're pulling in the smartest folks from all areas of the web:
           design, development, marketing and social media. If you earn a living
           on the web, you'll want to be here, too!</p>
-        <p>We'll announce a new speaker every week, so be sure to follow us on
-          Twitter, Facebook or the mailing list!</p>
 
         <div id="speakerlist" class="clearfix">
           <ul>
-            <li><a href="#" data-reveal-id="jenmyers"><img src="/img/speakers/jenmyers-square.jpg" alt="Jen" /><span class="speakername">Jen Myers</span><span class="speakertitle">Web/Interface Designer</span><span class="company">Relevance</span></a></li>
-            <li><a href="#" data-reveal-id="sarahhatter"><img src="/img/speakers/hatterheadshot-square.png" alt="Sarah" /><span class="speakername">Sarah Hatter</span><span class="speakertitle">Founder</span><span class="company">CoSupport</span></a></li>
-            <li><a href="#" data-reveal-id="robmcdonald"><img src="/img/speakers/robmcdonald-square.jpg" alt="Rob" /><span class="speakername">Rob McDonald</span><span class="speakertitle">Attorney</span><span class="company">Taft Stettinius &amp; Hollister LLP</span></a></li>
-            <li class="last"><a href="#" data-reveal-id="lbdenker"><img src="/img/speakers/lbdenker-square.jpg" alt="LB" /><span class="speakername">LB Denker</span><span class="speakertitle">Anthropologist of Developer Culture</span><span class="company">Etsy</span></a></li>
-            <li><a href="#"><img src="/img/avatar2.png" alt="Mario" /><span class="speakername">Storm Trooper</span><span class="speakertitle">Freelancer</span></a></li>
-            <li><a href="#"><img src="/img/avatar.png" alt="Mario" /><span class="speakername">Mario</span><span class="speakertitle">Freelancer</span></a></li>
-            <li><a href="#"><img src="/img/avatar2.png" alt="Mario" /><span class="speakername">Storm Trooper</span><span class="speakertitle">Freelancer</span></a></li>
-            <li class="last"><a href="#"><img src="/img/avatar.png" alt="Mario" /><span class="speakername">Mario</span><span class="speakertitle">Freelancer</span></a></li>
+            <li><a href="#" data-reveal-id="jenmyers"><img src="img/speakers/jenmyers-square.jpg" alt="Jen Myers" /><span class="speakername">Jen Myers</span><span class="speakertitle">Web/Interface Designer</span><span class="company">Relevance</span></a></li>
+            <li><a href="#" data-reveal-id="sarahhatter"><img src="img/speakers/hatterheadshot-square.png" alt="Sarah Hatter" /><span class="speakername">Sarah Hatter</span><span class="speakertitle">Founder</span><span class="company">CoSupport</span></a></li>
+            <li><a href="#" data-reveal-id="robmcdonald"><img src="img/speakers/robmcdonald-square.jpg" alt="Rob McDonald" /><span class="speakername">Rob McDonald</span><span class="speakertitle">Attorney</span><span class="company">Taft Stettinius &amp; Hollister LLP</span></a></li>
+            <li class="last"><a href="#" data-reveal-id="lbdenker"><img src="img/speakers/lbdenker-square.jpg" alt="LB Denker" /><span class="speakername">LB Denker</span><span class="speakertitle">Anthropologist of Developer Culture</span><span class="company">Etsy</span></a></li>
+            <li><a href="#" data-reveal-id="martyboyer"><img src="img/speakers/martyboyer-square.jpg" alt="Rob" /><span class="speakername">Marty Boyer</span><span class="speakertitle">Chief Product Officer</span><span class="company">Possible Worldwide</span></a></li>
+            <li><a href="#" data-reveal-id="bencurren"><img src="img/speakers/bencurren-square.jpg" alt="Ben Curren" /><span class="speakername">Ben Curren</span><span class="speakertitle">CTO/Co-Founder</span><span class="company">Outright</span></a></li>
+            <li><a href="#" data-reveal-id="saramorgan"><img src="img/speakers/saramorgan-square.jpg" alt="Sara Morgan" /><span class="speakername">Sara Morgan</span><span class="speakertitle">Founder</span><span class="company">Tailored</span></a></li>
+            <li class="last"><a href="#" data-reveal-id="alexhillman"><img src="img/speakers/alexhillman-square.jpg" alt="Alex Hillman" /><span class="speakername">Alex Hillman</span><span class="speakertitle">Founder</span><span class="company">IndyHall</span></a></li>
           </ul>
         </div> <!--/speakerlist-->
-
       </div> <!--/speakers-->
-
-      <div id="attending">
-        <h4>Who you think it will <br />be attending to this<br /> fantastic conf?</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in justo eu neque ornare imperdiet. Donec elementum viverra velit sed porta. </p>
-
-        <div id="attendinglist" class="clearfix">
-          <ul>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li class="last"><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li class="last"><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><img src="/img/avatarsmall.png" alt="Mario" /></li>
-            <li><a href="#" class="prevattending">Previous</a></li>
-            <li class="last"><a href="#" class="nextattending">Next</a></li>
-          </ul>
-        </div> <!--/attendinglist-->
-
-      </div> <!--/attending-->
 
       <div id="schedule">
         <h4>Ok, I&#8217;m in. Now what’s the plan?</h4>
-        <p>We&#8217;ve got two action&ndash;packed days of awesome lined up. Thursday, get hands on 
+        <p>We&#8217;ve got two action&ndash;packed days of awesome lined up. Thursday, get hands on
           and learn something new, then hang out for the after party. Friday we'll start a little later
           and have an amazing speaker line up followed by the <a href="#reds">Reds game</a>.</p>
 
@@ -167,30 +114,26 @@
               <td colspan="2">Breakfast</td>
             </tr>
               <th>9:30 - 11:30</th>
-              <td>Usability Testing</td>
+              <td><a href="#" data-reveal-id="joetesting">Usability Testing</a></td>
               <td>TBA</td>
             </tr>
               <th>11:30 - 1:00</th>
               <td colspan="2">Lunch and Panel Discussion</td>
             </tr>
               <th>1:00 - 3:00</th>
-              <td>Backbone.js</td>
-              <td>Responsive Design</td>
+              <td><a href="#" data-reveal-id="backbone">Beautiful Front End Code</a></td>
+              <td><a href="#" data-reveal-id="responsive">Responsive Design</a></td>
             </tr>
-              <th>3:00 - 4:00</th>
+              <th>3:00 - 5:00</th>
               <td colspan="2">TBA</td>
             </tr>
             </tr>
-              <th>4:00 - 5:00</th>
-              <td colspan="2">TBA</td>
-            </tr>
-            </tr>
-              <th>5:00 - 7:00</th>
-              <td colspan="2">TBA</td>
+              <th>6:00 - 7:00</th>
+              <td colspan="2">Panel Discussion</td>
             </tr>
             </tr>
               <th>7:00 - 9:00</th>
-              <td colspan="2">TBA</td>
+              <td colspan="2">Open Mic and Socializing</td>
             </tr>
           </tbody>
         </table>
@@ -210,15 +153,15 @@
             </tr>
             <tr>
               <th>8:30 - 9:00</th>
-              <td>TBA</td>
+              <td><a href="#" data-reveal-id="saramorgan">Sara Morgan - If you just build it, they won't come.</a></td>
             </tr>
             <tr>
               <th>9:00 - 10:00</th>
-              <td>TBA</td>
+              <td><a href="#" data-reveal-id="martyboyer">Marty Boyer - Innovation Is Something You Feel</a></td>
             </tr>
             <tr>
               <th>10:00 - 11:00</th>
-              <td>TBA</td>
+              <td><a href="#" data-reveal-id="bencurren">Ben Curren - Data Driven Decision Making</a></td>
             </tr>
             <tr>
               <th>11:00 - 12:00</th>
@@ -242,7 +185,7 @@
             </tr>
             <tr>
               <th>4:30 - 5:30</th>
-              <td>TBA</td>
+              <td><a href="#" data-reveal-id="alexhillman">Alex Hillman - TBD</a></td>
             </tr>
             <tr>
               <th>7:10 - 10:00</th>
@@ -266,15 +209,12 @@
           event for Thursday night with some familiar faces from around the city.
           That's included, too.</p>
         <div id="cacslides" class="clearfix">
-          <img src="/img/cac.png" alt="CAC" />
-          <div id="venuemap">
-            <a href="#"><img src="/img/hotelmap.png" alt="Venue Map" /></a>
-          </div> <!--/venuemap -->
+          <img src="img/cac.png" alt="CAC" />
         </div>
       </div> <!--/venue-->
 
       <div id="reds">
-        <h4>Reds Game, too!</h4>
+        <h4>Wait. A Reds Game, too?!</h4>
         <p>How 'bout that local sports team, eh?</p>
         <p>We've lined up some great sponsors! So great that we were able to treat all of
           you attendees to a ball game Friday night after the event! We've booked the party
@@ -282,30 +222,14 @@
           <a href="http://cincinnati.reds.mlb.com/cin/ballpark/index.jsp">Great American Ball Park</a>
           for the Reds vs. Nationals game! Come and hang out with everyone, drink a beer or two and
           eat some Skyline Cheese Coneys.</p>
-        <img src="/img/reds.png" alt="Reds" />
+        <img src="img/reds.png" alt="Reds" />
       </div> <!--/reds-->
-
-      <div id="information">
-        <h4>I&#8217;m lost, where you said it was going to be? also I need sleep…</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in justo eu neque ornare imperdiet. Donec elementum viverra velit sed porta. </p>
-
-        <a href="#">
-          <img src="/img/hotel.jpg" alt="Hotel" />
-        </a>
-        <p class="hotelcaption"><a href="#">Hotel Hilton</a></p>
-
-        <div id="hotelmap">
-          <a href="#"><img src="/img/hotelmap.png" alt="Hotel Map" /></a>
-        </div> <!--/hotelmap -->
-
-      </div> <!--/information -->
-
 
       <div id="sponsors" class="clearfix">
         <h4>Who should I thank for this massive awesomness?</h4>
         <p>We couldn't have done it without these folks, so make sure you tell them how awesome
         they are!</p>
-      <p>Interested in sponsoring us? Send an email to <a href="mailto:hello@qcmerge.com">hello@qcmerge.com</a>!</p>
+        <p>Interested in sponsoring us? Send an email to <a href="mailto:hello@qcmerge.com">hello@qcmerge.com</a>!</p>
 
         <ul>
           <li><a href="http://www.gaslightsoftware.com" class="gaslight">Gaslight Software</a></li>
@@ -319,14 +243,11 @@
           <li><a href="http://www.cincycoworks.com/" class="coworks">Cincy Coworks</a></li>
           <li><a href="http://godutchstudio.com/" class="godutch">Go Dutch</a></li>
         </ul>
-
       </div> <!--/sponsors -->
-
     </div> <!--/main-->
 
     <footer>
-      Made by Gaslight<br>
-      Mobile development by <a href="http://twitter.com/p9k">Paul Henrich</a>
+      Made by <a href="http://gaslightsoftware.com/">Gaslight</a>
     </footer>
   </div> <!--! end of #container -->
 
@@ -335,7 +256,7 @@
   <div id="jenmyers" class="reveal-modal">
     <div class="row">
       <div class="columns four">
-        <img src="/img/speakers/jenmyers.jpg" />
+        <img src="img/speakers/jenmyers.jpg" />
       </div>
       <div class="columns eight">
         <h2>Jen Myers</h2>
@@ -355,6 +276,7 @@
           cover the basics of design from a developer’s perspective and explore how
           a developer can employ these principles to build clearer, cleaner and
           more usable applications.</p>
+        <h4>About Jen</h4>
         <p>Jen Myers is a web/interface designer at the software company Relevance.
           She works from Columbus, Ohio, where she also teaches HTML/CSS and
           organizes the coding education program Girl Develop It Columbus. Her
@@ -369,7 +291,7 @@
   <div id="sarahhatter" class="reveal-modal">
     <div class="row">
       <div class="columns four">
-        <img src="/img/speakers/hatterheadshot.png" />
+        <img src="img/speakers/hatterheadshot.png" />
       </div>
       <div class="columns eight">
         <h2>Sarah Hatter</h2>
@@ -383,6 +305,7 @@
         <p>Learn how to offer your customers amazing support over email and
           Twitter, create a fanatical user base, and how to avoid the quagmire
           of 1-star reviews.</p>
+        <h4>About Sarah</h4>
         <p>Sarah Hatter is founder of CoSupport, a company that's teaching
           small app teams worldwide how to offer amazing customer support.
           Sarah started CoSupport after building up the support team at
@@ -396,7 +319,7 @@
   <div id="robmcdonald" class="reveal-modal">
     <div class="row">
       <div class="columns five">
-        <img src="/img/speakers/robmcdonald.jpg" />
+        <img src="img/speakers/robmcdonald.jpg" />
       </div>
       <div class="columns seven">
         <h2>Rob McDonald</h2>
@@ -425,6 +348,7 @@
           viable legal solution. No one wants to waste money on lawyers when
           there are more important business expenses (like upgrading the ramen
           noodles you bought in bulk).</p>
+        <h4>About Rob</h4>
         <p>ROBERT W. MCDONALD is an attorney in the Business &amp; Finance Practice
           Group at Taft Stettinius &amp; Hollister LLP.  Rob is a Co-Founder and
           Director at The Brandery, a seed stage business accelerator in
@@ -441,7 +365,7 @@
   <div id="lbdenker" class="reveal-modal">
     <div class="row">
       <div class="columns five">
-        <img src="/img/speakers/lbdenker.jpg" />
+        <img src="img/speakers/lbdenker.jpg" />
       </div>
       <div class="columns seven">
         <h2>LB Denker</h2>
@@ -467,6 +391,7 @@
           that took us from being small yet bureaucratic to large and still
           growing with more community and emphasis on culture, all while
           maintaing that small startup feeling.</p>
+        <h4>About Laura</h4>
         <p>Laura Beth "LB" Denker graduated from RIT with a BS/MS in
           Computational Mathematics/Computer Science. She then moved on to a
           small job in a small city in central New York before being courted by
@@ -475,6 +400,250 @@
           handmade, helping Etsy grow its spectacular development culture and
           continuous deployment process as the self-proclaimed Anthropologist
           of Developer Culture.</p>
+      </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="martyboyer" class="reveal-modal">
+    <div class="row">
+      <div class="columns five">
+        <img src="img/speakers/martyboyer.jpg" />
+      </div>
+      <div class="columns seven">
+        <h2>Marty Boyer</h2>
+        <h3>Chief Prod Officer</h3>
+        <h4><a class="company" href="http://www.possibleworldwide.com/">Possible Worldwide</a></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns twelve">
+        <h4>Innovation Is Something You Feel</h4>
+        <p>Innovating within an organization is a mystery, especially those
+          within service industries. Why? Because innovation is something that
+          you feel and not necessarily just something that you do. Making
+          individuals feel something is a hard assignment. For service
+          organizations there are limitations to our business model putting
+          business practicality and unpaid innovation at odds. Yet, without
+          investing in innovation, clients won’t pay for skills that you have
+          not demonstrated—the ultimate chicken or egg question. In addition to
+          the business challenges, there are a lot more practical questions as
+          well, like where to start innovating? As we reflect on our year, we
+          always realize how many hours went unbilled, unused every year. Many
+          organizations just do not know where to start or how to create a plan
+          for innovation. This talk will put actionable steps to innovating at
+          any organization, focusing on the service industry, and discuss how
+          to harness the power of the unbilled hour to innovate. Harnessing the
+          energy of your organization has the ability to win new business,
+          empower your teams and finally help people feel innovation.</p>
+        <h4>About Marty</h4>
+        <p>Marty Boyer is the Chief Product Officer of Possible Worldwide,
+          Cincinnati. He leads Technology, Program Management and Resource
+          Management functions. He helps steer the technology and processes
+          that deliver their creative product.</p>
+        <p>He thrives on brand building and solving business problems utilizing
+          technology. During his tenure at Possible Worldwide, he's worked with
+          a number Fortune 100 businesses building applications and executions
+          ranging from social to mobile applications.</p>
+      </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="bencurren" class="reveal-modal">
+    <div class="row">
+      <div class="columns five">
+        <img src="img/speakers/bencurren.jpg" />
+      </div>
+      <div class="columns seven">
+        <h2>Ben Curren</h2>
+        <h3>CTO/Co-Founder</h3>
+        <h4><a class="company" href="http://www.outright.com/">Outright</a></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns twelve">
+        <h4>Data Driven Decisions</h4>
+        <p>Making well-informed decisions in a timely manner is what separates
+          the winners from the losers, when it comes to running a business. In
+          the last 5 years, we've seen a significant reduction in the cost and
+          complexity involved in collecting and analyzing the usage data
+          emitted from our web products. You will significantly increase your
+          chances of building a successful business by leveraging this data
+          properly.</p>
+        <p>In this presentation you will learn how <a href="http://outright.com">Outright.com</a> built a culture
+          that relies on data to quickly make decisions and learn at a faster
+          rate than our competitors.</p>
+        <h4>About Ben</h4>
+        <p>Ben has spent the last 12 years developing web and desktop
+          applications for both small and large corporations, including several
+          years in Intuit's QuickBooks Group. He specializes in using
+          technology to solve real world problems by creating easy-to-use
+          solutions.</p>
+      </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="saramorgan" class="reveal-modal">
+    <div class="row">
+      <div class="columns five">
+        <img src="img/speakers/saramorgan.jpg" />
+      </div>
+      <div class="columns seven">
+        <h2>Sara Morgan</h2>
+        <h3>Founder</h3>
+        <h4><a class="company" href="http://www.tailored.co/">Tailored</a></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns twelve">
+        <h4>If you just build it, they won't come.</h4>
+        <p></p>
+        <h4>About Sara</h4>
+        <p>A wedding industry veteran, and lover of all things fashion, Sara
+          founded Tailored with a mission to change the way brides shop for
+          their weddings. Sara is an entrepreneur at heart, believes strongly
+          in loving what you do, and is truly passionate about her work. She
+          handles PR, Marketing, and Brand Strategy for Tailored and her
+          background in media and broadcast journalism have helped her become a
+          formidable source on writing and delivering a message that will have
+          an impact.</p>
+        <p>Sara’s entrepreneurial spirit was ignited when she served as the
+          Director of Marketing for Weddzilla.com, where she handled business
+          development and brand strategy. It was there that she met her
+          co-founder, Aaron Hall, and the two have been working side by side to
+          bring new technologies to the industry ever since.  A Broadcast News
+          Major from the University of Georgia, Sara has been featured in such
+          renowned publications as The Huffington Post, InStyle Magazine,
+          Glamour Magazine, MSN, Forbes, and more.</p>
+      </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="alexhillman" class="reveal-modal">
+    <div class="row">
+      <div class="columns five">
+        <img src="img/speakers/alexhillman.jpg" />
+      </div>
+      <div class="columns seven">
+        <h2>Alex Hillman</h2>
+        <h3>Co-Founder</h3>
+        <h4><a class="company" href="http://www.indyhall.com/">IndyHall</a></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns twelve">
+        <h4></h4>
+        <p></p>
+        <p>My name is Alex, I’m from Philadelphia, PA.</p>
+        <p>I start things: businesses, conversations, parties, and sometimes a
+          little trouble. I’m probably best known for starting Philadelphia’s
+          Indy Hall coworking community in 2006, years before coworking became
+          a darling of the mainstream press and workers everywhere. Since, Indy
+          Hall and my work have been featured in national and international
+          publications. I’ve started and contributed to conversations around
+          the progress and methodologies behind my projects, making “open
+          source” a reality for more than just software and helping countless
+          aspiring catalysts around the world. Many credit me with their
+          starts, citing my non-nonsense credo “JFDI” (just effing do it) as a
+          source of inspiration to stop with the excuses and, well, JFDI.</p>
+      </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="joetesting" class="reveal-modal">
+    <div class="row">
+      <div class="columns five">
+        <img src="img/speakers/joefiorini.png" />
+      </div>
+      <div class="columns seven">
+        <h2>Joe Fiorini</h2>
+        <h3>Developer</h3>
+        <h4><a class="company" href="http://www.leandog.com/">LeanDog Software</a></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns twelve">
+        <h4>Usability Testing for Everyone</h4>
+        <p>In this workshop you will learn how to start bringing users into
+          your design process, whether you're greenfielding a software product
+          or improving one already in production. Through practical examples,
+          hands on application and lots of resources for further learning, you
+          will leave armed with the skills to ensure any release of your
+          product sufficiently solves the problem at hand.</p>
+        <h4>About Joe</h4>
+        <p>Joe is a user obsessed developer at LeanDog Software in Cleveland,
+          Ohio. On some days he can be found slinging code in Vim. On others he
+          might be doing user research and wireframing. In the evenings he can
+          be found usability testing everything in the house with his 1 year
+          old daughter.</p>
+      </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="backbone" class="reveal-modal">
+    <div class="row">
+      <div class="columns five">
+        <img src="img/speakers/chrisnelson.png" />
+      </div>
+      <div class="columns seven">
+        <h2>Chris Nelson</h2>
+        <h3>Developer</h3>
+        <h4><a class="company" href="http://www.gaslightsoftware.com/">Gaslight Software</a></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns twelve">
+        <h4>Beautiful Front End Code (Condensed)</h4>
+        <p>Beautiful code is well organized code with a clear separation of
+          concerns, and backbone.js gives us a place for everything, with
+          everything in it's place. In this part of of the course, you'll learn
+          backbone by doing. We'll gradually build a rich client web
+          application (with jasmine specs of course) that gives you a chance to
+          use all the pieces of backbone.js.</p>
+        <h4>About Chris</h4>
+        <p>Chris Nelson is a software developer who hails from the fair city of
+          Cincinnati, Ohio. He has been developing web applications for 15
+          years and is passionate about finding better ways to do it. He has
+          presented and conducted training sessions at conferences including
+          JRubyConf, Scottish Ruby Conference, RailsConf, and RubyConf. Lately
+          Chris has been having a blast building rich client web applications
+          using backbone.js, CoffeeScript, and Rails.</p>
+      </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="responsive" class="reveal-modal">
+    <div class="row">
+      <div class="columns five">
+        <img src="img/speakers/ample.png" />
+      </div>
+      <div class="columns seven">
+        <h2>Ryan Merrill and Bobby Uhlenbrock</h2>
+        <h4><a class="company" href="http://www.helloample.com/">Ample</a></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns twelve">
+        <h4>Responsive Web Design</h4>
+        <p>So you understand the technical basics of Responsive Web Design,
+          including media queries, fluid grids and images, but are grappling at
+          how to apply it to your workflow. Should we be designing in the
+          browser, or making static comps of different screen widths? We're all
+          struggling at how to best refine our process for a new generation of
+          web design and development in order to accommodate today's array of
+          devices without pointless rework.</p>
+        <p>In this workshop, we'll give a brief background of what Responsive
+          Web Design is and delve further into how Responsive Web Design is
+          changing the process of designing and developing for today's web.
+          We'll also offer techniques and solutions to expedite time and help
+          pitch this process to the client by walking through an example site
+          from start to finish.</p>
       </div>
     </div>
     <a class="close-reveal-modal">&#215;</a>

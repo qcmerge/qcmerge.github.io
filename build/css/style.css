@@ -321,7 +321,7 @@ h1,h2,h3,h4,h5,h6 {
   position: fixed;
   width: 246px;
   height: 380px;
-  top: 50px;
+  top: 75px;
   left: 884px;
 }
 
@@ -371,7 +371,7 @@ h1,h2,h3,h4,h5,h6 {
   display: block;
   text-indent: -9999px;
   width: 131px;
-  background: url(../img/pricestamp.png) no-repeat;
+  background: url(../img/normalpricestamp.png) no-repeat;
   margin: 0 20px 30px;
   border: none;
 }
@@ -767,6 +767,17 @@ h1,h2,h3,h4,h5,h6 {
 
 .coworks:hover {
   background: url(../img/sponsors/coworks.png) 0 0 no-repeat;
+}
+
+.continuousweb {
+  width: 185px;
+  height: 34px;
+  margin: 50px auto 0 !important;
+  background: url(../img/sponsors/continuousweb.png) 0 0 no-repeat;
+}
+
+.continuousweb:hover {
+  background: url(../img/sponsors/continuousweb.png) 0 -34px no-repeat;
 }
 
 

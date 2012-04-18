@@ -199,69 +199,6 @@ h1,h2,h3,h4,h5,h6 {
   margin:0;
 }
 
-#speakerlist ul li {
-  width: 175px;
-  height: 175px;
-  background: #000;
-  list-style: none;
-  margin: 0 10px 10px 0;
-  padding: 0;
-  float: left;
-  position: relative;
-}
-
-#speakerlist ul li a {
-  width: 175px;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: transparent;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-#speakerlist ul li a img {
-  width: auto;
-  height: 100%;
-}
-
-#speakerlist ul li a .speakername, #speakerlist ul li a .speakertitle,
-#speakerlist ul li a .company {
-  display: none;
-}
-
-#speakerlist ul li a:hover {
-  -webkit-box-shadow: 0px 0px 18px 0px #999;
-  -moz-box-shadow: 0px 0px 18px 0px #999;
-  box-shadow: 0px 0px 18px 0px #999;
-  padding: 20px;
-  top: -20px;
-  left: -20px;
-  z-index: 20; 
-  background: url(../img/sponsorbg.png);
-  text-transform: uppercase;
-}
-
-#speakerlist ul li a:hover .speakername {
-  font-size: 19px;
-  color: #000;
-  display: block;
-  padding: 15px 0 0 0;
-}
-
-#speakerlist ul li a:hover .speakertitle {
-  color: #eb008b;
-  font-size: 14px;
-  display: block;
-}
-
-#speakerlist ul li a:hover .company {
-  color: #333;
-  font-size: 10px;
-  display: block;
-}
-
 #main li.last {
   margin-right: 0;
 }
@@ -657,7 +594,11 @@ h1,h2,h3,h4,h5,h6 {
   }
 
 } /* end 768 */
-
+/* in which we cheat on mobile-first for the sake of pragmatism */
+@media (max-width:767px) {
+  /* use cdmwebs' speakerlist formatting from mobile.css.sass */
+  @import 'mobile';
+} /* end additional mobile styles */
 .gaslight {
   width: 230px;
   height: 52px;

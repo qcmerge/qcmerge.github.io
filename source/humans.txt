@@ -1,43 +1,71 @@
-/* the humans responsible & colophon */
 /* humanstxt.org */
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site: 
-  Twitter: 
-  Location: 
+  Gaslight Software
+  Site: http://gaslightsoftware.com
+  Twitter: http://twitter.com/gaslightsoft
+  Location: Cincinnati, OH
+  
+  Designer: Ignacio Giri
+  Site: http://nacho.io
+  Twitter: http://twitter.com/nacho
+  Location: Los Angeles, CA
 
-/* THANKS */
-  Names (& URL): 
+  Developer: Chris Moore
+  Site: http://cdmwebs.com
+  Twitter: http://twitter.com/cdmwebs
+  Location: Cincinnati, OH
+
+  Front End Developer: Tate Lucas
+  Site: http://tatelucas.com
+  Twitter: http://twitter.com/tatelucas
+  Location: Cincinnati, OH
+
+  Mobile Developer: Paul Henrich
+  Site: http://henrich.me
+  Twitter: http://twitter.com/p9k
+  Location: Cincinnati, OH
+
 
 /* SITE */
   Standards: HTML5, CSS3
-  Components: Modernizr, jQuery
-  Software:
+  Components: HTML5Shim, Respond.JS, jQuery, Zurb
+  Software: Photoshop, Vim
   
 
-                                    
-                               -o/-                       
-                               +oo//-                     
-                              :ooo+//:                    
-                             -ooooo///-                   
-                             /oooooo//:                   
-                            :ooooooo+//-                  
-                           -+oooooooo///-                 
-           -://////////////+oooooooooo++////////////::    
-            :+ooooooooooooooooooooooooooooooooooooo+:::-  
-              -/+ooooooooooooooooooooooooooooooo+/::////:-
-                -:+oooooooooooooooooooooooooooo/::///////:-
-                  --/+ooooooooooooooooooooo+::://////:-   
-                     -:+ooooooooooooooooo+:://////:--     
-                       /ooooooooooooooooo+//////:-        
-                      -ooooooooooooooooooo////-           
-                      /ooooooooo+oooooooooo//:            
-                     :ooooooo+/::/+oooooooo+//-           
-                    -oooooo/::///////+oooooo///-          
-                    /ooo+::://////:---:/+oooo//:          
-                   -o+/::///////:-      -:/+o+//-         
-                   :-:///////:-            -:/://         
-                     -////:-                 --//:        
-                       --                       -:        
+        QCM,                                                        ,QCM
+        MCMMM,                                                    MMMMMM
+        MCCMCM,                                                 ,,MCCMMM
+        MCCCMMMMM                                              MMMMMCMMM
+        MCCCMMMMCMM,                                        ,MMCCCCCCMMM
+        MCCCMMMCCMMM,                                     ,,MCCCCMMCCMMM
+        MCCCM,,,MCCMCM,                                  MMMMMCM, ,CMMMM
+        MCCCC,   ,MMCMMM,                              ,MMMMMM,   ,CMMMM
+        MCCCC,     ,MCCCMM,                          ,MMMMMM,     ,CMMMM
+        MCCCC,      ,MMMCCM,                        ,MMMMMM,      ,MMMMM
+        MCCCC,       ,,MMCCMM,                    ,MMMMMM,        ,CMMMM
+        MCCCC,          MCCMMMM,               ,,MCMMMCM          ,CMMMM
+        MCCCM,           ,,MMMCCM,            ,MMMMMM,            ,CMMMM
+        MCCCC,             ,MMCMMM,         MMMCCMMM,             ,CMMMM
+        MCCCM,               ,MCCCMM,      ,MCMMMM,               ,CMMMM
+        MCCMM,                ,,MMMMM,,  ,MMMCMM,                 ,CMMMM
+        MCCCM,                   MMMMCCMMCCCMM,                   ,CMMMM
+        MCCCM,                    ,MMCCCMMMM,                     ,CMMMM
+        MCCCM,                     ,MCCCCCMM                      ,CMMMM
+        MCCCM,                    MMMMCCCMMM,,                    ,CMMMM
+        MCCCM,                   MMCCMMMMMMCMMM                   ,CMMMM
+        MCCCM,                ,MMCMMM,   ,,MCCMMM,                ,MMMMM
+        MCCCM,              ,,MCCMM,,     ,MMCMMCM,,              ,CMMMM
+        MCCMM,             MMMMCCM      ,M,  ,MCMMCCM             ,MMMMM
+        MCCCM,          ,,MCMMMM,    ,,,,    ,,MMMMMMM,,          ,CMMMM
+        MCCCM,        ,,MMCCMM,     ,M,    ,MM,  ,MMMMMM,         ,CMMMM
+        MCCCC,       ,MMMMCMM,    ,MM      M,     MCMMMMM,        ,CMMMM
+        MCCCC,      MMMMMMM      ,,,    ,,,,   ,,,,,,MMMCMM,      ,CMMMM
+        MCCCC,   ,,MCMMM,,     ,M,    ,,,,    ,M,    ,MMCCCCM,    ,CMMMM
+        MCCCM, ,,MMMCMM,     ,,,,    ,,,    ,,,     ,,,,,MCMMMM,  ,MMMMM
+        MCCCCMMCCMMMM      ,MM    ,MM      M,     ,M,    MCMMMMMMMMMMMMM
+        MCCCCMMCCCCM,     ,M,    ,,,,    ,M,    ,,,,    ,M,MMCCCMMMCMMMM
+        MCCCCCCCCMM,    ,MM,    ,M,,   ,MMM,  ,MMM,   ,,M, ,,MMCMMCCCMMM
+        MMMMMMCCMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMCMMMMMMMMCMMMMMMMM
+        MCMMMMMMMMMMMM QC Merge - Cincinnati - May 10-11 MMMMMMMMMMMMMMM

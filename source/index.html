@@ -17,17 +17,17 @@
   <meta name="author" content="">
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
   <link rel="stylesheet" href="css/font-awesome.css">
-  <link rel="stylesheet" media="screen and (min-device-width: 767px)" href="css/style.css">
-  <link rel="stylesheet" media="screen and (max-device-width: 480px)" href="css/mobile.css">
+  <link rel="stylesheet" href="css/style.css">
   <!--[if lt IE 9]>
     <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <script src="js/libs/respond.min.js"></script>
 </head>
 
 <body>
@@ -35,19 +35,21 @@
     <header id="top">
       <div id="twittershare"><a href="https://twitter.com/share?url=http://qcmerge.com&text=I%27m+attending+%40QCMerge%2C+May+10th-11th+in+Cincinnati!" target="_blank" data-url="https://dev.twitter.com/pages/tweet_button" data-via="your_screen_name">Share on Twitter</a></div>
       <div id="logo"><a href="#top">Queen City Merge</a></div>
-      <div id="tagline">
-        <p>Social media,<br />
-        marketing,<br />
-        design,<br />
-        development &amp;<br />
-        <span class="randomWord">winning</span></p>
-      </div><!--/tagline-->
-      <div id="confdesc">
-        <p>A uniquely different kind of web conference.</p>
-        <p>Two full days of learning and socializing in the Queen City.</p>
-        <p>Cincinnati, Ohio.<br />
-        May 10<span>th</span> &amp; 11<span>th</span>, 2012</p>
-      </div><!--/confdesc-->
+      <div class="wrap clearfix">
+        <div id="tagline">
+          <p>Social media,<br />
+          marketing,<br />
+          design,<br />
+          development &amp;<br />
+          <span class="randomWord">winning</span></p>
+        </div><!--/tagline-->
+        <div id="confdesc">
+          <p>A uniquely different kind of web conference.</p>
+          <p>Two full days of learning and socializing in the Queen City.</p>
+          <p>Cincinnati, Ohio.<br />
+          May 10<span>th</span> &amp; 11<span>th</span>, 2012</p>
+        </div><!--/confdesc-->
+      </div><!--/.wrap-->
     </header>
 
     <nav id="topnav">
@@ -250,19 +252,6 @@
     <footer>
       Made by <a href="http://gaslightsoftware.com/">Gaslight</a>
     </footer>
-    <dl class="tabs vertical mobile nice show-on-phones">
-      <dd class="price"><a href="http://qcmerge.eventbrite.com/">Early Bird Price $199</a></dd>
-      <dd class="register"><a href="http://qcmerge.eventbrite.com/">Register</a></dd>
-      <dd><a href="#top">Home</a></dd>
-      <dd><a href="#speakers">Speakers</a></dd>
-      <dd><a href="#schedule">Schedule</a></dd>
-      <dd><a href="#venue">Venue</a></dd>
-      <dd><a href="#reds">Reds Game</a></dd>
-      <dd><a href="#sponsors">Sponsors</a></dd>
-      <dd><a href="http://www.twitter.com/qcmerge">@QCMerge</a></dd>
-      <dd><a href="https://www.facebook.com/qcmerge">Facebook</a></dd>
-      <dd><a href="http://gaslight.wufoo.com/forms/z7x3k1/" onclick="window.open(this.href,  null, 'height=340, width=680, toolbar=0, location=0, status=1, scrollbars=1, resizable=1'); return false">Join the Mailing List</a></dd>
-    </dl>
   </div> <!--! end of #container -->
 
   <div id="message"><a href="#top">Scroll to top</a></div>

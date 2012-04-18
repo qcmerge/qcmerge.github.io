@@ -1,0 +1,35 @@
+.reveal-modal
+  .columns
+    @extend .phone-four
+
+#speakers
+  @extend .columns
+  @extend .twelve
+
+#container 
+  #speakers
+    a
+      width: 100%
+      text-align: center
+      display: block
+      img
+        text-align: center
+        margin: 0 auto
+        display: block
+    #speakerlist ul
+      @extend .block-grid
+      @extend .mobile
+      @extend .four-up
+      li
+        .speakername
+          font-size: 19px
+          color: #000
+          display: block
+          padding: 15px 0 0 0
+        .speakertitle
+          color: #eb008b
+          font-size: 14px
+          display: block
+        .company
+          color: #333
+          font-size: 14px

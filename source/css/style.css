@@ -780,6 +780,18 @@ h1,h2,h3,h4,h5,h6 {
   background: url(../img/sponsors/continuousweb.png) 0 -34px no-repeat;
 }
 
+.scooter {
+  width: 123px;
+  height: 118px;
+  margin: 10px auto 0 !important;
+  background: url(../img/sponsors/scooter.png) 0 -118px no-repeat;
+}
+
+.scooter:hover {
+  background: url(../img/sponsors/scooter.png) 0 0 no-repeat;
+}
+
+
 
 
 /*

@@ -772,7 +772,7 @@ h1,h2,h3,h4,h5,h6 {
 .continuousweb {
   width: 185px;
   height: 34px;
-  margin: 50px auto 0 !important;
+  margin: 80px auto 0 !important;
   background: url(../img/sponsors/continuousweb.png) 0 0 no-repeat;
 }
 
@@ -791,8 +791,27 @@ h1,h2,h3,h4,h5,h6 {
   background: url(../img/sponsors/scooter.png) 0 0 no-repeat;
 }
 
+.sendgrid{
+	width: 230px;
+	height: 70px;
+	margin: 60px auto 0 !important;
+	background: url(../img/sponsors/sendgrid.png) 0 0 no-repeat;
+}
 
+.sendgrid:hover {
+  background: url(../img/sponsors/sendgrid.png) 0 -70px no-repeat;
+}
 
+.github{
+	width: 160px;
+	height: 71px;
+	margin: 57px auto 0 !important;
+	background: url(../img/sponsors/github.png) 0 -71px no-repeat;
+}
+
+.github:hover {
+  background: url(../img/sponsors/github.png) 0 0 no-repeat;
+}
 
 /*
  * Footer

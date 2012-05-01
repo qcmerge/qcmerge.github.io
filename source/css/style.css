@@ -813,6 +813,13 @@ h1,h2,h3,h4,h5,h6 {
   background: url(../img/sponsors/github.png) 0 0 no-repeat;
 }
 
+.landor{
+	width: 175px;
+	height: 65px;
+	margin: 65px auto 0 !important;
+	background: url(../img/sponsors/landor.png) no-repeat;
+}
+
 /*
  * Footer
  */

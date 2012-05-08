@@ -823,12 +823,67 @@ h1,h2,h3,h4,h5,h6 {
 .dnsimple{
 	width: 174px;
 	height: 53px;
-	margin: 57px auto 0 !important;
+	margin: 65px auto 0 !important;
 	background: url(../img/sponsors/dnsimple.png) 0 0 no-repeat;
 }
 
 .dnsimple:hover {
   background: url(../img/sponsors/dnsimple.png) 0 -53px no-repeat;
+}
+
+.stripe {
+  width: 150px;
+  height: 75px;
+  margin: 50px auto 0 !important;
+  background: url(../img/sponsors/stripe.png) 0 0 no-repeat;
+}
+
+.stripe:hover {
+  background: url(../img/sponsors/stripe.png) 0 -75px no-repeat;
+}
+
+.pep {
+  width: 160px;
+  height: 62px;
+  margin: 65px auto 0 !important;
+  background: url(../img/sponsors/pep.png) 0 0 no-repeat;
+}
+
+.pep:hover {
+  background: url(../img/sponsors/pep.png) 0 -62px no-repeat;
+}
+
+.atech {
+  width: 130px;
+  height: 131px;
+  margin: 30px auto 0 !important;
+  background: url(../img/sponsors/atech.png) 0 0px no-repeat;
+}
+
+.atech:hover {
+  background: url(../img/sponsors/atech.png) 0 -131px no-repeat;
+}
+
+.ita {
+  width: 108px;
+  height: 75px;
+  margin: 60px auto 0 !important;
+  background: url(../img/sponsors/ita.png) 0 0px no-repeat;
+}
+
+.ita:hover {
+  background: url(../img/sponsors/ita.png) 0 -75px no-repeat;
+}
+
+.freshbooks {
+  width: 175px;
+  height: 85px;
+  margin: 40px auto 0 !important;
+  background: url(../img/sponsors/freshbooks.png) 0 0px no-repeat;
+}
+
+.freshbooks:hover {
+  background: url(../img/sponsors/freshbooks.png) 0 -85px no-repeat;
 }
 
 /*

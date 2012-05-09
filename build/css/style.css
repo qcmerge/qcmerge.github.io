@@ -886,6 +886,17 @@ h1,h2,h3,h4,h5,h6 {
   background: url(../img/sponsors/freshbooks.png) 0 -85px no-repeat;
 }
 
+.moerlein {
+  width: 155px;
+  height: 74px;
+  margin: 50px auto 0 !important;
+  background: url(../img/sponsors/moerlein.png) 0 0px no-repeat;
+}
+
+.moerlein:hover {
+  background: url(../img/sponsors/moerlein.png) 0 -74px no-repeat;
+}
+
 /*
  * Footer
  */

@@ -64,6 +64,23 @@ $(document).ready(function() {
     return [];
   }
 
+  function onBoxcastReady(callback){
+    if(onBoxcastReady.callback == undefined){
+      onBoxcastReady.callback = callback;
+    }
+    if($(".boxcast-widget").length == 0){
+      setTimeout(onBoxcastReady, 3000);
+    } else {
+      onBoxcastReady.callback.apply();
+    }
+  }
+
+  $(function(){
+    onBoxcastReady(function(){
+      $(".broadcast-video img+p", ".boxcast-widget").remove();
+    });
+  })
+
 });
 
 

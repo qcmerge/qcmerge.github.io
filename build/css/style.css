@@ -1004,6 +1004,27 @@ h1,h2,h3,h4,h5,h6 {
   background: url(../img/sponsorbg.png);
 }
 
+#live {
+  padding: 50px 0 0 150px;
+  width: 730px;
+  margin: 0;
+}
+
+.boxcast-link {
+  display: block;
+  position: absolute;
+  top: -95px;
+  left: 495px;
+  padding: 25px;
+}
+
+.boxcast-logo {
+  position: relative;
+}
+
+.boxcast-link {
+}
+
 #cacslides {
   position: relative;
   margin: 0 0 0 -45px;

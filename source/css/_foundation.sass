@@ -1,0 +1,2413 @@
+/* Foundation v2.2 http://foundation.zurb.com
+/* Artfully Masterminded by ZURB
+
+/* -------------------------------------------------- 
+ *    Table of Contents
+ *-----------------------------------------------------
+ *:: Reset & Standards
+ *:: Links
+ *:: Lists
+ *:: Tables
+ *:: Misc
+
+/*	--------------------------------------------------
+ *	:: Global Reset & Standards
+ *	--------------------------------------------------
+
+/*   	 
+ * 		Eric Meyer's CSS Reset
+ * 		http://meyerweb.com/eric/tools/css/reset/ 
+ * 		v2.0 | 20110126
+ *    		License: none (public domain)
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+  margin: 0
+  padding: 0
+  border: 0
+  font: inherit
+  vertical-align: baseline
+
+html
+  font-size: 62.5%
+
+/* HTML5 display-role reset for older browsers
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+body
+  line-height: 1
+
+ol, ul
+  list-style: none
+
+blockquote, q
+  quotes: none
+
+blockquote
+  &:before, &:after
+    content: ''
+    content: none
+
+q
+  &:before, &:after
+    content: ''
+    content: none
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+
+body
+  background: #fff
+  font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif
+  font-size: 13px
+  line-height: 18px
+  color: #555
+  position: relative
+  -webkit-font-smoothing: antialiased
+
+/*	--------------------------------------------------
+ *	:: Links
+ *	--------------------------------------------------
+
+a
+  color: #2a85e8
+  text-decoration: none
+  line-height: inherit
+  &:hover
+    color: #11639d
+  &:focus
+    color: #cc4714
+    outline: none
+
+p a
+  line-height: inherit
+  &:visited
+    line-height: inherit
+
+/*	--------------------------------------------------
+ *	:: Lists
+ *	--------------------------------------------------
+
+ul, ol
+  margin-bottom: 18px
+
+ul
+  list-style: none outside
+
+ol
+  list-style: decimal
+  margin-left: 30px
+
+ul
+  &.square, &.circle, &.disc
+    margin-left: 30px
+  &.square
+    list-style: square outside
+  &.circle
+    list-style: circle outside
+  &.disc
+    list-style: disc outside
+
+li
+  margin-bottom: 12px
+
+ul.large li
+  line-height: 21px
+
+/*	--------------------------------------------------
+ *	:: Tables
+ *	--------------------------------------------------
+
+table
+  background: #fff
+  -moz-border-radius: 3px
+  -webkit-border-radius: 3px
+  border-radius: 3px
+  margin: 0 0 18px
+  border: 1px solid #ddd
+  thead, tfoot
+    background: #f5f5f5
+  thead tr th, tfoot tr th, tbody tr td, tr td, tfoot tr td
+    font-size: 12px
+    line-height: 18px
+    text-align: left
+  thead tr th, tfoot tr td
+    padding: 8px 10px 9px
+    font-size: 14px
+    font-weight: bold
+    color: #222
+  thead tr th:first-child, tfoot tr td:first-child
+    border-left: none
+  thead tr th:last-child, tfoot tr td:last-child
+    border-right: none
+  tbody tr
+    &.even, &.alt, &:nth-child(even)
+      background: #f9f9f9
+    td
+      color: #333
+      padding: 9px 10px
+      vertical-align: top
+      border: none
+
+/* -------------------------------------------------- 
+ *	:: Misc
+ *---------------------------------------------------
+
+.left
+  float: left
+
+.right
+  float: right
+
+.text-left
+  text-align: left
+
+.text-right
+  text-align: right
+
+.text-center
+  text-align: center
+
+.hide
+  display: none
+
+.highlight
+  background: #ff0
+
+/* Artfully Masterminded by ZURB
+
+/*	--------------------------------------------------
+ *    :: Typography
+ *	--------------------------------------------------
+
+h1, h2, h3, h4, h5, h6
+  color: #181818
+  font-weight: bold
+  line-height: 1.25
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
+  font-weight: inherit
+
+h1
+  font-size: 46px
+  font-size: 4.6rem
+  margin-bottom: 12px
+
+h2
+  font-size: 35px
+  font-size: 3.5rem
+  margin-bottom: 9px
+
+h3
+  font-size: 28px
+  font-size: 2.8rem
+  margin-bottom: 9px
+
+h4
+  font-size: 21px
+  font-size: 2.1rem
+  margin-bottom: 3px
+
+h5
+  font-size: 18px
+  font-size: 1.8rem
+  font-weight: normal
+  margin-bottom: 3px
+
+h6
+  font-size: 15px
+  font-size: 1.5rem
+  font-weight: normal
+
+.subheader
+  color: #777
+  font-weight: 300
+  margin-bottom: 24px
+
+p
+  font-size: 13px
+  font-size: 1.3rem
+  line-height: 1.25
+  margin: 0 0 18px
+  img
+    margin: 0
+  &.lead
+    font-size: 18px
+    font-size: 1.8rem
+    line-height: 1.5
+
+em, i
+  font-style: italic
+  line-height: inherit
+
+strong, b
+  font-weight: bold
+  line-height: inherit
+
+small
+  font-size: 60%
+  line-height: inherit
+
+h1 small, h2 small, h3 small, h4 small, h5 small
+  color: #777
+
+/*	Blockquotes
+
+blockquote
+  line-height: 20px
+  color: #777
+  p
+    line-height: 20px
+    color: #777
+  margin: 0 0 18px
+  padding: 9px 20px 0 19px
+  border-left: 1px solid #ddd
+  cite
+    display: block
+    font-size: 12px
+    font-size: 1.2rem
+    color: #555
+    &:before
+      content: "\2014 \0020"
+    a
+      color: #555
+      &:visited
+        color: #555
+
+hr
+  border: solid #ddd
+  border-width: 1px 0 0
+  clear: both
+  margin: 12px 0 18px
+  height: 0
+
+abbr, acronym
+  text-transform: uppercase
+  font-size: 90%
+  color: #222
+  border-bottom: 1px solid #ddd
+  cursor: help
+
+abbr
+  text-transform: none
+
+/*   	*
+ *  	 * Print styles.
+ * 	 *
+ * 	 * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+ * 	 * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
+
+.print-only
+  display: none !important
+
+@media print
+  *
+    background: transparent !important
+    color: black !important
+    text-shadow: none !important
+    filter: none !important
+    -ms-filter: none !important
+  /* Black prints faster: sanbeiji.com/archives/953
+  p a
+    color: #444 !important
+    text-decoration: underline
+    &:visited
+      color: #444 !important
+      text-decoration: underline
+    &[href]:after
+      content: " (" attr(href) ")"
+  abbr[title]:after
+    content: " (" attr(title) ")"
+  .ir a:after
+    content: ""
+  a
+    &[href^="javascript:"]:after, &[href^="#"]:after
+      content: ""
+  /* Don't show links for images, or javascript/internal links
+  pre, blockquote
+    border: 1px solid #999
+    page-break-inside: avoid
+  thead
+    display: table-header-group
+  /* css-discuss.incutio.com/wiki/Printing_Tables
+  tr, img
+    page-break-inside: avoid
+  @page
+    margin: 0.5cm
+
+  p, h2, h3
+    orphans: 3
+    widows: 3
+  h2, h3
+    page-break-after: avoid
+  .hide-on-print
+    display: none !important
+  .print-only
+    display: block !important
+
+/* Artfully Masterminded by ZURB
+
+/* --------------------------------------------------
+ *	:: Grid
+ *	
+ *	This is the mobile-friendly, responsive grid that
+ *	lets Foundation work much of its magic.
+ *	
+ *	--------------------------------------------------
+
+.container
+  padding: 0 20px
+
+.row
+  width: 100%
+  max-width: 980px
+  min-width: 727px
+  margin: 0 auto
+  .row
+    min-width: 0
+
+/* To fix the grid into a certain size, set max-width to width
+
+.column, .columns
+  margin-left: 4.4%
+  float: left
+  min-height: 1px
+  position: relative
+
+.column:first-child, .columns:first-child
+  margin-left: 0
+
+[class*="column"] + [class*="column"]:last-child
+  float: right
+
+.row
+  .one
+    width: 4.3%
+  .two
+    width: 13%
+  .three
+    width: 21.679%
+  .four
+    width: 30.37%
+  .five
+    width: 39.1%
+  .six
+    width: 47.8%
+  .seven
+    width: 56.5%
+  .eight
+    width: 65.2%
+  .nine
+    width: 73.9%
+  .ten
+    width: 82.6%
+  .eleven
+    width: 91.3%
+  .twelve
+    width: 100%
+  .offset-by-one
+    margin-left: 13.1%
+  .offset-by-two
+    margin-left: 21.8%
+  .offset-by-three
+    margin-left: 30.5%
+  .offset-by-four
+    margin-left: 39.2%
+  .offset-by-five
+    margin-left: 47.9%
+  .offset-by-six
+    margin-left: 56.6%
+  .offset-by-seven
+    margin-left: 65.3%
+  .offset-by-eight
+    margin-left: 74.0%
+  .offset-by-nine
+    margin-left: 82.7%
+  .offset-by-ten
+    margin-left: 91.4%
+  .centered
+    float: none
+    margin: 0 auto
+  .offset-by-one:first-child
+    margin-left: 8.7%
+  .offset-by-two:first-child
+    margin-left: 17.4%
+  .offset-by-three:first-child
+    margin-left: 26.1%
+  .offset-by-four:first-child
+    margin-left: 34.8%
+  .offset-by-five:first-child
+    margin-left: 43.5%
+  .offset-by-six:first-child
+    margin-left: 52.2%
+  .offset-by-seven:first-child
+    margin-left: 60.9%
+  .offset-by-eight:first-child
+    margin-left: 69.6%
+  .offset-by-nine:first-child
+    margin-left: 78.3%
+  .offset-by-ten:first-child
+    margin-left: 87%
+  .offset-by-eleven:first-child
+    margin-left: 95.7%
+
+/* Source Ordering
+
+.push-two
+  left: 17.4%
+
+.push-three
+  left: 26.1%
+
+.push-four
+  left: 34.8%
+
+.push-five
+  left: 43.5%
+
+.push-six
+  left: 52.2%
+
+.push-seven
+  left: 60.9%
+
+.push-eight
+  left: 69.6%
+
+.push-nine
+  left: 78.3%
+
+.push-ten
+  left: 87%
+
+.pull-two
+  right: 17.4%
+
+.pull-three
+  right: 26.1%
+
+.pull-four
+  right: 34.8%
+
+.pull-five
+  right: 43.5%
+
+.pull-six
+  right: 52.2%
+
+.pull-seven
+  right: 60.9%
+
+.pull-eight
+  right: 69.6%
+
+.pull-nine
+  right: 78.3%
+
+.pull-ten
+  right: 87%
+
+img, object, embed
+  max-width: 100%
+  height: auto
+
+img
+  -ms-interpolation-mode: bicubic
+
+#map_canvas img, .map_canvas img
+  max-width: none!important
+
+/* Nicolas Gallagher's micro clearfix
+
+.row
+  &:before, &:after
+    content: ""
+    display: table
+
+.clearfix
+  &:before, &:after
+    content: ""
+    display: table
+
+.row:after, .clearfix:after
+  clear: both
+
+.row, .clearfix
+  zoom: 1
+
+/*	--------------------------------------------------
+ *	:: Block grids
+ *	
+ *	These are 2-up, 3-up, 4-up and 5-up ULs, suited
+ *	for repeating blocks of content. Add 'mobile' to
+ *	them to switch them just like the layout grid
+ *	(one item per line) on phones
+ *	
+ *	For IE7/8 compatibility block-grid items need to be
+ *	the same height. You can optionally uncomment the
+ *	lines below to support arbitrary height, but know
+ *	that IE7/8 do not support :nth-child.
+ *	--------------------------------------------------
+
+.block-grid
+  display: block
+  overflow: hidden
+
+.block-grid>li
+  display: block
+  height: auto
+  float: left
+
+.block-grid
+  &.two-up
+    margin-left: -4%
+  &.two-up>li
+    margin-left: 4%
+    width: 46%
+  &.three-up
+    margin-left: -2%
+  &.three-up>li
+    margin-left: 2%
+    width: 31.3%
+  &.four-up
+    margin-left: -2%
+  &.four-up>li
+    margin-left: 2%
+    width: 23%
+  &.five-up
+    margin-left: -1.5%
+  &.five-up>li
+    margin-left: 1.5%
+    width: 18.5%
+
+/* 	.block-grid.two-up>li:nth-child(2n+1) {clear: left;}
+
+/* 	.block-grid.three-up>li:nth-child(3n+1) {clear: left;}
+
+/* 	.block-grid.four-up>li:nth-child(4n+1) {clear: left;}
+
+/* 	.block-grid.five-up>li:nth-child(5n+1) {clear: left;}
+
+/* Artfully masterminded by ZURB
+
+/* --------------------------------------------------
+ *   Table of Contents
+ *-----------------------------------------------------
+ *:: Buttons
+ *:: Alerts
+ *:: Labels
+ *:: Tabs
+ *:: Pagination
+ *:: Breadcrumbs
+ *:: Lists
+ *:: Panels
+ *:: Nav
+ *:: Video
+ *:: Microformats
+
+/*	--------------------------------------------------
+ *	Buttons
+ *	--------------------------------------------------
+
+.button
+  background: #00a6fc
+  display: inline-block
+  text-align: center
+  padding: 9px 34px 11px
+  color: #fff
+  text-decoration: none
+  font-weight: bold
+  font-size: 13px
+  font-size: 1.3rem
+  line-height: 1
+  font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
+  position: relative
+  cursor: pointer
+  border: none
+  outline: none
+  margin: 0
+
+/* Don't use native buttons on iOS
+
+input[type=submit].button
+  -webkit-appearance: none
+
+button
+  &.button
+    -webkit-appearance: none
+  &::-moz-focus-inner
+    border: none
+
+/* Hide inner focus effect in Firefox
+
+input
+  &[type="reset"]::-moz-focus-inner, &[type="button"]::-moz-focus-inner, &[type="submit"]::-moz-focus-inner, &[type="file"] > input[type="button"]::-moz-focus-inner
+    border: none
+
+.button
+  &.nice
+    background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5)
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5)
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5)
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.28)
+    background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px, -moz-linear-gradient(top, rgba(255, 255, 255, 0.4) 0%, transparent 100%)
+    background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px, -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.4)), color-stop(100%, transparent))
+    border: 1px solid #0593dc
+    -webkit-transition: background-color .15s ease-in-out
+    -moz-transition: background-color .15s ease-in-out
+    -o-transition: background-color .15s ease-in-out
+  &.radius
+    -moz-border-radius: 3px
+    -webkit-border-radius: 3px
+    border-radius: 3px
+  &.round
+    -moz-border-radius: 1000px
+    -webkit-border-radius: 1000px
+    border-radius: 1000px
+  &.full-width
+    width: 100%
+    padding-left: 0 !important
+    padding-right: 0 !important
+    text-align: center
+  &.left-align
+    text-align: left
+    text-indent: 12px
+
+/* Sizes ----------
+
+.tiny.button
+  font-size: 10px
+  padding: 6px 14px 8px
+  width: auto
+
+.small.button
+  font-size: 11px
+  padding: 8px 20px 10px
+  width: auto
+
+.medium.button
+  font-size: 13px
+  width: auto
+
+.large.button
+  font-size: 18px
+  padding: 11px 48px 13px
+  width: auto
+
+/* Nice Sizes ----------
+
+.nice
+  &.tiny.button
+    background-position: 0 -37px
+  &.small.button
+    background-position: 0 -34px
+  &.large.button
+    background-position: 0 -30px
+
+/* Colors ----------
+
+.blue.button
+  background-color: #00a6fc
+
+.red.button
+  background-color: #e91c21
+
+.white.button
+  background-color: #e9e9e9
+  color: #333
+
+.black.button
+  background-color: #141414
+
+.green.button
+  background-color: #5b8737
+
+/* Nice Colors ----------
+
+.nice
+  &.blue.button
+    border: 1px solid #0593dc
+  &.red.button
+    border: 1px solid #b90b0b
+  &.white.button
+    border: 1px solid #cacaca
+    text-shadow: none !important
+  &.black.button
+    border: 1px solid #000
+  &.green.button
+    border: 1px solid #4a6b2d
+
+/* Hovers ----------
+
+.button
+  &:hover, &:focus
+    background-color: #0192dd
+    color: #fff
+
+.blue.button
+  &:hover, &:focus
+    background-color: #0192dd
+
+.red.button
+  &:hover, &:focus
+    background-color: #d01217
+
+.white.button
+  &:hover, &:focus
+    background-color: #dadada
+    color: #333
+
+.black.button
+  &:hover, &:focus
+    background-color: #000
+
+.green.button
+  &:hover, &:focus
+    background-color: #699c40
+
+/* Hovers ----------
+
+.nice.button:active
+  -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.15)
+  -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.15)
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.15)
+
+/* Disabled ----------
+
+.button
+  &.disabled, &[disabled]
+    opacity: 0.6
+    cursor: default
+
+/* Correct FF button padding
+
+/*	--------------------------------------------------
+ *	Alerts
+ *	--------------------------------------------------
+
+div.alert-box
+  display: block
+  padding: 6px 7px
+  font-weight: bold
+  font-size: 13px
+  background: #eee
+  border: 1px solid rgba(0, 0, 0, 0.1)
+  margin-bottom: 12px
+  border-radius: 3px
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  text-shadow: 0 1px rgba(255, 255, 255, 0.9)
+  position: relative
+
+.alert-box
+  &.success
+    background-color: #7fae00
+    color: #fff
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.3)
+  &.warning
+    background-color: #f68b01
+    color: #fff
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.3)
+  &.error
+    background-color: #c00000
+    color: #fff
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.3)
+  a.close
+    color: #000
+    position: absolute
+    right: 4px
+    top: 0
+    font-size: 18px
+    opacity: 0.2
+    padding: 4px
+    &:hover, &:focus
+      opacity: 0.4
+
+/*    --------------------------------------------------
+ *  Labels
+ *  --------------------------------------------------
+
+.label
+  padding: 0 4px 2px
+  font-size: 11px
+  font-weight: bold
+  text-align: center
+  text-decoration: none
+  line-height: 1
+  white-space: nowrap
+  display: inline
+  position: relative
+  bottom: 1px
+  color: #fff
+  background: #00a6fc
+  &.radius
+    -moz-border-radius: 2px
+    -webkit-border-radius: 2px
+    border-radius: 2px
+  &.round
+    padding: 1px 7px 2px
+    -moz-border-radius: 8px
+    -webkit-border-radius: 8px
+    border-radius: 8px
+
+/* Colors ----------
+
+.blue.label
+  background-color: #00a6fc
+
+.red.label
+  background-color: #e91c21
+
+.green.label
+  background-color: #7fae00
+
+.white.label
+  background-color: #e9e9e9
+  color: #333
+
+.black.label
+  background-color: #141414
+
+/*    --------------------------------------------------
+ *  Tabs
+ *  --------------------------------------------------
+
+dl.tabs
+  display: block
+  margin: 0 0 20px 0
+  padding: 0
+  height: 30px
+  border-bottom: solid 1px #ddd
+  dt
+    display: block
+    width: auto
+    height: 30px
+    padding: 0 9px 0 20px
+    line-height: 30px
+    float: left
+    color: #999
+    font-size: 11px
+    text-transform: uppercase
+    cursor: default
+    &:first-child
+      padding: 0 9px 0 0
+  dd
+    display: block
+    width: auto
+    height: 30px
+    padding: 0
+    float: left
+    a
+      display: block
+      width: auto
+      height: 29px
+      padding: 0 9px
+      line-height: 30px
+      border: solid 1px #ddd
+      margin: 0 -1px 0 0
+      color: #555
+      background: #eee
+      &.active
+        background: #fff
+        border-width: 1px 1px 0 1px
+        height: 30px
+
+.nice.tabs
+  border-bottom: solid 1px #eee
+  margin: 0 0 30px 0
+  height: 43px
+  dd
+    a
+      padding: 7px 18px 9px
+      font-size: 15px
+      font-size: 1.5rem
+      color: #555555
+      background: none
+      border: none
+      &.active
+        font-weight: bold
+        color: #333
+        background: #fff
+        border-left: 1px solid #eee
+        border-right: 1px solid #eee
+        border-top: 3px solid #00a6fc
+        margin: 0 10px
+        position: relative
+        top: -5px
+    &:first-child a.active
+      margin-left: 0
+
+dl
+  &.tabs.vertical
+    height: auto
+    dt, dd
+      float: none
+      height: auto
+  &.nice.tabs.vertical
+    dt, dd
+      float: none
+      height: auto
+  &.tabs.vertical dd a
+    display: block
+    width: auto
+    height: auto
+    padding: 15px 20px
+    line-height: 1
+    border: solid 0 #ccc
+    border-width: 1px 1px 0
+    margin: 0
+    color: #555
+    background: #eee
+    font-size: 15px
+    font-size: 1.5rem
+    &.active
+      height: auto
+      margin: 0
+      border-width: 1px 0 0
+      background: #fff
+
+.nice.tabs.vertical
+  border-bottom: solid 1px #eee
+  height: auto
+  dd
+    a
+      padding: 15px 20px
+      border: none
+      border-left: 1px solid #eee
+      border-right: 1px solid #eee
+      border-top: 1px solid #eee
+      background: #fff
+      &.active
+        border: none
+        background: #00a6fc
+        color: #fff
+        margin: 0
+        position: static
+        top: 0
+        height: auto
+    &:first-child a.active
+      margin: 0
+
+ul
+  &.tabs-content
+    margin: 0
+    display: block
+  &.tabs-content>li
+    display: none
+    &.active
+      display: block
+
+dl
+  &.contained, &.nice.contained
+    margin-bottom: 0
+  &.contained.tabs dd a
+    padding: 0 14px
+  &.nice.contained.tabs dd a
+    padding: 7px 18px 9px
+
+ul
+  &.contained
+    &.tabs-content
+      padding: 0
+    &.tabs-content>li
+      padding: 20px
+      border: solid 0 #ddd
+      border-width: 0 1px 1px 1px
+    &.vertical.tabs-content>li
+      border-width: 1px 1px 1px 1px
+  &.nice.contained.tabs-content>li
+    border-color: #eee
+  &.pagination
+    display: block
+    height: 24px
+    margin-left: -5px
+    li
+      float: left
+      display: block
+      height: 24px
+      color: #999
+      font-size: 15px
+      margin-left: 5px
+      a
+        display: block
+        padding: 6px 7px 4px
+        color: #555
+      &.current a, &:hover a, a:focus
+        border-bottom: solid 2px #00a6fc
+        color: #141414
+      &.unavailable
+        a
+          cursor: default
+          color: #999
+        &:hover a, a:focus
+          border-bottom: none
+  &.breadcrumbs
+    display: block
+    background: #f4f4f4
+    padding: 7px 10px
+    border: 1px solid #ddd
+    border-radius: 2px
+    overflow: hidden
+    li
+      margin: 0
+      padding: 0 12px 0 0
+      float: left
+      a, span
+        text-transform: uppercase
+        font-size: 11px
+        padding-left: 12px
+      &:first-child
+        a, span
+          padding-left: 0
+      &:before
+        content: "/"
+        color: #aaa
+      &:first-child:before
+        content: ""
+      &.current a
+        cursor: default
+        color: #333
+      &:hover a, a:focus
+        text-decoration: underline
+      &.current
+        &:hover a, a:focus
+          text-decoration: none
+      &.unavailable
+        a
+          color: #999
+        &:hover a
+          text-decoration: none
+          color: #999
+          cursor: default
+  &.pagination li.unavailable a:focus
+    text-decoration: none
+    color: #999
+    cursor: default
+  &.nice
+    list-style: none
+    margin: 0
+
+/*  --------------------------------------------------
+ *  Pagination
+ *  --------------------------------------------------
+
+/*  --------------------------------------------------
+ *  Breadcrumbs
+ *  --------------------------------------------------
+
+/*  --------------------------------------------------
+ *  Lists
+ *  --------------------------------------------------
+
+ol.nice
+  list-style: none
+  margin: 0
+
+ul.nice li, ol.nice li
+  padding-left: 13px
+  position: relative
+
+ul.nice li span.bullet, ol.nice li span.number
+  position: absolute
+  left: 0
+  top: 0
+  color: #ccc
+
+/*	--------------------------------------------------
+ *	Panels
+ *	--------------------------------------------------
+
+div.panel
+  padding: 20px 20px 2px 20px
+  background: #efefef
+  background: -moz-linear-gradient(top, white 0%, #f4f4f4 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #f4f4f4))
+  background: -o-linear-gradient(top, white 0%, #f4f4f4 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#F4F4F4',GradientType=0 )
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15)
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15)
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25)
+  margin: 0 0 20px 0
+
+/*	--------------------------------------------------
+ *   	Nav Bar with Dropdowns
+ *	--------------------------------------------------
+
+.nav-bar
+  height: 45px
+  background: #fff
+  margin-top: 20px
+  border: 1px solid #ddd
+
+.nav-bar>li
+  float: left
+  display: block
+  position: relative
+  padding: 0
+  margin: 0
+  border-right: 1px solid #ddd
+  line-height: 45px
+
+.nav-bar>li>a.main
+  position: relative
+  padding: 0 20px
+  display: block
+  text-decoration: none
+  font-size: 15px
+  font-size: 1.5rem
+
+.nav-bar>li>input
+  margin: 0 16px
+
+.nav-bar>li
+  ul
+    margin-bottom: 0
+  li
+    line-height: 1.3
+  &.has-flyout>a
+    &.main
+      padding-right: 36px
+    &.flyout-toggle
+      position: absolute
+      right: 0
+      top: 0
+      padding: 22px
+      z-index: 2
+      display: block
+      span
+        content: ""
+        width: 0
+        height: 0
+        border-left: 4px solid transparent
+        border-right: 4px solid transparent
+        border-top: 4px solid #2a85e8
+        display: block
+
+.flyout
+  background: #fff
+  margin: 0
+  padding: 20px
+  border: 1px solid #ddd
+  position: absolute
+  top: 45px
+  left: -1px
+  width: 400px
+  z-index: 40
+  &.small
+    width: 200px
+  &.large
+    width: 600px
+  &.right
+    left: auto
+    right: 0
+  p:last-child
+    margin-bottom: 0
+
+.nav-bar>li .flyout
+  display: none
+
+/*	--------------------------------------------------
+ *   	Sub Navs
+ *   	http://www.zurb.com/article/292/how-to-create-simple-and-effective-sub-na
+ *   	
+ *	--------------------------------------------------
+
+dl.sub-nav
+  display: block
+  width: auto
+  overflow: hidden
+  margin: -4px 0 18px -9px
+  padding-top: 4px
+  dt, dd
+    float: left
+    display: inline
+    margin-left: 9px
+    margin-bottom: 4px
+  dt
+    color: #999
+    font-weight: normal
+  dd
+    a
+      text-decoration: none
+      -webkit-border-radius: 12px
+      -moz-border-radius: 12px
+    &.active a
+      background: #00A6FC
+      color: #fff
+      padding: 3px 9px
+
+/*	--------------------------------------------------
+ *   	Video
+ *   	Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/
+ *	--------------------------------------------------
+
+.flex-video
+  position: relative
+  padding-top: 25px
+  padding-bottom: 67.5%
+  height: 0
+  margin-bottom: 16px
+  overflow: hidden
+  &.widescreen
+    padding-bottom: 57.25%
+  &.vimeo
+    padding-top: 0
+  iframe, object, embed
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+/*	--------------------------------------------------
+ *   	Microformats
+ *	--------------------------------------------------
+
+/* hCard
+
+ul.vcard
+  display: inline-block
+  margin: 0 0 12px 0
+  border: 1px solid #ddd
+  padding: 10px
+  li
+    margin: 0
+    display: block
+    &.fn
+      font-weight: bold
+      font-size: 15px
+      font-size: 1.5rem
+
+p.vevent
+  span.summary
+    font-weight: bold
+  abbr
+    cursor: default
+    text-decoration: none
+    font-weight: bold
+    border: none
+    padding: 0 1px
+
+/*	--------------------------------------------------
+ *   	Tooltips
+ *	--------------------------------------------------
+
+.has-tip
+  border-bottom: dotted 1px #ccc
+  cursor: help
+  font-weight: bold
+  color: #333
+  &:hover
+    border-bottom: dotted 1px #0593dc
+    color: #0192dd
+
+.tooltip
+  display: none
+  background: rgb(0, 0, 0)
+  background: rgba(0, 0, 0, 0.8)
+  position: absolute
+  color: #fff
+  font-weight: bold
+  font-size: 12px
+  font-size: 1.2rem
+  padding: 5px
+  z-index: 999
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  line-height: normal
+  > .nub
+    display: block
+    width: 0
+    height: 0
+    border: solid 5px
+    border-color: transparent transparent rgb(0, 0, 0) transparent
+    border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent
+    position: absolute
+    top: -10px
+    left: 10px
+  &.tip-override > .nub
+    border-color: transparent transparent rgb(0, 0, 0) transparent !important
+    border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent !important
+    top: -10px !important
+  &.tip-top > .nub
+    border-color: rgb(0, 0, 0) transparent transparent transparent
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent
+    top: auto
+    bottom: -10px
+  &.tip-left, &.tip-right
+    float: none !important
+
+.has-tip
+  &.tip-left, &.tip-right
+    float: none !important
+
+.tooltip
+  &.tip-left > .nub
+    border-color: transparent transparent transparent rgb(0, 0, 0)
+    border-color: transparent transparent transparent rgba(0, 0, 0, 0.8)
+    right: -10px
+    left: auto
+  &.tip-right > .nub
+    border-color: transparent rgb(0, 0, 0) transparent transparent
+    border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent
+    right: auto
+    left: -10px
+  &.noradius
+    -webkit-border-radius: 0
+    -moz-border-radius: 0
+    border-radius: 0
+
+.has-tip.opened
+  color: #0192DD !important
+  border-bottom: dotted 1px #0593DC !important
+
+.tap-to-close
+  display: block
+  font-size: 10px
+  font-size: 1.0rem
+  color: #888
+  font-weight: normal
+
+/* 	Artfully masterminded by ZURB
+ *	Make sure to include app.js / foundation.js if you are going to use inline label inputs
+
+/* -----------------------------------------
+ *   Standard Forms
+ *-----------------------------------------
+
+form
+  margin: 0 0 18px
+  label
+    display: block
+    font-size: 13px
+    line-height: 18px
+    cursor: pointer
+    margin-bottom: 9px
+
+input.input-text, textarea
+  border-right: 1px solid #bbb
+  border-bottom: 1px solid #bbb
+
+input.input-text, textarea, select
+  display: block
+  margin-bottom: 9px
+
+label +
+  input.input-text, textarea, select, div.dropdown
+    margin-top: -9px
+
+select + div.dropdown
+  margin-top: -9px
+
+/* Text input and textarea font and padding
+
+input.input-text, textarea
+  font-size: 13px
+  padding: 4px 3px 2px
+  background: #fff
+
+input.input-text:focus, textarea:focus
+  outline: none !important
+
+input.input-text.oversize, textarea.oversize
+  font-size: 18px !important
+  padding: 4px 5px !important
+
+input.input-text:focus, textarea:focus
+  background: #f9f9f9
+
+/* Text input and textarea, disabled
+
+input.input-text[disabled], textarea[disabled]
+  background-color: #ddd
+
+/* Inlined Label Style
+
+input.placeholder, textarea.placeholder
+  color: #888
+
+/* Text input and textarea sizes
+
+input.input-text, textarea
+  width: 254px
+  box-sizing: border-box
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+
+input.small, textarea.small
+  width: 134px
+
+input.medium, textarea.medium
+  width: 254px
+
+input.large, textarea.large
+  width: 434px
+
+input.expand, textarea.expand
+  width: 100%
+
+/* Fieldsets
+
+form fieldset
+  padding: 9px 9px 2px 9px
+  border: solid 1px #ddd
+  margin: 18px 0
+
+/* Inlined Radio & Checkbox
+
+.form-field input[type=radio], div.form-field input[type=checkbox]
+  display: inline
+  width: auto
+  margin-bottom: 0
+
+/* Errors
+
+.form-field.error input, input.input-text.red
+  border-color: #C00000
+  background-color: rgba(255, 0, 0, 0.15)
+
+.form-field.error label, label.red
+  color: #C00000
+
+.form-field.error small, small.error
+  margin-top: -6px
+  display: block
+  margin-bottom: 9px
+  font-size: 11px
+  color: #C00000
+  width: 254px
+  box-sizing: border-box
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+
+.small + small.error
+  width: 134px
+
+.medium + small.error
+  width: 254px
+
+.large + small.error
+  width: 434px
+
+.expand + small.error
+  width: 100%
+
+.small.oversize + small.error
+  width: 144px
+
+.medium.oversize + small.error
+  width: 264px
+
+.large.oversize + small.error
+  width: 444px
+
+.expand.oversize + small.error
+  width: 100%
+
+/* -----------------------------------------
+ *   Nicer Forms
+ *-----------------------------------------
+
+form
+  &.nice
+    div.form-field input, input.input-text, textarea
+      border: solid 1px #bbb
+      border-radius: 2px
+      -webkit-border-radius: 2px
+      -moz-border-radius: 2px
+    div.form-field input, input.input-text, textarea
+      font-size: 13px
+      padding: 6px 3px 4px
+      outline: none !important
+      background: url(../images/misc/input-bg.png) white
+    div.form-field input:focus, input.input-text:focus, textarea:focus
+      background-color: #f9f9f9
+    div.form-field input[disabled], input.input-text[disabled], textarea[disabled]
+      background-color: #ddd
+    fieldset
+      border-radius: 3px
+      -webkit-border-radius: 3px
+      -moz-border-radius: 3px
+    div.form-field
+      input
+        &[type=radio], &[type=checkbox]
+          display: inline
+          width: auto
+          margin-bottom: 0
+      &.error small
+        padding: 6px 4px
+        border: solid 0 #C00000
+        border-width: 0 1px 1px 1px
+        margin-top: -10px
+        background: #C00000
+        color: #fff
+        font-size: 12px
+        font-weight: bold
+        border-bottom-left-radius: 2px
+        border-bottom-right-radius: 2px
+        -webkit-border-bottom-left-radius: 2px
+        -webkit-border-bottom-right-radius: 2px
+        -moz-border-radius-bottomleft: 2px
+        -moz-border-radius-bottomright: 2px
+    small.error
+      padding: 6px 4px
+      border: solid 0 #C00000
+      border-width: 0 1px 1px 1px
+      margin-top: -10px
+      background: #C00000
+      color: #fff
+      font-size: 12px
+      font-weight: bold
+      border-bottom-left-radius: 2px
+      border-bottom-right-radius: 2px
+      -webkit-border-bottom-left-radius: 2px
+      -webkit-border-bottom-right-radius: 2px
+      -moz-border-radius-bottomleft: 2px
+      -moz-border-radius-bottomright: 2px
+    div.form-field.error .small + small, .small + small.error
+      width: 132px
+    div.form-field.error .medium + small, .medium + small.error
+      width: 252px
+    div.form-field.error .large + small, .large + small.error
+      width: 432px
+    div.form-field.error .small.oversize + small, .small.oversize + small.error
+      width: 136px
+    div.form-field.error .medium.oversize + small, .medium.oversize + small.error
+      width: 256px
+    div.form-field.error .large.oversize + small, .large.oversize + small.error
+      width: 436px
+  &.custom
+    span.custom
+      display: inline-block
+      width: 14px
+      height: 14px
+      position: relative
+      top: 2px
+      border: solid 1px #ccc
+      background: url(../images/misc/custom-form-sprites.png) 0 0 no-repeat
+      &.radio
+        border-radius: 7px
+        -webkit-border-radius: 7px
+        -moz-border-radius: 7px
+        &.checked
+          background-position: 0 -14px
+      &.checkbox.checked
+        background-position: 0 -28px
+    div.custom.dropdown
+      display: block
+      position: relative
+      width: auto
+      height: 28px
+      margin-bottom: 9px
+      margin-top: 2px
+      a
+        &.current
+          display: block
+          width: auto
+          line-height: 26px
+          min-height: 26px
+          padding: 0 38px 0 6px
+          border: solid 1px #ddd
+          color: #141414
+          background-color: #fff
+        &.selector
+          position: absolute
+          width: 26px
+          height: 26px
+          display: block
+          background: url(../images/misc/custom-form-sprites.png) -14px 1px no-repeat
+          right: 0
+          top: 0
+          border: solid 1px #ddd
+      &:hover a.selector, &.open a.selector
+        background-position: -14px -26px
+      ul
+        position: absolute
+        width: auto
+        display: none
+        margin: 0
+        left: 0
+        top: 27px
+        margin: 0
+        padding: 0
+        background: #fff
+        background: rgba(255, 255, 255, 0.95)
+        border: solid 1px #ddd
+        li
+          cursor: pointer
+          padding: 3px 38px 3px 6px
+          min-height: 18px
+          margin: 0
+          white-space: nowrap
+          &.selected
+            background: url(../images/misc/custom-form-sprites.png) right -52px no-repeat
+          &:hover
+            background-color: #2a85e8
+            color: #fff
+          &.selected:hover
+            background: url(../images/misc/custom-form-sprites.png) #2a85e8 right -78px no-repeat
+        &.show
+          display: block
+      &.open ul
+        display: block
+        z-index: 10
+      &.small
+        width: 134px !important
+      &.medium
+        width: 254px !important
+      &.large
+        width: 434px !important
+      &.expand
+        width: 100% !important
+      &.open
+        &.small ul
+          width: 132px !important
+        &.medium ul
+          width: 252px !important
+        &.large ul
+          width: 432px !important
+        &.expand ul
+          width: 100% !important
+          box-sizing: border-box
+    .custom.disabled
+      background-color: #ddd
+    &.nice
+      span.custom.checkbox
+        border-radius: 2px
+        -webkit-border-radius: 2px
+        -moz-border-radius: 2px
+      div.custom.dropdown
+        a
+          &.current
+            border-radius: 2px
+            -webkit-border-radius: 2px
+            -moz-border-radius: 2px
+            background-image: url(../images/misc/input-bg-outset.png)
+            background-position: bottom right
+          &.selector
+            height: 27px
+            border-width: 0 0 0 1px
+        ul
+          border-bottom-left-radius: 2px
+          border-bottom-right-radius: 2px
+          -webkit-border-bottom-left-radius: 2px
+          -webkit-border-bottom-right-radius: 2px
+          -moz-border-radius-bottomleft: 2px
+          -moz-border-radius-bottomright: 2px
+
+/* Text input and textarea, disabled
+
+/* -----------------------------------------
+ *   Custom Forms
+ *-----------------------------------------
+
+/* Custom input, disabled
+
+/* -----------------------------------------
+ *   Nicer Custom Forms
+ *-----------------------------------------
+
+/* CSS for jQuery Orbit Plugin 1.4.0
+ *   Maintained for Foundation. foundation.zurb.com
+ *   Free to use under the MIT license.
+ *   http://www.opensource.org/licenses/mit-license.php
+ * 
+ * 
+ * 
+ */* CONTAINER
+ *   ==================================================
+
+div
+  &.orbit-wrapper
+    width: 1px
+    height: 1px
+    position: relative
+  &.orbit
+    width: 1px
+    height: 1px
+    position: relative
+    overflow: hidden
+    &.with-bullets
+      margin-bottom: 40px
+    .orbit-slide
+      max-width: 100%
+      position: absolute
+      top: 0
+      left: 0
+    a.orbit-slide
+      border: none
+      line-height: 0
+      display: none
+    div.orbit-slide
+      width: 100%
+      height: 100%
+  &.orbit-wrapper
+    div.timer
+      width: 40px
+      height: 40px
+      overflow: hidden
+      position: absolute
+      top: 10px
+      right: 10px
+      opacity: .6
+      cursor: pointer
+      z-index: 31
+    span
+      &.rotator
+        display: block
+        width: 40px
+        height: 40px
+        position: absolute
+        top: 0
+        left: -20px
+        background: url(../images/orbit/rotator-black.png) no-repeat
+        z-index: 3
+      &.mask
+        display: block
+        width: 20px
+        height: 40px
+        position: absolute
+        top: 0
+        right: 0
+        z-index: 2
+        overflow: hidden
+      &.rotator.move
+        left: 0
+      &.mask.move
+        width: 40px
+        left: 0
+        background: url(../images/orbit/timer-black.png) repeat 0 0
+      &.pause
+        display: block
+        width: 40px
+        height: 40px
+        position: absolute
+        top: 0
+        left: 0
+        background: url(../images/orbit/pause-black.png) no-repeat
+        z-index: 4
+        opacity: 0
+        &.active
+          background: url(../images/orbit/pause-black.png) no-repeat 0 -40px
+    div.timer:hover span.pause, span.pause.active
+      opacity: 1
+
+/* Note: If your slider only uses content or anchors, you're going to want to put the width and height declarations on the ".orbit>div" and "div.orbit>a" tags in addition to just the .orbit-wrapper
+
+/* TIMER
+ * ==================================================
+
+/* CAPTIONS
+ * ==================================================
+
+.orbit-caption
+  display: none
+  font-family: "HelveticaNeue", "Helvetica-Neue", Helvetica, Arial, sans-serif
+
+.orbit-wrapper .orbit-caption
+  background: #000
+  background: rgba(0, 0, 0, 0.6)
+  z-index: 30
+  color: #fff
+  text-align: center
+  padding: 7px 0
+  font-size: 13px
+  position: absolute
+  right: 0
+  bottom: 0
+  width: 100%
+
+/* DIRECTIONAL NAV
+ * ==================================================
+
+div.orbit-wrapper div.slider-nav
+  display: block
+  span
+    width: 78px
+    height: 100px
+    text-indent: -9999px
+    position: absolute
+    z-index: 30
+    top: 50%
+    margin-top: -50px
+    cursor: pointer
+    &.right
+      background: url(../images/orbit/right-arrow.png)
+      right: 0
+    &.left
+      background: url(../images/orbit/left-arrow.png)
+      left: 0
+
+/* BULLET NAV
+ * ==================================================
+
+ul.orbit-bullets
+  position: absolute
+  z-index: 30
+  list-style: none
+  bottom: -40px
+  left: 50%
+  margin-left: -50px
+  padding: 0
+  li
+    float: left
+    margin-left: 5px
+    cursor: pointer
+    color: #999
+    text-indent: -9999px
+    background: url(../images/orbit/bullets.jpg) no-repeat 4px 0
+    width: 13px
+    height: 12px
+    overflow: hidden
+    &.active
+      color: #222
+      background-position: -8px 0
+    &.has-thumb
+      background: none
+      width: 100px
+      height: 75px
+    &.active.has-thumb
+      background-position: 0 0
+      border-top: 2px solid #000
+
+/* FLUID LAYOUT
+ * ==================================================
+
+div
+  &.orbit
+    img.fluid-placeholder
+      visibility: hidden
+      position: static
+      display: block
+      width: 100%
+    width: 100% !important
+  &.orbit-wrapper
+    width: 100% !important
+
+ul.orbit-bullets
+  position: absolute
+  z-index: 30
+  list-style: none
+  bottom: -50px
+  left: 50%
+  margin-left: -50px
+  padding: 0
+  li
+    float: left
+    margin-left: 5px
+    cursor: pointer
+    color: #999
+    text-indent: -9999px
+    background: url(../images/orbit/bullets.jpg) no-repeat 4px 0
+    width: 13px
+    height: 12px
+    overflow: hidden
+    &.has-thumb
+      background: none
+      width: 100px
+      height: 75px
+    &.active
+      color: #222
+      background-position: -8px 0
+      &.has-thumb
+        background-position: 0 0
+        border-top: 2px solid #000
+
+/* CSS for jQuery Reveal Plugin
+ *   Maintained for Foundation. foundation.zurb.com
+ *   Free to use under the MIT license.
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ */*	--------------------------------------------------
+ *	Reveal Modals
+ *	--------------------------------------------------
+
+.reveal-modal-bg
+  position: fixed
+  height: 100%
+  width: 100%
+  background: #000
+  z-index: 40
+  display: none
+  top: 0
+  left: 0
+
+.reveal-modal
+  visibility: hidden
+  top: 100px
+  left: 50%
+  margin-left: -300px
+  width: 520px
+  background: #eeeeee url(../images/misc/modal-gloss.png) no-repeat -200px -80px
+  position: absolute
+  z-index: 41
+  padding: 30px 40px 34px
+  -moz-border-radius: 5px
+  -webkit-border-radius: 5px
+  border-radius: 5px
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)
+  &.small
+    width: 200px
+    margin-left: -140px
+  &.medium
+    width: 400px
+    margin-left: -240px
+  &.large
+    width: 600px
+    margin-left: -340px
+  &.xlarge
+    width: 800px
+    margin-left: -440px
+  .close-reveal-modal
+    font-size: 22px
+    line-height: .5
+    position: absolute
+    top: 8px
+    right: 11px
+    color: #aaa
+    text-shadow: 0 -1px 1px rbga(0, 0, 0, 0.6)
+    font-weight: bold
+    cursor: pointer
+  .row
+    min-width: 0
+
+/* Mobile
+
+@media handheld, only screen and (max-width: 1023px)
+  .reveal-modal-bg
+    position: absolute
+  .reveal-modal
+    width: 60%
+    top: 60px
+    left: 15%
+    margin-left: 0
+    padding: 20px
+    height: auto
+    &.small, &.medium, &.large, &.xlarge
+      width: 60%
+      top: 60px
+      left: 15%
+      margin-left: 0
+      padding: 20px
+      height: auto
+
+@media handheld, only screen and (max-width: 767px)
+  .reveal-modal-bg
+    position: absolute
+  .reveal-modal
+    width: 80%
+    top: 15px
+    left: 5%
+    margin-left: 0
+    padding: 20px
+    height: auto
+    &.small, &.medium, &.large, &.xlarge
+      width: 80%
+      top: 15px
+      left: 5%
+      margin-left: 0
+      padding: 20px
+      height: auto
+
+/*
+ *		
+ *NOTES
+ *
+ *Close button entity is &#215;
+ *
+ *Example markup
+ *
+ *<div id="myModal" class="reveal-modal">
+ *	<h2>Awesome. I have it.</h2>
+ *	<p class="lead">Your couch.  I it's mine.</p>
+ *	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p>
+ *	<a class="close-reveal-modal">&#215;</a>
+ *</div>
+/* --------------------------------------------------
+ *	:: Typography
+ *	--------------------------------------------------
+
+@media handheld, only screen and (max-width: 767px)
+  h1
+    font-size: 32px
+    font-size: 3.2rem
+    line-height: 1.3
+  h2
+    font-size: 28px
+    font-size: 2.8rem
+    line-height: 1.3
+  h3
+    font-size: 21px
+    font-size: 2.1rem
+    line-height: 1.3
+  h4
+    font-size: 18px
+    font-size: 1.8rem
+    line-height: 1.2
+  h5
+    font-size: 16px
+    font-size: 1.6rem
+    line-height: 1.2
+  h6
+    font-size: 15px
+    font-size: 1.5rem
+    line-height: 1.2
+  body, p
+    font-size: 15px
+    font-size: 1.5rem
+    line-height: 1.4
+
+/* --------------------------------------------------
+ *	:: Grid
+ *	--------------------------------------------------
+
+/* Mobile
+@media only screen and (max-width: 767px)
+  body
+    -webkit-text-size-adjust: none
+    -ms-text-size-adjust: none
+    width: 100%
+    min-width: 0
+    margin-left: 0
+    margin-right: 0
+    padding-left: 0
+    padding-right: 0
+  .container
+    min-width: 0
+    margin-left: 0
+    margin-right: 0
+  .row
+    width: 100%
+    min-width: 0
+    margin-left: 0
+    margin-right: 0
+    .row
+      .column, .columns
+        padding: 0
+  .column, .columns
+    width: auto !important
+    float: none
+    margin-left: 0
+    margin-right: 0
+  .column:last-child, .columns:last-child
+    margin-right: 0
+    float: none
+  .offset-by-one, .offset-by-two, .offset-by-three, .offset-by-four, .offset-by-five, .offset-by-six, .offset-by-seven, .offset-by-eight, .offset-by-nine, .offset-by-ten, .offset-by-eleven, .centered
+    margin-left: 0 !important
+  .push-two, .push-three, .push-four, .push-five, .push-six, .push-seven, .push-eight, .push-nine, .push-ten
+    left: auto
+  .pull-two, .pull-three, .pull-four, .pull-five, .pull-six, .pull-seven, .pull-eight, .pull-nine, .pull-ten
+    right: auto
+  /* Mobile 4-column Grid
+  .row
+    .phone-one:first-child, .phone-two:first-child, .phone-three:first-child, .phone-four:first-child
+      margin-left: 0
+    .phone-one:last-child, .phone-two:last-child, .phone-three:last-child, .phone-four:last-child
+      float: right
+    .phone-one, .phone-two, .phone-three, .phone-four
+      margin-left: 4.4%
+      float: left
+      min-height: 1px
+      position: relative
+      padding: 0
+    .phone-one
+      width: 21.68% !important
+    .phone-two
+      width: 47.8% !important
+    .phone-three
+      width: 73.9% !important
+    .phone-four
+      width: 100% !important
+    .push-one-phone
+      left: 26.08%
+    .push-two-phone
+      left: 52.2%
+    .push-three-phone
+      left: 78.3%
+    .pull-one-phone
+      right: 26.08%
+    .pull-two-phone
+      right: 52.2%
+    .pull-three-phone
+      right: 78.3%
+
+/* --------------------------------------------------
+ *	:: Block Grids
+ *	--------------------------------------------------
+
+@media only screen and (max-width: 767px)
+  .block-grid.mobile
+    margin-left: 0
+    > li
+      float: none
+      width: 100%
+      margin-left: 0
+
+/* -------------------------------------------------- 
+ *	:: Mobile Visibility Affordances
+ *---------------------------------------------------
+
+.show-on-phones, .show-on-tablets
+  display: none !important
+
+.show-on-desktops, .hide-on-phones, .hide-on-tablets
+  display: block !important
+
+.hide-on-desktops
+  display: none !important
+
+/* Modernizr-enabled tablet targeting
+@media only screen and (max-width: 1280px) and (min-width: 768px)
+  .touch
+    .hide-on-phones
+      display: block !important
+    .hide-on-tablets
+      display: none !important
+    .hide-on-desktops
+      display: block !important
+    .show-on-phones
+      display: none !important
+    .show-on-tablets
+      display: block !important
+    .show-on-desktops
+      display: none !important
+
+@media only screen and (max-width: 767px)
+  .hide-on-phones
+    display: none !important
+  .hide-on-tablets, .hide-on-desktops, .show-on-phones
+    display: block !important
+  .show-on-tablets, .show-on-desktops
+    display: none !important
+
+/* Specific overrides for elements that require something other than display: block
+
+table
+  &.show-on-desktops, &.hide-on-phones, &.hide-on-tablets
+    display: table !important
+
+@media only screen and (max-width: 1280px) and (min-width: 768px)
+  .touch table
+    &.hide-on-phones, &.hide-on-desktops, &.show-on-tablets
+      display: table !important
+
+@media only screen and (max-width: 767px)
+  table
+    &.hide-on-tablets, &.hide-on-desktops, &.show-on-phones
+      display: table !important
+
+/* -------------------------------------------------- 
+ *	:: Forms
+ *---------------------------------------------------
+
+@media only screen and (max-width: 767px)
+  div.form-field input
+    display: block
+    width: 100%
+    padding: 6px 2% 4px
+    font-size: 18px
+    &.small, &.medium, &.large, &.oversize
+      display: block
+      width: 100%
+      padding: 6px 2% 4px
+      font-size: 18px
+  input.input-text
+    display: block
+    width: 100%
+    padding: 6px 2% 4px
+    font-size: 18px
+    &.oversize
+      display: block
+      width: 100%
+      padding: 6px 2% 4px
+      font-size: 18px
+  textarea
+    display: block
+    width: 100%
+    padding: 6px 2% 4px
+    font-size: 18px
+  form.nice
+    div.form-field input, input.input-text
+      display: block
+      width: 100%
+      padding: 6px 2% 4px
+      font-size: 18px
+      &.oversize
+        display: block
+        width: 100%
+        padding: 6px 2% 4px
+        font-size: 18px
+    textarea
+      display: block
+      width: 100%
+      padding: 6px 2% 4px
+      font-size: 18px
+    div.form-field input, input.input-text
+      -webkit-border-radius: 2px
+      -moz-border-radius: 2px
+      border-radius: 2px
+      &.oversize
+        -webkit-border-radius: 2px
+        -moz-border-radius: 2px
+        border-radius: 2px
+    textarea
+      -webkit-border-radius: 2px
+      -moz-border-radius: 2px
+      border-radius: 2px
+    div.form-field.error small, small.error
+      padding: 6px 2%
+      display: block
+    div.form-field.error .small + small, .small + .error, div.form-field.error .medium + small, .medium + .error, div.form-field.error .large + small, .large + .error, div.form-field.error .expand + small, .expand + .error
+      width: auto
+
+/* -------------------------------------------------- 
+ *	:: UI
+ *---------------------------------------------------
+
+/* Buttons
+@media only screen and (max-width: 767px)
+  .button
+    display: block
+  button.button, input[type="submit"].button
+    width: 100%
+    padding-left: 0
+    padding-right: 0
+    margin-bottom: 5px
+
+/* Tabs
+
+@media only screen and (max-width: 767px)
+  dl
+    &.tabs.mobile, &.nice.tabs.mobile
+      width: auto
+      margin: 20px -20px 40px
+      height: auto
+    &.tabs.mobile
+      dt, dd
+        float: none
+        height: auto
+    &.nice.tabs.mobile
+      dt, dd
+        float: none
+        height: auto
+    &.tabs.mobile dd a
+      display: block
+      width: auto
+      height: auto
+      padding: 18px 20px
+      line-height: 1
+      border: solid 0 #ccc
+      border-width: 1px 0 0
+      margin: 0
+      color: #555
+      background: #eee
+      font-size: 15px
+      font-size: 1.5rem
+      &.active
+        height: auto
+        margin: 0
+        border-width: 1px 0 0
+  .nice.tabs.mobile
+    border-bottom: solid 1px #ccc
+    height: auto
+    dd
+      a
+        padding: 18px 20px
+        border: none
+        border-left: none
+        border-right: none
+        border-top: 1px solid #ccc
+        background: #fff
+        &.active
+          border: none
+          background: #00a6fc
+          color: #fff
+          margin: 0
+          position: static
+          top: 0
+          height: auto
+      &:first-child a.active
+        margin: 0
+  dl
+    &.contained.mobile, &.nice.contained.mobile
+      margin-bottom: 0
+    &.contained.tabs.mobile dd a, &.nice.contained.tabs.mobile dd a
+      padding: 18px 20px
+    &.tabs.mobile + ul.contained
+      margin-left: -20px
+      margin-right: -20px
+      border-width: 0 0 1px 0
+
+/* Nav Bar
+
+@media only screen and (max-width: 767px)
+  .nav-bar
+    height: auto
+  .nav-bar>li
+    float: none
+    display: block
+    border-right: none
+  .nav-bar>li>a.main
+    text-align: left
+    border-top: 1px solid #ddd
+    border-right: none
+  .nav-bar>li
+    &:first-child>a.main
+      border-top: none
+    &.has-flyout>a.flyout-toggle
+      position: absolute
+      right: 0
+      top: 0
+      padding: 22px
+      z-index: 2
+      border-left: 1px dashed #eee
+      display: block
+      span
+        content: ""
+        width: 0
+        height: 0
+        border-left: 4px solid transparent
+        border-right: 4px solid transparent
+        border-top: 4px solid #2a85e8
+        display: block
+      &:hover span
+        border-top-color: #141414
+  .flyout
+    position: relative
+    width: auto
+    top: auto
+    margin-right: -2px
+    border-width: 1px 1px 0 1px
+    &.right
+      float: none
+      right: auto
+      left: -1px
+    &.small, &.large
+      width: auto
+    p:last-child
+      margin-bottom: 18px
+
+/* Tooltips
+@media only screen and (max-width: 767px)
+  .tooltip
+    font-size: 14px
+    font-size: 1.4rem
+    line-height: 1.4
+    padding: 7px 10px 9px 10px
+    > .nub, &.top > .nub, &.left > .nub, &.right > .nub
+      border-color: transparent transparent rgb(0, 0, 0) transparent
+      border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent
+      top: -12px
+      left: 10px
+
+/* Video
+
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px)
+  .flex-video
+    padding-top: 0

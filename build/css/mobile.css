@@ -533,33 +533,33 @@ img {
  *	lines below to support arbitrary height, but know
  *	that IE7/8 do not support :nth-child.
  *	-------------------------------------------------- */
-.block-grid, #container #speakers #speakerlist ul {
+.block-grid, #container #speakers .speakerlist ul {
   display: block;
   overflow: hidden; }
 
-.block-grid > li, #container #speakers #speakerlist ul > li {
+.block-grid > li, #container #speakers .speakerlist ul > li {
   display: block;
   height: auto;
   float: left; }
 
-.block-grid.two-up, #container #speakers #speakerlist ul.two-up {
+.block-grid.two-up, #container #speakers .speakerlist ul.two-up {
   margin-left: -4%; }
-.block-grid.two-up > li, #container #speakers #speakerlist ul.two-up > li {
+.block-grid.two-up > li, #container #speakers .speakerlist ul.two-up > li {
   margin-left: 4%;
   width: 46%; }
-.block-grid.three-up, #container #speakers #speakerlist ul.three-up {
+.block-grid.three-up, #container #speakers .speakerlist ul.three-up {
   margin-left: -2%; }
-.block-grid.three-up > li, #container #speakers #speakerlist ul.three-up > li {
+.block-grid.three-up > li, #container #speakers .speakerlist ul.three-up > li {
   margin-left: 2%;
   width: 31.3%; }
-.block-grid.four-up, #container #speakers #speakerlist ul.four-up, #container #speakers #speakerlist ul, #container #speakers #speakerlist ul.block-grid {
+.block-grid.four-up, #container #speakers .speakerlist ul.four-up, #container #speakers .speakerlist ul, #container #speakers .speakerlist ul.block-grid {
   margin-left: -2%; }
-.block-grid.four-up > li, #container #speakers #speakerlist ul.four-up > li, #container #speakers #speakerlist ul > li, #container #speakers #speakerlist ul.block-grid > li {
+.block-grid.four-up > li, #container #speakers .speakerlist ul.four-up > li, #container #speakers .speakerlist ul > li, #container #speakers .speakerlist ul.block-grid > li {
   margin-left: 2%;
   width: 23%; }
-.block-grid.five-up, #container #speakers #speakerlist ul.five-up {
+.block-grid.five-up, #container #speakers .speakerlist ul.five-up {
   margin-left: -1.5%; }
-.block-grid.five-up > li, #container #speakers #speakerlist ul.five-up > li {
+.block-grid.five-up > li, #container #speakers .speakerlist ul.five-up > li {
   margin-left: 1.5%;
   width: 18.5%; }
 
@@ -2029,9 +2029,9 @@ ul.orbit-bullets {
  *	:: Block Grids
  *	-------------------------------------------------- */
 @media only screen and (max-width: 767px) {
-  .block-grid.mobile, #container #speakers #speakerlist ul.mobile, #container #speakers #speakerlist ul, #container #speakers #speakerlist ul.block-grid {
+  .block-grid.mobile, #container #speakers .speakerlist ul.mobile, #container #speakers .speakerlist ul, #container #speakers .speakerlist ul.block-grid {
     margin-left: 0; }
-    .block-grid.mobile > li, #container #speakers #speakerlist ul.mobile > li, #container #speakers #speakerlist ul > li, #container #speakers #speakerlist ul.block-grid > li {
+    .block-grid.mobile > li, #container #speakers .speakerlist ul.mobile > li, #container #speakers .speakerlist ul > li, #container #speakers .speakerlist ul.block-grid > li {
       float: none;
       width: 100%;
       margin-left: 0; } }
@@ -2187,17 +2187,17 @@ table.show-on-desktops, table.hide-on-phones, table#twittershare, table#topnav, 
       margin: 0;
       border-width: 1px 0 0; }
 
-  .nice.tabs.mobile, #container #speakers #speakerlist ul.nice.tabs {
+  .nice.tabs.mobile, #container #speakers .speakerlist ul.nice.tabs {
     border-bottom: solid 1px #cccccc;
     height: auto; }
-    .nice.tabs.mobile dd a, #container #speakers #speakerlist ul.nice.tabs dd a {
+    .nice.tabs.mobile dd a, #container #speakers .speakerlist ul.nice.tabs dd a {
       padding: 18px 20px;
       border: none;
       border-left: none;
       border-right: none;
       border-top: 1px solid #cccccc;
       background: white; }
-      .nice.tabs.mobile dd a.active, #container #speakers #speakerlist ul.nice.tabs dd a.active {
+      .nice.tabs.mobile dd a.active, #container #speakers .speakerlist ul.nice.tabs dd a.active {
         border: none;
         background: #00a6fc;
         color: white;
@@ -2205,7 +2205,7 @@ table.show-on-desktops, table.hide-on-phones, table#twittershare, table#topnav, 
         position: static;
         top: 0;
         height: auto; }
-    .nice.tabs.mobile dd:first-child a.active, #container #speakers #speakerlist ul.nice.tabs dd:first-child a.active {
+    .nice.tabs.mobile dd:first-child a.active, #container #speakers .speakerlist ul.nice.tabs dd:first-child a.active {
       margin: 0; }
 
   dl.contained.mobile, dl.nice.contained.mobile {
@@ -2324,16 +2324,16 @@ h1, h2, h3, h4, h5, h6, #tagline p {
       text-align: center;
       margin: 0 auto;
       display: block; }
-  #container #speakers #speakerlist ul li .speakername {
+  #container #speakers .speakerlist ul li .speakername {
     font-size: 19px;
     color: black;
     display: block;
     padding: 15px 0 0 0; }
-  #container #speakers #speakerlist ul li .speakertitle {
+  #container #speakers .speakerlist ul li .speakertitle {
     color: #eb008b;
     font-size: 14px;
     display: block; }
-  #container #speakers #speakerlist ul li .company {
+  #container #speakers .speakerlist ul li .company {
     color: #333333;
     font-size: 14px; }
   #container #sponsors ul {

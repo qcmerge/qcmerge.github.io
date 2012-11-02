@@ -13,6 +13,7 @@ $(window).bind('scroll', function(){
 });
 $(document).ready(function(){        
     $("#message a").hide();
+    $('input[placeholder], textarea[placeholder]').placeholder();
 });
 
 

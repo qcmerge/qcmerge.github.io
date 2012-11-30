@@ -170,14 +170,17 @@ p {
     border-top: 34px solid #ccc;
     border-top-color: $pink;
     position: absolute;
-    right: 43%;
+    right: 42%;
     bottom: -40px;
+    @include ie8 {
+      right: 47%;
+    }
     @include respond-to('medium-screens') {
       right: 45%;
       bottom: -50px;
     }
     @include respond-to('wide-screens') {
-      right: 280px;
+      right: 250px;
     }
   }
 }
@@ -190,15 +193,14 @@ p {
 
 .date-time {
   @extend %group;
+  @extend %fixz;
   font-style: italic;
   margin: 0;
-  list-style-type: disc;
-  list-style-position: inside;
+  list-style-type: none;
   text-align: center;
   li {
+    list-style-type: none;
     display: inline-block;
-    padding-left: calc-em(8px);
-    margin-right: calc-em(8px);
   }
 }
 
@@ -219,7 +221,6 @@ p {
   }
   input[type='text'],
   input[type='email'] {
-    width: 70%;
     text-align: center;
     font-family: $baseFontFamily;
     margin: 0 auto;

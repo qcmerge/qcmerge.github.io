@@ -1,12 +1,8 @@
-source 'http://rubygems.org'
+source :rubygems
 
-gem "rack-contrib"
-
-group :development do
-  gem "middleman", '>= 2.0.0'
-  gem "foreman"
-  gem "heroku"
-  gem "watchr"
-  gem "rb-fsevent"
-  gem "growl_notify"
-end
+gem "coffee_cup"
+gem "sass", "~> 3.2.1"
+gem "susy", "~> 1.0.5"
+gem "middleman", "~> 3.0.6"
+gem 'middleman-smusher'
+gem "compass", "~> 0.12.2"

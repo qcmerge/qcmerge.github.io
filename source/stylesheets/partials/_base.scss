@@ -1,0 +1,87 @@
+/* 
+
+Perfect Fifth:
+http://modularscale.com/scale/?px1=18&px2=32&ra1=1.618&ra2=0
+Font Size: 18px (1em) @ 1:1.618
+Important Number: 32px (1.778em) @ 1:1.618
+
+*/
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// Background
+$backgroundColor:                  #000;
+
+// Grays
+$black:                            #000;
+$grayDarker:                       #222;
+$grayDark:                         #333;
+$gray:                             #555;
+$grayLight:                        #999;
+$grayLighter:                      #eee;
+$white:                            #fff;
+      
+// Accent colors                   
+$blue:                             #049cdb;
+$blueDark:                         #0064cd;
+$green:                            #46a546;
+$red:                              #9d261d;
+$yellow:                           #ffc40d;
+$orange:                           #f89406;
+$pink:                             #EA078B;
+$purple:                           #7a43b6;
+
+// Links
+$linkColor:                        $pink;
+$linkColorHover:                   darken($linkColor, 15%);
+
+// Typography                    
+$baseFontSize:                     15px;
+$baseFontFamily:                   "droid-serif", Georgia, serif;
+$headlineFontFamily:               "franklin-gothic-urw-comp", "Arial Narrow", Helvetica, Arial, sans-serif;
+$altHeadlineFontFamily:            "franklin-gothic-ext-comp-urw", sans-serif;
+$baseLineHeight:                   1.5em;
+$textColor:                        $black;
+
+// Buttons                         
+$primaryButtonBackground:          $linkColor;
+
+//Borders
+$borderColor:                      #1a1a1a;
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Input placeholder text color
+$placeholderText:                 $grayLight;
+
+
+// GRID
+// --------------------------------------------------
+
+$total-columns:                    12;
+$column-width:                     4em; // Loosely taken from modular scale
+$gutter-width:                     1em;
+$side-gutter-width:                1em; // Loosely taken from modular scale
+
+
+// Imports & Includes
+// **************************************************
+// **************************************************
+
+// My Mixins
+@import "partials/custom_mixins";
+
+//Reset Styles
+@import "compass/reset";
+
+//Compass Mixins
+@import "compass/css3";
+
+// Include Susy
+@import "susy";
+
+@import "partials/font_awesome";
+

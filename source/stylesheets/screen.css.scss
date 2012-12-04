@@ -289,5 +289,10 @@ p {
     &.facebook {
     }
   }
+  .sponsor {
+    font-family: $baseFontFamily;
+    font-style: italic;
+    font-size: calc-em(12px);
+  }
 }
 

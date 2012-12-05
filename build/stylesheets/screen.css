@@ -1243,21 +1243,24 @@ h3 {
     .email-signup .button:hover {
       cursor: pointer;
       background: #b8066e; }
+  /* line 266, screen.css.scss */
+  .email-signup #mce-success-response {
+    color: #eee; }
 
-/* line 275, screen.css.scss */
+/* line 278, screen.css.scss */
 .footer-content {
   text-align: center; }
-  /* line 280, screen.css.scss */
+  /* line 283, screen.css.scss */
   .footer-content a {
     padding-right: 0.35714em;
     display: inline-block;
     font-size: 1.86667em;
     text-decoration: none;
     color: #5c5c5f; }
-    /* line 286, screen.css.scss */
+    /* line 289, screen.css.scss */
     .footer-content a.twitter {
       padding-left: 0.35714em; }
-  /* line 292, screen.css.scss */
+  /* line 295, screen.css.scss */
   .footer-content .sponsor {
     font-family: "droid-serif", Georgia, serif;
     font-style: italic;

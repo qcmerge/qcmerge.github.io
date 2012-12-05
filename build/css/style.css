@@ -316,8 +316,7 @@ h1,h2,h3,h4,h5,h6 {
 /*
  * Nav
  */
-
-#topnav {
+ #topnav {
   position: fixed;
   width: 246px;
   height: 380px;
@@ -459,72 +458,69 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: 500;
 }
 
-#speakerlist ul {
+.speakerlist ul {
   margin: 0;
   padding: 10px 0;
 }
 
-#speakerlist ul li {
-  width: 175px;
-  height: 175px;
+.speakerlist ul li {
+  height: 325px;
+  display: block;
   background: #000;
   list-style: none;
-  margin: 0 10px 10px 0;
-  padding: 0;
+  margin: 0 20px 20px 0;
+  padding: 0 0 20px 0;
   float: left;
   position: relative;
-}
 
-#speakerlist ul li a {
-  width: 175px;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: transparent;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-#speakerlist ul li a img {
-  width: auto;
-  height: 100%;
-}
-
-#speakerlist ul li a .speakername, #speakerlist ul li a .speakertitle,
-#speakerlist ul li a .company {
-  display: none;
-}
-
-#speakerlist ul li a:hover {
   -webkit-box-shadow: 0px 0px 18px 0px #999;
   -moz-box-shadow: 0px 0px 18px 0px #999;
   box-shadow: 0px 0px 18px 0px #999;
-  padding: 20px;
-  top: -20px;
-  left: -20px;
-  z-index: 20; 
-  background: url(../img/sponsorbg.png);
-  text-transform: uppercase;
+
+  background: url(../img/sponsorbg.png) repeat;
+  
 }
 
-#speakerlist ul li a:hover .speakername {
-  font-size: 19px;
+.speakerlist ul li .modal-trigger {
+  width: 175px;
+  display: block;
+  background: transparent;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 20px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  
+}
+
+.speakerlist ul li .modal-trigger img {
+  width: auto;
+}
+
+.speakerlist ul li .modal-trigger .speakername {
+  font-size: 16px;
   color: #000;
   display: block;
   padding: 15px 0 0 0;
 }
 
-#speakerlist ul li a:hover .speakertitle {
+.speakerlist ul li .modal-trigger .speakertitle {
   color: #eb008b;
   font-size: 14px;
   display: block;
 }
 
-#speakerlist ul li a:hover .company {
+.speakerlist ul li .modal-trigger .company {
   color: #333;
   font-size: 10px;
   display: block;
+}
+
+.speakerlist ul li .archived-links {
+  padding: 5px 20px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 #main li.last {
@@ -896,6 +892,27 @@ h1,h2,h3,h4,h5,h6 {
 .moerlein:hover {
   background: url(../img/sponsors/moerlein.png) 0 -74px no-repeat;
 }
+
+#nextyear {
+  padding: 50px 0 50px 150px;
+  width: 730px;
+  margin: 20px 0 0 0; 
+}
+
+#nextyear input {
+  width: 640px;
+  height: 48px;
+  font-size: 24px;
+  margin: 16px 0;
+}
+
+#nextyear button {
+  height: 48px;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+
 
 /*
  * Footer

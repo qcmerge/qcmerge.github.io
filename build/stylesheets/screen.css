@@ -1257,3 +1257,8 @@ h3 {
     /* line 286, screen.css.scss */
     .footer-content a.twitter {
       padding-left: 0.35714em; }
+  /* line 292, screen.css.scss */
+  .footer-content .sponsor {
+    font-family: "droid-serif", Georgia, serif;
+    font-style: italic;
+    font-size: 0.8em; }

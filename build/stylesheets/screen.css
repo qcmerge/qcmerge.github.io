@@ -1112,7 +1112,7 @@ h3 {
       z-index: 15; } }
 
 @media (min-width: 949px) {
-  /* line 134, screen.css.scss */
+  /* line 135, screen.css.scss */
   .building {
     display: block;
     width: 320px;
@@ -1128,17 +1128,17 @@ h3 {
     width: 100%;
     top: 0; } }
 
-/* line 154, screen.css.scss */
+/* line 155, screen.css.scss */
 .description {
   background: #ea078b;
   text-align: center;
   margin-bottom: 2.26667em;
   padding: 1em 0; }
 
-/* line 162, screen.css.scss */
+/* line 163, screen.css.scss */
 .description-content {
   position: relative; }
-  /* line 165, screen.css.scss */
+  /* line 166, screen.css.scss */
   .description-content:after {
     content: '';
     display: inline-block;
@@ -1153,36 +1153,36 @@ h3 {
     html.ie8 .description-content:after {
       right: 47%; }
     @media (min-width: 768px) {
-      /* line 165, screen.css.scss */
+      /* line 166, screen.css.scss */
       .description-content:after {
         right: 45%;
         bottom: -50px; } }
     @media (min-width: 949px) {
-      /* line 165, screen.css.scss */
+      /* line 166, screen.css.scss */
       .description-content:after {
         right: 250px; } }
 
-/* line 189, screen.css.scss */
+/* line 190, screen.css.scss */
 .description-header h2, .description-header h3 {
   text-align: center; }
 
-/* line 194, screen.css.scss */
+/* line 195, screen.css.scss */
 .date-time {
   font-style: italic;
   margin: 0;
   list-style-type: none;
   text-align: center; }
-  /* line 201, screen.css.scss */
+  /* line 202, screen.css.scss */
   .date-time li {
     list-style-type: none;
     display: inline-block; }
 
-/* line 207, screen.css.scss */
+/* line 208, screen.css.scss */
 .email-signup {
   clear: both;
   text-align: center;
   margin-bottom: 1.86667em; }
-  /* line 213, screen.css.scss */
+  /* line 214, screen.css.scss */
   .email-signup label {
     font-family: "franklin-gothic-ext-comp-urw", sans-serif;
     font-weight: 400;
@@ -1191,7 +1191,7 @@ h3 {
     color: white;
     display: block;
     text-transform: uppercase; }
-  /* line 223, screen.css.scss */
+  /* line 224, screen.css.scss */
   .email-signup input[type='text'],
   .email-signup input[type='email'] {
     text-align: center;
@@ -1205,22 +1205,22 @@ h3 {
     background: #d9d8d7;
     color: #5c5c5c;
     font-style: italic; }
-    /* line 235, screen.css.scss */
+    /* line 236, screen.css.scss */
     .email-signup input[type='text'].placeholder,
     .email-signup input[type='email'].placeholder {
       color: #8f8f8f;
       font-style: italic; }
-    /* line 239, screen.css.scss */
+    /* line 240, screen.css.scss */
     .email-signup input[type='text']:-moz-placeholder,
     .email-signup input[type='email']:-moz-placeholder {
       color: #8f8f8f;
       font-style: italic; }
-    /* line 243, screen.css.scss */
+    /* line 244, screen.css.scss */
     .email-signup input[type='text']::-webkit-input-placeholder,
     .email-signup input[type='email']::-webkit-input-placeholder {
       color: #8f8f8f;
       font-style: italic; }
-  /* line 248, screen.css.scss */
+  /* line 249, screen.css.scss */
   .email-signup .button {
     border: none;
     color: white;
@@ -1239,28 +1239,38 @@ h3 {
     -moz-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
     transition: all 0.2s linear; }
-    /* line 260, screen.css.scss */
+    /* line 261, screen.css.scss */
     .email-signup .button:hover {
       cursor: pointer;
       background: #b8066e; }
-  /* line 266, screen.css.scss */
+  /* line 267, screen.css.scss */
   .email-signup #mce-success-response {
-    color: #eee; }
+    color: #eee;
+    font-style: italic;
+    font-family: "droid-serif", Georgia, serif;
+    font-size: 0.86667em;
+    margin-bottom: 1.23077em; }
+  /* line 276, screen.css.scss */
+  .email-signup #mc_embed_signup div.mce_inline_error {
+    font-family: "droid-serif", Georgia, serif;
+    background-color: #ea078b;
+    font-style: italic;
+    font-weight: 300; }
 
-/* line 278, screen.css.scss */
+/* line 293, screen.css.scss */
 .footer-content {
   text-align: center; }
-  /* line 283, screen.css.scss */
+  /* line 298, screen.css.scss */
   .footer-content a {
     padding-right: 0.35714em;
     display: inline-block;
     font-size: 1.86667em;
     text-decoration: none;
     color: #5c5c5f; }
-    /* line 289, screen.css.scss */
+    /* line 304, screen.css.scss */
     .footer-content a.twitter {
       padding-left: 0.35714em; }
-  /* line 295, screen.css.scss */
+  /* line 310, screen.css.scss */
   .footer-content .sponsor {
     font-family: "droid-serif", Georgia, serif;
     font-style: italic;

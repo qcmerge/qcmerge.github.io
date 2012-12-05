@@ -129,6 +129,7 @@ p {
 
 .main-content {
 
+
 } //main-content
 
 .building {
@@ -265,7 +266,21 @@ p {
 
   #mce-success-response {
     color: #eee;
+    font-style: italic;
+    font-family: $baseFontFamily;
+    font-size: calc-em(13px);
+    margin-bottom: calc-em(16px, 13px);
   }
+
+  #mc_embed_signup  {
+    div.mce_inline_error {
+      font-family: $baseFontFamily;
+      background-color: $pink;
+      font-style: italic;
+      font-weight: 300;
+    }
+  }
+  
 }
 
 // Footer

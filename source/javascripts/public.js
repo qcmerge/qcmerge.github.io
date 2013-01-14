@@ -1,4 +1,9 @@
-//= require libs/modernizr
 //= require libs/jquery
 //= require libs/jquery-ui
+//= require libs/jquery.stickyPanel
+//= require libs/jquery.fittext
+//= require libs/jquery.pagescroller.lite
+//= require libs/jrespond
+//= require libs/footable-0.1
+//= require bootstrap
 //= require_tree ./public

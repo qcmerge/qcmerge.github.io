@@ -1,7 +1,8 @@
 <!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie8" lang="en"> <![endif]-->
 <!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
@@ -14,43 +15,125 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <%= stylesheet_link_tag "screen" %>
+  <%= javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js" %>
   <%= javascript_include_tag "public" %>
   <script type="text/javascript" src="//use.typekit.net/gyn0xoh.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 </head>
-<body class="<%= page_classes %>">
+<body data-spy="scroll" data-target=".navbar" class="<%= page_classes %>">
 
-
-  <div class="building"></div>
   
   <header class="site-header">
-    <%= image_tag 'img-logo.png', :class => 'site-logo' %>
-
-    <div class="header-content">
-      <h1><span>Let us go</span> forward together</h1>
-    </div>
+    <section class="header-content">
+      <hgroup>
+        <h1>QC Merge</h1>
+        <h2>Let us go forward <span>Together</span></h2>
+      </hgroup>
+      <div class="loc-time-date">
+        <span class="building">
+          Contemporary Arts Center
+        </span>
+        <span class="date">
+          May 10 &amp; 11 2013
+        </span>
+        <span class="loc">
+          Cincinnati Ohio
+        </span>
+      </div>
+      <!-- /loc-time-date -->
+    </section>
+    <!-- /header-content -->
+    
   </header>
   <!-- /site-header -->
 
-  <div class="main-content">
+  <nav id="nav" class="navbar">
+    <div class="navbar-inner">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+       
+
+      <a class="brand" href="#">QC Merge</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><a href="#about">About</a></li>
+          <li><a href="#speakers">Speakers</a></li>
+          <li><a href="#venue">Venue</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#sponsors">Sponsors</a></li>
+          <li class="register"><a href="#"><span>Buy Tickets</span></a></li>
+        </ul>
+        <!-- /nav -->
+      </div>
+      <!-- /nav-collapse -->
+    </div>
+    <!-- /navbar-inner -->
+  </nav>
+  <!-- /navbar -->
+
+  <div id="main-content" class="main-content">
     <%= yield %>
   </div>
   <!-- /main-content -->
-  
 
   <footer class="site-footer">
-    <div class="footer-content">
-      <section class="social-media">
-        <a class="twitter" href="http://twitter.com/qcmerge"><i class="icon-twitter-sign"></i></a>
-        <a class="facebook" href="http://facebook.com/qcmerge"><i class="icon-facebook-sign"></i></a>
-      </section>
-      <%= link_to 'Want to be a sponsor? Find out more info here.', 'QC_Merge_Sponsor_v6.pdf', :class => 'sponsor' %>
-    </div>
+    <section class="footer-content">
+      <div class="more-qcmerge">
+        <h3>Want More QCMerge?</h3>
+        <p>Check out some of last year's talks on YouTube:</p>
+        <ul class="unstyled video-list">
+          <% 10.times do %>
+          <li class="video-thumb">
+            <%= link_to image_tag('http://placehold.it/50x50'), '#' %>
+          </li>
+          <!-- /video-thumb -->
+          <% end %>
+        </ul>
+        <!-- video-list -->
+      </div>
+      <!-- /more-qcmerge -->
+      <div class="etc">
+        <div class="social">
+          <h3>Get to know us better</h3>
+          <%= link_to '<i class="icon-twitter"></i>', 'http://twitter.com/qcmerge', class: 'twitter' %>
+          <%= link_to '<i class="icon-facebook"></i>', 'http://facebook.com/qcmerge', class: 'facebook' %>
+        </div>
+        <hr />
+        <div class="last-year">
+          <h3>Looking for 2012's site?</h3>
+          <p>It can be found <%= link_to 'here', '#' %>.</p>
+        </div>
+      </div>
+      <!-- /etc -->
+      <div class="help-copy">
+        <div class="help-out">
+          <h3>Want to help out?</h3>
+          <form class="help-form">
+            <div class="input-append">
+              <label>Drop us a line and we'll be in touch</label>
+              <input class="span2" id="" type="email" placeholder="name@domain.com" />
+              <button class="btn" type="button">OK</button>
+            </div>
+          </form>
+        </div>
+        <!-- /help-out -->
+
+        <hr />
+        <div class="copyright">
+          &copy; Copyright 2013 QCMerge
+        </div>
+        <!-- /copyright -->
+      </div>
+      <!-- /help-out -->
+    </section>
+    <!-- /footer-content -->
   </footer>
   <!-- /site-footer -->
-
-  
 
 
   <script>

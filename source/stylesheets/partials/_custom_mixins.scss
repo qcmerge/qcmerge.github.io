@@ -176,6 +176,7 @@
 // ------------------------------------------- //
 
 $breakSmall: 320px;
+$breakLandscape: 479px;
 $breakMedium: 767px;
 $breakLarge: 949px;
 $breakXLarge: 1199px;
@@ -187,8 +188,18 @@ $breakXLarge: 1199px;
   @else if $media == small-screens {
     @media (min-width: $breakSmall + 1) { @content; }
   }
+  @else if $media == most-landscape {
+    @media (min-width: $breakLandscape + 1) { @content; }
+  }
   @else if $media == medium-screens {
-    @media (min-width: $breakMedium + 1) { @content; }
+    @media (min-width: $breakMedium + 1) {
+      @content;
+
+    }
+    html.lt-ie9 & { // Using Paul Irish's conditional comments for IE8 and below
+      @content;
+    }
+
   }
   @else if $media == wide-screens {
     @media (min-width: $breakLarge) { @content; }
@@ -412,6 +423,12 @@ $breakXLarge: 1199px;
 
 @mixin ie8 {
   html.ie8 & { // Using Paul Irish's conditional comments
+    @content;
+  }
+}
+
+@mixin lt-ie9 {
+  html.lt-ie9 & { // Using Paul Irish's conditional comments
     @content;
   }
 }

@@ -25304,9 +25304,3074 @@ $.widget( "ui.tooltip", {
 });
 
 }( jQuery ) );
+/*
+*   jQuery.stickyPanel
+*   ----------------------
+*   version: 2.0.0
+*   date: 11/21/12
+*
+*   Copyright (c) 2011 Donny Velazquez
+*   http://donnyvblog.blogspot.com/
+*   http://code.google.com/p/sticky-panel/
+*   
+*   Licensed under the Apache License 2.0
+*
+*   revisions
+*   -----------------------
+*   11/19/12 - re-architect plugin to use jquery.com best practices http://docs.jquery.com/Plugins/Authoring
+*
+*/
+
+(function ($) {
+
+    var methods = {
+
+        options: {
+            // Use this to set the top margin of the detached panel.
+            topPadding: 0,
+
+            // This class is applied when the panel detaches.
+            afterDetachCSSClass: "",
+
+            // When set to true the space where the panel was is kept open.
+            savePanelSpace: false,
+
+            // Event fires when panel is detached
+            // function(detachedPanel, panelSpacer){....}
+            onDetached: null,
+
+            // Event fires when panel is reattached
+            // function(detachedPanel){....}
+            onReAttached: null,
+
+            // Set this using any valid jquery selector to 
+            // change the parent of the sticky panel.
+            // If set to null then the window object will be used.
+            parentSelector: null
+        },
+        init: function (options) {
+            var options = $.extend({}, methods.options, options);
+
+            return this.each(function () {
+                var id = Math.ceil(Math.random() * 9999); /* Pick random number between 1 and 9999 */
+                $(this).data("stickyPanel.state", {
+                    stickyPanelId: id,
+                    isDetached: false,
+                    parentContainer: $((options.parentSelector ? options.parentSelector : window)),
+                    options: options
+                });
+
+                if (options.parentSelector) {
+                    var p = $(this).data("stickyPanel.state").parentContainer.css("position");
+                    switch (p) {
+                        case "inherit":
+                        case "static":
+                            $(this).data("stickyPanel.state").parentContainer.css("position", "relative");
+                            break;
+                    }
+                }
+
+                $(this).data("stickyPanel.state").parentContainer.bind("scroll.stickyPanel_" + id, {
+                    selected: $(this)
+                }, methods.scroll);
+            });
+        },
+        scroll: function (event) {
+            var node = event.data.selected;
+            var o = node.data("stickyPanel.state").options//event.data.options;
+
+            var parentContainer = node.data("stickyPanel.state").parentContainer;
+            var parentHeight = parentContainer.height();
+            var nodeHeight = node.outerHeight(true);
+            var scrollTop = o.parentSelector ? parentContainer.scrollTop() : $(document).scrollTop();
+            var docHeight = o.parentSelector ? parentContainer.height() : $(document).height();
+            var HeightDiff = o.parentSelector ? parentHeight : (docHeight - parentHeight);
+
+            var topdiff = node.position().top - o.topPadding;
+            var TopDiff = topdiff < 0 ? 0 : topdiff;
+
+            var isDetached = node.data("stickyPanel.state").isDetached;
+
+            // when top of parent reaches the top of the panel detach
+            if (scrollTop <= HeightDiff && // Fix for rubberband scrolling in Safari on Lion
+        	    scrollTop > TopDiff &&
+                !isDetached) {
+
+                node.data("stickyPanel.state").isDetached = true;
+
+                // topPadding
+                var newNodeTop = 0;
+                if (o.topPadding != "undefined") {
+                    newNodeTop = newNodeTop + o.topPadding;
+                }
+
+                // get top & left before adding spacer
+                var nodeLeft = o.parentSelector ? node.position().left : node.offset().left;
+                var nodeTop = o.parentSelector ? node.position().top : node.offset().top;
+
+
+                // save panels top
+                node.data("PanelsTop", nodeTop - newNodeTop);
+
+                // MOVED: savePanelSpace before afterDetachCSSClass to handle afterDetachCSSClass changing size of node
+                // savePanelSpace
+                var PanelSpacer = null;
+                if (o.savePanelSpace == true) {
+                    var nodeWidth = node.outerWidth(true);
+                    var nodeCssfloat = node.css("float");
+                    var nodeCssdisplay = node.css("display");
+                    var randomNum = Math.ceil(Math.random() * 9999); /* Pick random number between 1 and 9999 */
+                    node.data("stickyPanel.PanelSpaceID", "stickyPanelSpace" + randomNum);
+                    PanelSpacer = $("<div id='" + node.data("stickyPanel.PanelSpaceID") + "' style='width:" + nodeWidth + "px;height:" + nodeHeight + "px;float:" + nodeCssfloat + ";display:" + nodeCssdisplay + ";'>&#20;</div>");
+                    node.before(PanelSpacer);
+                }
+
+                // afterDetachCSSClass
+                if (o.afterDetachCSSClass != "") {
+                    node.addClass(o.afterDetachCSSClass);
+                }
+
+                // save inline css
+                node.data("Original_Inline_CSS", (!node.attr("style") ? "" : node.attr("style")));
+
+                // detach panel
+                node.css({
+                    "margin": 0,
+                    "left": nodeLeft,
+                    "top": newNodeTop,
+                    "position": o.parentSelector ? "absolute" : "fixed"
+                });
+
+                // fire detach event
+                if (o.onDetached)
+                    o.onDetached(node, PanelSpacer);
+
+            }
+
+
+            // Update top for div scrolling
+            if (o.parentSelector && isDetached) {
+                node.css({
+                    "top": o.topPadding ? (scrollTop + o.topPadding) : scrollTop
+                });
+            }
+
+            // ADDED: css top check to avoid continuous reattachment
+            if (scrollTop <= node.data("PanelsTop") &&
+                node.css("top") != "auto" &&
+                isDetached) {
+
+                methods.unstick(node);
+            }
+        },
+        unstick: function (nodeRef) {
+            var node = nodeRef ? nodeRef : this; ;
+            node.data("stickyPanel.state").isDetached = false;
+
+            var o = node.data("stickyPanel.state").options;
+
+            if (o.savePanelSpace == true) {
+                $("#" + node.data("stickyPanel.PanelSpaceID")).remove();
+            }
+
+            // attach panel
+            node.attr("style", node.data("Original_Inline_CSS"));
+
+            if (o.afterDetachCSSClass != "") {
+                node.removeClass(o.afterDetachCSSClass);
+            }
+
+            // fire reattached event
+            if (o.onReAttached)
+                o.onReAttached(node);
+
+            if (!nodeRef)
+                methods._unstick(node);
+        },
+        _unstick: function (nodeRef) {
+            nodeRef.data("stickyPanel.state").parentContainer.unbind("scroll.stickyPanel_" + nodeRef.data("stickyPanel.state").stickyPanelId);
+        }
+    };
+
+    $.fn.stickyPanel = function (method) {
+        // Method calling logic
+        if (methods[method]) {
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        } else if (typeof method === 'object' || !method) {
+            return methods.init.apply(this, arguments);
+        } else {
+            $.error('Method ' + method + ' does not exist on jQuery.stickyPanel');
+        }
+    };
+
+})(jQuery);
+/*global jQuery */
+/*! 
+* FitText.js 1.1
+*
+* Copyright 2011, Dave Rupert http://daverupert.com
+* Released under the WTFPL license 
+* http://sam.zoy.org/wtfpl/
+*
+* Date: Thu May 05 14:23:00 2011 -0600
+*/
+
+
+(function( $ ){
+  
+  $.fn.fitText = function( kompressor, options ) {
+     
+    // Setup options
+    var compressor = kompressor || 1,
+        settings = $.extend({
+          'minFontSize' : Number.NEGATIVE_INFINITY,
+          'maxFontSize' : Number.POSITIVE_INFINITY
+        }, options);
+  
+    return this.each(function(){
+
+      // Store the object
+      var $this = $(this); 
+        
+      // Resizer() resizes items based on the object width divided by the compressor * 10
+      var resizer = function () {
+        $this.css('font-size', Math.max(Math.min($this.width() / (compressor*10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)));
+      };
+
+      // Call once to set.
+      resizer();
+        
+      // Call on resize. Opera debounces their resize by default. 
+      $(window).on('resize', resizer);
+        
+    });
+
+  };
+
+})( jQuery );
+/*
+ *	Page Scroller LITE - jQuery Plugin
+ *	A simple plugin to add smooth scroll interaction to your website
+ *
+ *	Support at: http://www.pagescroller.com
+ *
+ *	Copyright (c) 2012 Dairien Boyd. All Rights Reserved
+ *
+ *	Version: 1.0.1 (6/6/2012)
+ *	Requires: jQuery v1.4+
+ *
+ *	Page Scroller is released under the GNU General Public License
+ *	(http://www.gnu.org/licenses/). By using Page Scroller, you 
+ *	acknowledge and agree to the Terms of Service found here:
+ *	(http://www.pagescroller.com/tos/)
+ *
+ */
+
+
+
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('7 2={};(6(d){d.1q.V({2:6(h){h=d.V({y:0,I:"13",G:"1p",8:[],L:"1o 1n",1a:1r,o:0,K:!1},h);x=6(c,a){d.1s.1w=5;2.X=d(1v);2.v=d(16);2.M=d("15");2.p=2.v.E();2.14=2.v.17();2.3=a;2.3.o=A(2.3.o);7 e="1u";a.K&&(e="1t");2.3.8 W Z&&(c.B("<"+e+\' C="1m \'+a.L+\'"><O></O></\'+e+">"),2.J=d("."+a.L.1l(/\\s/g,"."),c),2.8=d("O",2.J),2.J.F("1d"),c.Y({10:"12"}));a.K?2.4=d("13",c):2.4=d("."+a.I,c);2.4.11(6(b){7 c=d(H),e=2.4.m(b).1f("1g"),f=a.G+" "+a.G+"T"+(b+1);b==2.4.l-1&&(f+=" "+a.G+"1j");c.Y({1h:"1x",10:"12","1H":"1I"});c.F(2.3.I+"T"+(b+1));2.3.8 W Z?2.3.8.l?2.8.B(\'<9 C="\'+f+\'"><a P="#x\'+b+\'">\'+2.3.8[b]+"</a></9>"):e&&""!=e?2.8.B(\'<9 C="\'+f+\'"><a P="#x\'+b+\'">\'+e+"</a></9>"):2.8.B(\'<9 C="\'+f+\'"><a P="#x\'+b+\'">1F \'+(b+1)+"</a></9>"):2.8=d(2.3.8)});2.q=d("a",2.8);2.q.11(6(b){d(H).U("1D",6(a){a.1C();2.M.Q(":R")||(2.q.t("9").18("r"),d(H).t("9").F("r"));j(c,2.4.m(b),b)})});2.1B=6(){7 b=2.3.y+1;n(b!=2.4.l){7 a=2.4.m(b);j(c,a,b)}};2.1z=6(){7 b=2.3.y-1;0>=b&&(b=0);7 a=2.4.m(b);j(c,a,b)};2.S=6(a){S(c,2.3.y,a)};2.v.U("1G",6(){k()});1i(6(){0==2.p&&k()},1E)};7 k=6(){2.p=2.v.E();2.1b=2.p+2.14;1e(i=0;i<2.4.l;i++){7 c=2.4.m(i).D().z;2.3.o&&c&&(c+=A(2.3.o));7 a=0;n(i<2.4.l-1){7 d=2.4.m(i+1);2.3.o?a=A(d.D().z+2.3.o):a=d.D().z;7 d=2.q.m(i).t("9"),b=2.q.m(2.4.l-1).t("9")}n(2.M.Q(":R"))w!1;n(2.X.17()==2.1b){n(!b.N("r"))w u=2.4.l-1,g(u),!1}19 n(a){n(2.p>=c&&2.p<a&&!d.N("r"))w u=i,g(u),!1}19 n(2.p>=c&&i==2.4.l-1&&!b.N("r"))w u=2.4.l-1,g(u),!1}},j=6(c,a,e){7 c=d("1A, 15"),b=d(16).E(),a=a.D().z;2.3.o&&(a+=A(2.3.o));0>a&&(a=0);a!=b&&!c.Q(":R")&&c.1J({E:a},2.3.1a,"1y").1k().1c(6(){g(e)})},g=6(c){2.q.t("9").18("r");2.q.m(c).t("9").F("r");2.3.y=c};n(!2.3)w x(H,h)}})})(1K);',62,109,'||pageScroller|options|sections||function|var|navigation|li||||||||||||length|eq|if|scrollOffset|scrollPosition|pageLinks|active||parent|updateTo|scrollWindow|return|pageScroll|currentSection|top|parseInt|append|class|offset|scrollTop|addClass|linkClass|this|sectionClass|wrapper|HTML5mode|navigationClass|scrollBody|hasClass|ul|href|is|animated|goTo|_|bind|extend|instanceof|scrollDocument|css|Array|position|each|relative|section|currentSectionHeight|body|window|height|removeClass|else|animationSpeed|scrollDistance|done|left|for|attr|title|display|setTimeout|_last|promise|replace|pageScrollerNav|light|standardNav|link|fn|500|fx|nav|div|document|interval|block|swing|prev|html|next|preventDefault|click|200|Navigation|scroll|float|none|animate|jQuery'.split('|'),0,{}))
+;
+/*
+ * jRespond.js (a simple way to globally manage javascript on responsive websites)
+ * version 0.8.3
+ * (c) 2012 Jeremy Fields [jeremy.fields@viget.com]
+ * released under the MIT license
+ */
+
+(function(win,doc,undefined) {
+
+  'use strict';
+
+  win.jRespond = function(breakpoints) {
+
+    // array for registered functions
+    var mediaListeners = [];
+
+    // array that corresponds to mediaListeners and holds the current on/off state
+    var mediaInit = [];
+
+    // array of media query breakpoints; adjust as needed
+    var mediaBreakpoints = breakpoints;
+
+    // store the current breakpoint
+    var curr = '';
+
+    // window resize event timer stuff
+    var resizeTimer;
+    var resizeW = 0;
+    var resizeTmrFast = 100;
+    var resizeTmrSlow = 500;
+    var resizeTmrSpd = resizeTmrSlow;
+
+    // cross browser window width
+    var winWidth = function() {
+
+      var w = 0;
+
+      // IE
+      if (!window.innerWidth) {
+
+        if (!(document.documentElement.clientWidth === 0)) {
+
+          // strict mode
+          w = document.documentElement.clientWidth;
+        } else {
+
+          // quirks mode
+          w = document.body.clientWidth;
+        }
+      } else {
+
+        // w3c
+        w = window.innerWidth;
+      }
+
+      return w;
+    };
+
+    // send media to the mediaListeners array
+    var addFunction = function(elm) {
+
+      var brkpt = elm['breakpoint'];
+      var entr = elm['enter'] || undefined;
+
+      // add function to stack
+      mediaListeners.push(elm);
+
+      // add corresponding entry to mediaInit
+      mediaInit.push(false);
+
+      if (testForCurr(brkpt)) {
+        if (entr !== undefined) {
+          entr.call();
+        }
+        mediaInit[(mediaListeners.length - 1)] = true;
+      }
+    };
+
+    // loops through all registered functions and determines what should be fired
+    var cycleThrough = function() {
+      
+      var enterArray = [];
+      var exitArray = [];
+
+      for (var i = 0; i < mediaListeners.length; i++) {
+        var brkpt = mediaListeners[i]['breakpoint'];
+        var entr = mediaListeners[i]['enter'] || undefined;
+        var exit = mediaListeners[i]['exit'] || undefined;
+
+        if (brkpt === '*') {
+          if (entr !== undefined) {
+            enterArray.push(entr);
+          }
+          if (exit !== undefined) {
+            exitArray.push(exit);
+          }
+        } else if (testForCurr(brkpt)) {
+          if (entr !== undefined && !mediaInit[i]) {
+            enterArray.push(entr);
+          }
+          mediaInit[i] = true;
+        } else {
+          if (exit !== undefined && mediaInit[i]) {
+            exitArray.push(exit);
+          }
+          mediaInit[i] = false;
+        }
+      }
+
+      // loop through exit functions to call
+      for (var j = 0; j < exitArray.length; j++) {
+        exitArray[j].call();
+      }
+
+      // then loop through enter functions to call
+      for (var k = 0; k < enterArray.length; k++) {
+        enterArray[k].call();
+      }
+    };
+
+    // checks for the correct breakpoint against the mediaBreakpoints list
+    var returnBreakpoint = function(width) {
+
+      var foundBrkpt = false;
+
+      // look for existing breakpoint based on width
+      for (var i = 0; i < mediaBreakpoints.length; i++) {
+
+        // if registered breakpoint found, break out of loop
+        if (width >= mediaBreakpoints[i]['enter'] && width <= mediaBreakpoints[i]['exit']) {
+          foundBrkpt = true;
+
+          break;
+        }
+      }
+
+      // if breakpoint is found and it's not the current one
+      if (foundBrkpt && curr !== mediaBreakpoints[i]['label']) {
+        curr = mediaBreakpoints[i]['label'];
+
+        // run the loop
+        cycleThrough();
+
+      // or if no breakpoint applies
+      } else if (!foundBrkpt && curr !== '') {
+        curr = '';
+
+        // run the loop
+        cycleThrough();
+      }
+
+    };
+
+    // takes the breakpoint/s arguement from an object and tests it against the current state
+    var testForCurr = function(elm) {
+
+      // if there's an array of breakpoints
+      if (typeof elm === 'object') {
+        if (elm.join().indexOf(curr) >= 0) {
+          return true;
+        }
+
+      // if the string is '*' then run at every breakpoint
+      } else if (elm === '*') {
+        return true;
+
+      // or if it's a single breakpoint
+      } else if (typeof elm === 'string') {
+        if (curr === elm) {
+          return true;
+        }
+      }
+    };
+
+    // self-calling function that checks the browser width and delegates if it detects a change
+    var checkResize = function() {
+
+      // get current width
+      var w = winWidth();
+
+      // if there is a change speed up the timer and fire the returnBreakpoint function
+      if (w !== resizeW) {
+        resizeTmrSpd = resizeTmrFast;
+
+        returnBreakpoint(w);
+
+      // otherwise keep on keepin' on
+      } else {
+        resizeTmrSpd = resizeTmrSlow;
+      }
+
+      resizeW = w;
+
+      // calls itself on a setTimeout
+      setTimeout(checkResize, resizeTmrSpd);
+    };
+    checkResize();
+
+    // return
+    return {
+      addFunc: function(elm) { addFunction(elm); },
+      getBreakpoint: function() { return curr; }
+    };
+
+  };
+
+}(this,this.document));
+/*!
+ * FooTable - Awesome Responsive Tables
+ * http://themergency.com/footable
+ *
+ * Requires jQuery - http://jquery.com/
+ *
+ * Copyright 2012 Steven Usher & Brad Vincent
+ * Released under the MIT license
+ * You are free to use FooTable in commercial projects as long as this copyright header is left intact.
+ *
+ * Date: 18 Nov 2012
+ */
+
+(function ($, w, undefined) {
+  w.footable = {
+    options: {
+      delay: 100, // The number of millseconds to wait before triggering the react event
+      breakpoints: { // The different screen resolution breakpoints
+        phone: 480,
+        tablet: 1024
+      },
+      parsers: {  // The default parser to parse the value out of a cell (values are used in building up row detail)
+        alpha: function (cell) {
+          return $(cell).data('value') || $.trim($(cell).text());
+        }
+      },
+      toggleSelector: ' > tbody > tr:not(.footable-row-detail)', //the selector to show/hide the detail row
+      createDetail: function (element, data) {  //creates the contents of the detail row
+        for (var i = 0; i < data.length; i++) {
+          element.append('<div><strong>' + data[i].name + '</strong> : ' + data[i].display + '</div>');
+        }
+      },
+      classes: {
+        loading : 'footable-loading',
+        loaded : 'footable-loaded',
+        sorted : 'footable-sorted',
+        descending : 'footable-sorted-desc',
+        indicator : 'footable-sort-indicator'
+      },
+      debug: false // Whether or not to log information to the console.
+    },
+
+    version: {
+      major: 0, minor: 1,
+      toString: function () {
+        return w.footable.version.major + '.' + w.footable.version.minor;
+      },
+      parse: function (str) {
+        version = /(\d+)\.?(\d+)?\.?(\d+)?/.exec(str);
+        return {
+          major: parseInt(version[1]) || 0,
+          minor: parseInt(version[2]) || 0,
+          patch: parseInt(version[3]) || 0
+        };
+      }
+    },
+
+    plugins: {
+      _validate: function (plugin) {
+        ///<summary>Simple validation of the <paramref name="plugin"/> to make sure any members called by Foobox actually exist.</summary>
+        ///<param name="plugin">The object defining the plugin, this should implement a string property called "name" and a function called "init".</param>
+
+        if (typeof plugin['name'] !== 'string') {
+          if (w.footable.options.debug == true) console.error('Validation failed, plugin does not implement a string property called "name".', plugin);
+          return false;
+        }
+        if (!$.isFunction(plugin['init'])) {
+          if (w.footable.options.debug == true) console.error('Validation failed, plugin "' + plugin['name'] + '" does not implement a function called "init".', plugin);
+          return false;
+        }
+        if (w.footable.options.debug == true) console.log('Validation succeeded for plugin "' + plugin['name'] + '".', plugin);
+        return true;
+      },
+      registered: [], // An array containing all registered plugins.
+      register: function (plugin, options) {
+        ///<summary>Registers a <paramref name="plugin"/> and its default <paramref name="options"/> with Foobox.</summary>
+        ///<param name="plugin">The plugin that should implement a string property called "name" and a function called "init".</param>
+        ///<param name="options">The default options to merge with the Foobox's base options.</param>
+
+        if (w.footable.plugins._validate(plugin)) {
+          w.footable.plugins.registered.push(plugin);
+          if (options != undefined && typeof options === 'object') $.extend(true, w.footable.options, options);
+          if (w.footable.options.debug == true) console.log('Plugin "' + plugin['name'] + '" has been registered with the Foobox.', plugin);
+        }
+      },
+      init: function (instance) {
+        ///<summary>Loops through all registered plugins and calls the "init" method supplying the current <paramref name="instance"/> of the Foobox as the first parameter.</summary>
+        ///<param name="instance">The current instance of the Foobox that the plugin is being initialized for.</param>
+
+        for(var i = 0; i < w.footable.plugins.registered.length; i++){
+          try {
+            w.footable.plugins.registered[i]['init'](instance);
+          } catch(err) {
+            if (w.footable.options.debug == true) console.error(err);
+          }
+        }
+      }
+    }
+  };
+
+  var instanceCount = 0;
+
+  $.fn.footable = function(options) {
+    ///<summary>The main constructor call to initialize the plugin using the supplied <paramref name="options"/>.</summary>
+    ///<param name="options">
+    ///<para>A JSON object containing user defined options for the plugin to use. Any options not supplied will have a default value assigned.</para>
+    ///<para>Check the documentation or the default options object above for more information on available options.</para>
+    ///</param>
+
+    options=options||{};
+    var o=$.extend(true,{},w.footable.options,options); //merge user and default options
+    return this.each(function () {
+      instanceCount++;
+      this.footable = new Footable(this, o, instanceCount);
+    });
+  };
+
+  //helper for using timeouts
+  function Timer() {
+    ///<summary>Simple timer object created around a timeout.</summary>
+    var t=this;
+    t.id=null;
+    t.busy=false;
+    t.start=function (code,milliseconds) {
+      ///<summary>Starts the timer and waits the specified amount of <paramref name="milliseconds"/> before executing the supplied <paramref name="code"/>.</summary>
+      ///<param name="code">The code to execute once the timer runs out.</param>
+      ///<param name="milliseconds">The time in milliseconds to wait before executing the supplied <paramref name="code"/>.</param>
+
+      if (t.busy) {return;}
+      t.stop();
+      t.id=setTimeout(function () {
+        code();
+        t.id=null;
+        t.busy=false;
+      },milliseconds);
+      t.busy=true;
+    };
+    t.stop=function () {
+      ///<summary>Stops the timer if its runnning and resets it back to its starting state.</summary>
+
+      if(t.id!=null) {
+        clearTimeout(t.id);
+        t.id=null;
+        t.busy=false;
+      }
+    };
+  };
+
+  function Footable(t, o, id) {
+    ///<summary>Inits a new instance of the plugin.</summary>
+    ///<param name="t">The main table element to apply this plugin to.</param>
+    ///<param name="o">The options supplied to the plugin. Check the defaults object to see all available options.</param>
+    ///<param name="id">The id to assign to this instance of the plugin.</param>
+
+    var ft = this;
+    ft.id = id;
+    ft.table = t;
+    ft.options = o;
+    ft.breakpoints = [];
+    ft.breakpointNames = '';
+    ft.columns = { };
+
+    var opt = ft.options;
+    var cls = opt.classes;
+
+    // This object simply houses all the timers used in the footable.
+    ft.timers = {
+      resize: new Timer(),
+      register: function (name) {
+        ft.timers[name] = new Timer();
+        return ft.timers[name];
+      }
+    };
+
+    w.footable.plugins.init(ft);
+
+    ft.init = function() {
+      var $window = $(w), $table = $(ft.table);
+
+      if ($table.hasClass(cls.loaded)) {
+        //already loaded FooTable for the table, so don't init again
+        ft.raise('footable_already_initialized');
+        return;
+      }
+
+      $table.addClass(cls.loading);
+
+      // Get the column data once for the life time of the plugin
+      $table.find('> thead > tr > th, > thead > tr > td').each(function() {
+        var data = ft.getColumnData(this);
+        ft.columns[data.index] = data;
+
+        var count = data.index + 1;
+        //get all the cells in the column
+        var $column = $table.find('> tbody > tr > td:nth-child(' + count + ')');
+        //add the className to the cells specified by data-class="blah"
+        if (data.className != null) $column.not('.footable-cell-detail').addClass(data.className);
+      });
+
+      // Create a nice friendly array to work with out of the breakpoints object.
+      for(var name in opt.breakpoints) {
+        ft.breakpoints.push({ 'name': name, 'width': opt.breakpoints[name] });
+        ft.breakpointNames += (name + ' ');
+      }
+
+      // Sort the breakpoints so the smallest is checked first
+      ft.breakpoints.sort(function(a, b) { return a['width'] - b['width']; });
+
+      $table.find(opt.toggleSelector).on('click', function (e) {
+        if ($table.is('.breakpoint')) {
+          var $row = $(this).is('tr') ? $(this) : $(this).parents('tr:first');
+          ft.toggleDetail($row.get(0));
+        }
+      });
+
+      ft.raise('footable_initializing');
+
+      $table.on('footable_initialized', function (e) {
+        //resize the footable onload
+        ft.resize();
+
+        //remove the loading class
+        $table.removeClass(cls.loading);
+
+        //hides all elements within the table that have the attribute data-hide="init"
+        $table.find('[data-init="hide"]').hide();
+        $table.find('[data-init="show"]').show();
+
+        //add the loaded class
+        $table.addClass(cls.loaded);
+      });
+
+      $window
+        .bind('resize.footable', function () {
+          ft.timers.resize.stop();
+          ft.timers.resize.start(function() {
+            ft.raise('footable_resizing');
+            ft.resize();
+            ft.raise('footable_resized');
+          }, opt.delay);
+        });
+
+      ft.raise('footable_initialized');
+    };
+
+    ft.parse = function(cell, column) {
+      var parser = opt.parsers[column.type] || opt.parsers.alpha;
+      return parser(cell);
+    };
+
+    ft.getColumnData = function(th) {
+      var $th = $(th), hide = $th.data('hide');
+      hide = hide || '';
+      hide = hide.split(',');
+      var data = {
+        'index': $th.index(),
+        'hide': { },
+        'type': $th.data('type') || 'alpha',
+        'name': $th.data('name') || $.trim($th.text()),
+        'ignore': $th.data('ignore') || false,
+        'className': $th.data('class') || null
+      };
+      data.hide['default'] = ($th.data('hide')==="all") || ($.inArray('default', hide) >= 0);
+
+      for(var name in opt.breakpoints) {
+        data.hide[name] = ($th.data('hide')==="all") || ($.inArray(name, hide) >= 0);
+      }
+      var e = ft.raise('footable_column_data', { 'column': { 'data': data, 'th': th } });
+      return e.column.data;
+    };
+
+    ft.getViewportWidth = function() {
+      return window.innerWidth || (document.body ? document.body.offsetWidth : 0);
+    };
+
+    ft.getViewportHeight = function() {
+      return window.innerHeight || (document.body ? document.body.offsetHeight : 0);
+    };
+
+    ft.hasBreakpointColumn = function(breakpoint) {
+      for(var c in ft.columns) {
+        if (ft.columns[c].hide[breakpoint]) {
+          return true;
+        }
+      }
+      return false;
+    };
+
+    ft.resize = function() {
+      var $table = $(ft.table);
+      var info = {
+        'width': $table.width(),                  //the table width
+        'height': $table.height(),                //the table height
+        'viewportWidth': ft.getViewportWidth(),   //the width of the viewport
+        'viewportHeight': ft.getViewportHeight(), //the width of the viewport
+        'orientation': null
+      };
+      info.orientation = info.viewportWidth > info.viewportHeight ? 'landscape' : 'portrait';
+
+      if (info.viewportWidth < info.width) info.width = info.viewportWidth;
+      if (info.viewportHeight < info.height) info.height = info.viewportHeight;
+
+      var pinfo = $table.data('footable_info');
+      $table.data('footable_info', info);
+
+      // This (if) statement is here purely to make sure events aren't raised twice as mobile safari seems to do
+      if (!pinfo || ((pinfo && pinfo.width && pinfo.width != info.width) || (pinfo && pinfo.height && pinfo.height != info.height))) {
+        var current = null, breakpoint;
+        for (var i = 0; i < ft.breakpoints.length; i++) {
+          breakpoint = ft.breakpoints[i];
+          if (breakpoint && breakpoint.width && info.width <= breakpoint.width) {
+            current = breakpoint;
+            break;
+          }
+        }
+
+        var breakpointName = (current == null ? 'default' : current['name']);
+
+        var hasBreakpointFired = ft.hasBreakpointColumn(breakpointName);
+
+        $table
+          .removeClass('default breakpoint').removeClass(ft.breakpointNames)
+          .addClass(breakpointName + (hasBreakpointFired ? ' breakpoint' : ''))
+          .find('> thead > tr > th').each(function() {
+            var data = ft.columns[$(this).index()];
+            var count = data.index + 1;
+            //get all the cells in the column
+            var $column = $table.find('> tbody > tr > td:nth-child(' + count + ')').add(this);
+
+            if (data.hide[breakpointName] == false) $column.show();
+            else $column.hide();
+          })
+          .end()
+          .find('> tbody > tr.footable-detail-show').each(function() {
+            ft.createOrUpdateDetailRow(this);
+          });
+
+        $table.find('> tbody > tr.footable-detail-show').each(function() {
+          var $next = $(this).next();
+          if ($next.hasClass('footable-row-detail')) {
+            if (breakpointName == 'default' && !hasBreakpointFired) $next.hide();
+            else $next.show();
+          }
+        });
+
+        ft.raise('footable_breakpoint_' + breakpointName, { 'info': info });
+      }
+    };
+
+    ft.toggleDetail = function(actualRow) {
+      var $row = $(actualRow),
+          created = ft.createOrUpdateDetailRow($row.get(0)),
+          $next = $row.next();
+
+      if (!created && $next.is(':visible')) {
+        $row.removeClass('footable-detail-show');
+        $next.hide();
+      } else {
+        $row.addClass('footable-detail-show');
+        $next.show();
+      }
+    };
+
+    ft.createOrUpdateDetailRow = function (actualRow) {
+      var $row = $(actualRow), $next = $row.next(), $detail, values = [];
+      $row.find('> td:hidden').each(function () {
+        var column = ft.columns[$(this).index()];
+        if (column.ignore == true) return true;
+        values.push({ 'name': column.name, 'value': ft.parse(this, column), 'display': $.trim($(this).html()) });
+      });
+      var colspan = $row.find('> td:visible').length;
+      var exists = $next.hasClass('footable-row-detail');
+      if (!exists) { // Create
+        $next = $('<tr class="footable-row-detail"><td class="footable-cell-detail"><div class="footable-row-detail-inner"></div></td></tr>');
+        $row.after($next);
+      }
+      $next.find('> td:first').attr('colspan', colspan);
+      $detail = $next.find('.footable-row-detail-inner').empty();
+      opt.createDetail($detail, values);
+      return !exists;
+    };
+
+    ft.raise = function(eventName, args) {
+      args = args || { };
+      var def = { 'ft': ft };
+      $.extend(true, def, args);
+      var e = $.Event(eventName, def);
+      $(ft.table).trigger(e);
+      return e;
+    };
+
+    ft.init();
+    return ft;
+  };
+})(jQuery, window);
+/* ===================================================
+ * bootstrap-transition.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#transitions
+ * ===================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+  /* CSS TRANSITION SUPPORT (http://www.modernizr.com/)
+   * ======================================================= */
+
+  $(function () {
+
+    $.support.transition = (function () {
+
+      var transitionEnd = (function () {
+
+        var el = document.createElement('bootstrap')
+          , transEndEventNames = {
+               'WebkitTransition' : 'webkitTransitionEnd'
+            ,  'MozTransition'    : 'transitionend'
+            ,  'OTransition'      : 'oTransitionEnd otransitionend'
+            ,  'transition'       : 'transitionend'
+            }
+          , name
+
+        for (name in transEndEventNames){
+          if (el.style[name] !== undefined) {
+            return transEndEventNames[name]
+          }
+        }
+
+      }())
+
+      return transitionEnd && {
+        end: transitionEnd
+      }
+
+    })()
+
+  })
+
+}(window.jQuery);
+/* ==========================================================
+ * bootstrap-affix.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#affix
+ * ==========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* AFFIX CLASS DEFINITION
+  * ====================== */
+
+  var Affix = function (element, options) {
+    this.options = $.extend({}, $.fn.affix.defaults, options)
+    this.$window = $(window)
+      .on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
+      .on('click.affix.data-api',  $.proxy(function () { setTimeout($.proxy(this.checkPosition, this), 1) }, this))
+    this.$element = $(element)
+    this.checkPosition()
+  }
+
+  Affix.prototype.checkPosition = function () {
+    if (!this.$element.is(':visible')) return
+
+    var scrollHeight = $(document).height()
+      , scrollTop = this.$window.scrollTop()
+      , position = this.$element.offset()
+      , offset = this.options.offset
+      , offsetBottom = offset.bottom
+      , offsetTop = offset.top
+      , reset = 'affix affix-top affix-bottom'
+      , affix
+
+    if (typeof offset != 'object') offsetBottom = offsetTop = offset
+    if (typeof offsetTop == 'function') offsetTop = offset.top()
+    if (typeof offsetBottom == 'function') offsetBottom = offset.bottom()
+
+    affix = this.unpin != null && (scrollTop + this.unpin <= position.top) ?
+      false    : offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ?
+      'bottom' : offsetTop != null && scrollTop <= offsetTop ?
+      'top'    : false
+
+    if (this.affixed === affix) return
+
+    this.affixed = affix
+    this.unpin = affix == 'bottom' ? position.top - scrollTop : null
+
+    this.$element.removeClass(reset).addClass('affix' + (affix ? '-' + affix : ''))
+  }
+
+
+ /* AFFIX PLUGIN DEFINITION
+  * ======================= */
+
+  var old = $.fn.affix
+
+  $.fn.affix = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('affix')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('affix', (data = new Affix(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.affix.Constructor = Affix
+
+  $.fn.affix.defaults = {
+    offset: 0
+  }
+
+
+ /* AFFIX NO CONFLICT
+  * ================= */
+
+  $.fn.affix.noConflict = function () {
+    $.fn.affix = old
+    return this
+  }
+
+
+ /* AFFIX DATA-API
+  * ============== */
+
+  $(window).on('load', function () {
+    $('[data-spy="affix"]').each(function () {
+      var $spy = $(this)
+        , data = $spy.data()
+
+      data.offset = data.offset || {}
+
+      data.offsetBottom && (data.offset.bottom = data.offsetBottom)
+      data.offsetTop && (data.offset.top = data.offsetTop)
+
+      $spy.affix(data)
+    })
+  })
+
+
+}(window.jQuery);
+/* ==========================================================
+ * bootstrap-alert.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#alerts
+ * ==========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* ALERT CLASS DEFINITION
+  * ====================== */
+
+  var dismiss = '[data-dismiss="alert"]'
+    , Alert = function (el) {
+        $(el).on('click', dismiss, this.close)
+      }
+
+  Alert.prototype.close = function (e) {
+    var $this = $(this)
+      , selector = $this.attr('data-target')
+      , $parent
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+    }
+
+    $parent = $(selector)
+
+    e && e.preventDefault()
+
+    $parent.length || ($parent = $this.hasClass('alert') ? $this : $this.parent())
+
+    $parent.trigger(e = $.Event('close'))
+
+    if (e.isDefaultPrevented()) return
+
+    $parent.removeClass('in')
+
+    function removeElement() {
+      $parent
+        .trigger('closed')
+        .remove()
+    }
+
+    $.support.transition && $parent.hasClass('fade') ?
+      $parent.on($.support.transition.end, removeElement) :
+      removeElement()
+  }
+
+
+ /* ALERT PLUGIN DEFINITION
+  * ======================= */
+
+  var old = $.fn.alert
+
+  $.fn.alert = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('alert')
+      if (!data) $this.data('alert', (data = new Alert(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  $.fn.alert.Constructor = Alert
+
+
+ /* ALERT NO CONFLICT
+  * ================= */
+
+  $.fn.alert.noConflict = function () {
+    $.fn.alert = old
+    return this
+  }
+
+
+ /* ALERT DATA-API
+  * ============== */
+
+  $(document).on('click.alert.data-api', dismiss, Alert.prototype.close)
+
+}(window.jQuery);
+/* ============================================================
+ * bootstrap-button.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#buttons
+ * ============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================ */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* BUTTON PUBLIC CLASS DEFINITION
+  * ============================== */
+
+  var Button = function (element, options) {
+    this.$element = $(element)
+    this.options = $.extend({}, $.fn.button.defaults, options)
+  }
+
+  Button.prototype.setState = function (state) {
+    var d = 'disabled'
+      , $el = this.$element
+      , data = $el.data()
+      , val = $el.is('input') ? 'val' : 'html'
+
+    state = state + 'Text'
+    data.resetText || $el.data('resetText', $el[val]())
+
+    $el[val](data[state] || this.options[state])
+
+    // push to event loop to allow forms to submit
+    setTimeout(function () {
+      state == 'loadingText' ?
+        $el.addClass(d).attr(d, d) :
+        $el.removeClass(d).removeAttr(d)
+    }, 0)
+  }
+
+  Button.prototype.toggle = function () {
+    var $parent = this.$element.closest('[data-toggle="buttons-radio"]')
+
+    $parent && $parent
+      .find('.active')
+      .removeClass('active')
+
+    this.$element.toggleClass('active')
+  }
+
+
+ /* BUTTON PLUGIN DEFINITION
+  * ======================== */
+
+  var old = $.fn.button
+
+  $.fn.button = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('button')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('button', (data = new Button(this, options)))
+      if (option == 'toggle') data.toggle()
+      else if (option) data.setState(option)
+    })
+  }
+
+  $.fn.button.defaults = {
+    loadingText: 'loading...'
+  }
+
+  $.fn.button.Constructor = Button
+
+
+ /* BUTTON NO CONFLICT
+  * ================== */
+
+  $.fn.button.noConflict = function () {
+    $.fn.button = old
+    return this
+  }
+
+
+ /* BUTTON DATA-API
+  * =============== */
+
+  $(document).on('click.button.data-api', '[data-toggle^=button]', function (e) {
+    var $btn = $(e.target)
+    if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
+    $btn.button('toggle')
+  })
+
+}(window.jQuery);
+/* ==========================================================
+ * bootstrap-carousel.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#carousel
+ * ==========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* CAROUSEL CLASS DEFINITION
+  * ========================= */
+
+  var Carousel = function (element, options) {
+    this.$element = $(element)
+    this.options = options
+    this.options.pause == 'hover' && this.$element
+      .on('mouseenter', $.proxy(this.pause, this))
+      .on('mouseleave', $.proxy(this.cycle, this))
+  }
+
+  Carousel.prototype = {
+
+    cycle: function (e) {
+      if (!e) this.paused = false
+      this.options.interval
+        && !this.paused
+        && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+      return this
+    }
+
+  , to: function (pos) {
+      var $active = this.$element.find('.item.active')
+        , children = $active.parent().children()
+        , activePos = children.index($active)
+        , that = this
+
+      if (pos > (children.length - 1) || pos < 0) return
+
+      if (this.sliding) {
+        return this.$element.one('slid', function () {
+          that.to(pos)
+        })
+      }
+
+      if (activePos == pos) {
+        return this.pause().cycle()
+      }
+
+      return this.slide(pos > activePos ? 'next' : 'prev', $(children[pos]))
+    }
+
+  , pause: function (e) {
+      if (!e) this.paused = true
+      if (this.$element.find('.next, .prev').length && $.support.transition.end) {
+        this.$element.trigger($.support.transition.end)
+        this.cycle()
+      }
+      clearInterval(this.interval)
+      this.interval = null
+      return this
+    }
+
+  , next: function () {
+      if (this.sliding) return
+      return this.slide('next')
+    }
+
+  , prev: function () {
+      if (this.sliding) return
+      return this.slide('prev')
+    }
+
+  , slide: function (type, next) {
+      var $active = this.$element.find('.item.active')
+        , $next = next || $active[type]()
+        , isCycling = this.interval
+        , direction = type == 'next' ? 'left' : 'right'
+        , fallback  = type == 'next' ? 'first' : 'last'
+        , that = this
+        , e
+
+      this.sliding = true
+
+      isCycling && this.pause()
+
+      $next = $next.length ? $next : this.$element.find('.item')[fallback]()
+
+      e = $.Event('slide', {
+        relatedTarget: $next[0]
+      })
+
+      if ($next.hasClass('active')) return
+
+      if ($.support.transition && this.$element.hasClass('slide')) {
+        this.$element.trigger(e)
+        if (e.isDefaultPrevented()) return
+        $next.addClass(type)
+        $next[0].offsetWidth // force reflow
+        $active.addClass(direction)
+        $next.addClass(direction)
+        this.$element.one($.support.transition.end, function () {
+          $next.removeClass([type, direction].join(' ')).addClass('active')
+          $active.removeClass(['active', direction].join(' '))
+          that.sliding = false
+          setTimeout(function () { that.$element.trigger('slid') }, 0)
+        })
+      } else {
+        this.$element.trigger(e)
+        if (e.isDefaultPrevented()) return
+        $active.removeClass('active')
+        $next.addClass('active')
+        this.sliding = false
+        this.$element.trigger('slid')
+      }
+
+      isCycling && this.cycle()
+
+      return this
+    }
+
+  }
+
+
+ /* CAROUSEL PLUGIN DEFINITION
+  * ========================== */
+
+  var old = $.fn.carousel
+
+  $.fn.carousel = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('carousel')
+        , options = $.extend({}, $.fn.carousel.defaults, typeof option == 'object' && option)
+        , action = typeof option == 'string' ? option : options.slide
+      if (!data) $this.data('carousel', (data = new Carousel(this, options)))
+      if (typeof option == 'number') data.to(option)
+      else if (action) data[action]()
+      else if (options.interval) data.cycle()
+    })
+  }
+
+  $.fn.carousel.defaults = {
+    interval: 5000
+  , pause: 'hover'
+  }
+
+  $.fn.carousel.Constructor = Carousel
+
+
+ /* CAROUSEL NO CONFLICT
+  * ==================== */
+
+  $.fn.carousel.noConflict = function () {
+    $.fn.carousel = old
+    return this
+  }
+
+ /* CAROUSEL DATA-API
+  * ================= */
+
+  $(document).on('click.carousel.data-api', '[data-slide]', function (e) {
+    var $this = $(this), href
+      , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
+      , options = $.extend({}, $target.data(), $this.data())
+    $target.carousel(options)
+    e.preventDefault()
+  })
+
+}(window.jQuery);
+/* =============================================================
+ * bootstrap-collapse.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#collapse
+ * =============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================ */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* COLLAPSE PUBLIC CLASS DEFINITION
+  * ================================ */
+
+  var Collapse = function (element, options) {
+    this.$element = $(element)
+    this.options = $.extend({}, $.fn.collapse.defaults, options)
+
+    if (this.options.parent) {
+      this.$parent = $(this.options.parent)
+    }
+
+    this.options.toggle && this.toggle()
+  }
+
+  Collapse.prototype = {
+
+    constructor: Collapse
+
+  , dimension: function () {
+      var hasWidth = this.$element.hasClass('width')
+      return hasWidth ? 'width' : 'height'
+    }
+
+  , show: function () {
+      var dimension
+        , scroll
+        , actives
+        , hasData
+
+      if (this.transitioning) return
+
+      dimension = this.dimension()
+      scroll = $.camelCase(['scroll', dimension].join('-'))
+      actives = this.$parent && this.$parent.find('> .accordion-group > .in')
+
+      if (actives && actives.length) {
+        hasData = actives.data('collapse')
+        if (hasData && hasData.transitioning) return
+        actives.collapse('hide')
+        hasData || actives.data('collapse', null)
+      }
+
+      this.$element[dimension](0)
+      this.transition('addClass', $.Event('show'), 'shown')
+      $.support.transition && this.$element[dimension](this.$element[0][scroll])
+    }
+
+  , hide: function () {
+      var dimension
+      if (this.transitioning) return
+      dimension = this.dimension()
+      this.reset(this.$element[dimension]())
+      this.transition('removeClass', $.Event('hide'), 'hidden')
+      this.$element[dimension](0)
+    }
+
+  , reset: function (size) {
+      var dimension = this.dimension()
+
+      this.$element
+        .removeClass('collapse')
+        [dimension](size || 'auto')
+        [0].offsetWidth
+
+      this.$element[size !== null ? 'addClass' : 'removeClass']('collapse')
+
+      return this
+    }
+
+  , transition: function (method, startEvent, completeEvent) {
+      var that = this
+        , complete = function () {
+            if (startEvent.type == 'show') that.reset()
+            that.transitioning = 0
+            that.$element.trigger(completeEvent)
+          }
+
+      this.$element.trigger(startEvent)
+
+      if (startEvent.isDefaultPrevented()) return
+
+      this.transitioning = 1
+
+      this.$element[method]('in')
+
+      $.support.transition && this.$element.hasClass('collapse') ?
+        this.$element.one($.support.transition.end, complete) :
+        complete()
+    }
+
+  , toggle: function () {
+      this[this.$element.hasClass('in') ? 'hide' : 'show']()
+    }
+
+  }
+
+
+ /* COLLAPSE PLUGIN DEFINITION
+  * ========================== */
+
+  var old = $.fn.collapse
+
+  $.fn.collapse = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('collapse')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('collapse', (data = new Collapse(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.collapse.defaults = {
+    toggle: true
+  }
+
+  $.fn.collapse.Constructor = Collapse
+
+
+ /* COLLAPSE NO CONFLICT
+  * ==================== */
+
+  $.fn.collapse.noConflict = function () {
+    $.fn.collapse = old
+    return this
+  }
+
+
+ /* COLLAPSE DATA-API
+  * ================= */
+
+  $(document).on('click.collapse.data-api', '[data-toggle=collapse]', function (e) {
+    var $this = $(this), href
+      , target = $this.attr('data-target')
+        || e.preventDefault()
+        || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+      , option = $(target).data('collapse') ? 'toggle' : $this.data()
+    $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+    $(target).collapse(option)
+  })
+
+}(window.jQuery);
+/* ============================================================
+ * bootstrap-dropdown.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#dropdowns
+ * ============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================ */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* DROPDOWN CLASS DEFINITION
+  * ========================= */
+
+  var toggle = '[data-toggle=dropdown]'
+    , Dropdown = function (element) {
+        var $el = $(element).on('click.dropdown.data-api', this.toggle)
+        $('html').on('click.dropdown.data-api', function () {
+          $el.parent().removeClass('open')
+        })
+      }
+
+  Dropdown.prototype = {
+
+    constructor: Dropdown
+
+  , toggle: function (e) {
+      var $this = $(this)
+        , $parent
+        , isActive
+
+      if ($this.is('.disabled, :disabled')) return
+
+      $parent = getParent($this)
+
+      isActive = $parent.hasClass('open')
+
+      clearMenus()
+
+      if (!isActive) {
+        $parent.toggleClass('open')
+      }
+
+      $this.focus()
+
+      return false
+    }
+
+  , keydown: function (e) {
+      var $this
+        , $items
+        , $active
+        , $parent
+        , isActive
+        , index
+
+      if (!/(38|40|27)/.test(e.keyCode)) return
+
+      $this = $(this)
+
+      e.preventDefault()
+      e.stopPropagation()
+
+      if ($this.is('.disabled, :disabled')) return
+
+      $parent = getParent($this)
+
+      isActive = $parent.hasClass('open')
+
+      if (!isActive || (isActive && e.keyCode == 27)) return $this.click()
+
+      $items = $('[role=menu] li:not(.divider):visible a', $parent)
+
+      if (!$items.length) return
+
+      index = $items.index($items.filter(':focus'))
+
+      if (e.keyCode == 38 && index > 0) index--                                        // up
+      if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
+      if (!~index) index = 0
+
+      $items
+        .eq(index)
+        .focus()
+    }
+
+  }
+
+  function clearMenus() {
+    $(toggle).each(function () {
+      getParent($(this)).removeClass('open')
+    })
+  }
+
+  function getParent($this) {
+    var selector = $this.attr('data-target')
+      , $parent
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+    }
+
+    $parent = $(selector)
+    $parent.length || ($parent = $this.parent())
+
+    return $parent
+  }
+
+
+  /* DROPDOWN PLUGIN DEFINITION
+   * ========================== */
+
+  var old = $.fn.dropdown
+
+  $.fn.dropdown = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('dropdown')
+      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  $.fn.dropdown.Constructor = Dropdown
+
+
+ /* DROPDOWN NO CONFLICT
+  * ==================== */
+
+  $.fn.dropdown.noConflict = function () {
+    $.fn.dropdown = old
+    return this
+  }
+
+
+  /* APPLY TO STANDARD DROPDOWN ELEMENTS
+   * =================================== */
+
+  $(document)
+    .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
+    .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() })
+    .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
+    .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+
+}(window.jQuery);
+/* =========================================================
+ * bootstrap-modal.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#modals
+ * =========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================= */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* MODAL CLASS DEFINITION
+  * ====================== */
+
+  var Modal = function (element, options) {
+    this.options = options
+    this.$element = $(element)
+      .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+    this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
+  }
+
+  Modal.prototype = {
+
+      constructor: Modal
+
+    , toggle: function () {
+        return this[!this.isShown ? 'show' : 'hide']()
+      }
+
+    , show: function () {
+        var that = this
+          , e = $.Event('show')
+
+        this.$element.trigger(e)
+
+        if (this.isShown || e.isDefaultPrevented()) return
+
+        this.isShown = true
+
+        this.escape()
+
+        this.backdrop(function () {
+          var transition = $.support.transition && that.$element.hasClass('fade')
+
+          if (!that.$element.parent().length) {
+            that.$element.appendTo(document.body) //don't move modals dom position
+          }
+
+          that.$element
+            .show()
+
+          if (transition) {
+            that.$element[0].offsetWidth // force reflow
+          }
+
+          that.$element
+            .addClass('in')
+            .attr('aria-hidden', false)
+
+          that.enforceFocus()
+
+          transition ?
+            that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown') }) :
+            that.$element.focus().trigger('shown')
+
+        })
+      }
+
+    , hide: function (e) {
+        e && e.preventDefault()
+
+        var that = this
+
+        e = $.Event('hide')
+
+        this.$element.trigger(e)
+
+        if (!this.isShown || e.isDefaultPrevented()) return
+
+        this.isShown = false
+
+        this.escape()
+
+        $(document).off('focusin.modal')
+
+        this.$element
+          .removeClass('in')
+          .attr('aria-hidden', true)
+
+        $.support.transition && this.$element.hasClass('fade') ?
+          this.hideWithTransition() :
+          this.hideModal()
+      }
+
+    , enforceFocus: function () {
+        var that = this
+        $(document).on('focusin.modal', function (e) {
+          if (that.$element[0] !== e.target && !that.$element.has(e.target).length) {
+            that.$element.focus()
+          }
+        })
+      }
+
+    , escape: function () {
+        var that = this
+        if (this.isShown && this.options.keyboard) {
+          this.$element.on('keyup.dismiss.modal', function ( e ) {
+            e.which == 27 && that.hide()
+          })
+        } else if (!this.isShown) {
+          this.$element.off('keyup.dismiss.modal')
+        }
+      }
+
+    , hideWithTransition: function () {
+        var that = this
+          , timeout = setTimeout(function () {
+              that.$element.off($.support.transition.end)
+              that.hideModal()
+            }, 500)
+
+        this.$element.one($.support.transition.end, function () {
+          clearTimeout(timeout)
+          that.hideModal()
+        })
+      }
+
+    , hideModal: function (that) {
+        this.$element
+          .hide()
+          .trigger('hidden')
+
+        this.backdrop()
+      }
+
+    , removeBackdrop: function () {
+        this.$backdrop.remove()
+        this.$backdrop = null
+      }
+
+    , backdrop: function (callback) {
+        var that = this
+          , animate = this.$element.hasClass('fade') ? 'fade' : ''
+
+        if (this.isShown && this.options.backdrop) {
+          var doAnimate = $.support.transition && animate
+
+          this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+            .appendTo(document.body)
+
+          this.$backdrop.click(
+            this.options.backdrop == 'static' ?
+              $.proxy(this.$element[0].focus, this.$element[0])
+            : $.proxy(this.hide, this)
+          )
+
+          if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
+
+          this.$backdrop.addClass('in')
+
+          doAnimate ?
+            this.$backdrop.one($.support.transition.end, callback) :
+            callback()
+
+        } else if (!this.isShown && this.$backdrop) {
+          this.$backdrop.removeClass('in')
+
+          $.support.transition && this.$element.hasClass('fade')?
+            this.$backdrop.one($.support.transition.end, $.proxy(this.removeBackdrop, this)) :
+            this.removeBackdrop()
+
+        } else if (callback) {
+          callback()
+        }
+      }
+  }
+
+
+ /* MODAL PLUGIN DEFINITION
+  * ======================= */
+
+  var old = $.fn.modal
+
+  $.fn.modal = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('modal')
+        , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
+      if (!data) $this.data('modal', (data = new Modal(this, options)))
+      if (typeof option == 'string') data[option]()
+      else if (options.show) data.show()
+    })
+  }
+
+  $.fn.modal.defaults = {
+      backdrop: true
+    , keyboard: true
+    , show: true
+  }
+
+  $.fn.modal.Constructor = Modal
+
+
+ /* MODAL NO CONFLICT
+  * ================= */
+
+  $.fn.modal.noConflict = function () {
+    $.fn.modal = old
+    return this
+  }
+
+
+ /* MODAL DATA-API
+  * ============== */
+
+  $(document).on('click.modal.data-api', '[data-toggle="modal"]', function (e) {
+    var $this = $(this)
+      , href = $this.attr('href')
+      , $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
+      , option = $target.data('modal') ? 'toggle' : $.extend({ remote:!/#/.test(href) && href }, $target.data(), $this.data())
+
+    e.preventDefault()
+
+    $target
+      .modal(option)
+      .one('hide', function () {
+        $this.focus()
+      })
+  })
+
+}(window.jQuery);
+/* =============================================================
+ * bootstrap-scrollspy.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#scrollspy
+ * =============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================== */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* SCROLLSPY CLASS DEFINITION
+  * ========================== */
+
+  function ScrollSpy(element, options) {
+    var process = $.proxy(this.process, this)
+      , $element = $(element).is('body') ? $(window) : $(element)
+      , href
+    this.options = $.extend({}, $.fn.scrollspy.defaults, options)
+    this.$scrollElement = $element.on('scroll.scroll-spy.data-api', process)
+    this.selector = (this.options.target
+      || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
+      || '') + ' .nav li > a'
+    this.$body = $('body')
+    this.refresh()
+    this.process()
+  }
+
+  ScrollSpy.prototype = {
+
+      constructor: ScrollSpy
+
+    , refresh: function () {
+        var self = this
+          , $targets
+
+        this.offsets = $([])
+        this.targets = $([])
+
+        $targets = this.$body
+          .find(this.selector)
+          .map(function () {
+            var $el = $(this)
+              , href = $el.data('target') || $el.attr('href')
+              , $href = /^#\w/.test(href) && $(href)
+            return ( $href
+              && $href.length
+              && [[ $href.position().top + self.$scrollElement.scrollTop(), href ]] ) || null
+          })
+          .sort(function (a, b) { return a[0] - b[0] })
+          .each(function () {
+            self.offsets.push(this[0])
+            self.targets.push(this[1])
+          })
+      }
+
+    , process: function () {
+        var scrollTop = this.$scrollElement.scrollTop() + this.options.offset
+          , scrollHeight = this.$scrollElement[0].scrollHeight || this.$body[0].scrollHeight
+          , maxScroll = scrollHeight - this.$scrollElement.height()
+          , offsets = this.offsets
+          , targets = this.targets
+          , activeTarget = this.activeTarget
+          , i
+
+        if (scrollTop >= maxScroll) {
+          return activeTarget != (i = targets.last()[0])
+            && this.activate ( i )
+        }
+
+        for (i = offsets.length; i--;) {
+          activeTarget != targets[i]
+            && scrollTop >= offsets[i]
+            && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+            && this.activate( targets[i] )
+        }
+      }
+
+    , activate: function (target) {
+        var active
+          , selector
+
+        this.activeTarget = target
+
+        $(this.selector)
+          .parent('.active')
+          .removeClass('active')
+
+        selector = this.selector
+          + '[data-target="' + target + '"],'
+          + this.selector + '[href="' + target + '"]'
+
+        active = $(selector)
+          .parent('li')
+          .addClass('active')
+
+        if (active.parent('.dropdown-menu').length)  {
+          active = active.closest('li.dropdown').addClass('active')
+        }
+
+        active.trigger('activate')
+      }
+
+  }
+
+
+ /* SCROLLSPY PLUGIN DEFINITION
+  * =========================== */
+
+  var old = $.fn.scrollspy
+
+  $.fn.scrollspy = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('scrollspy')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('scrollspy', (data = new ScrollSpy(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.scrollspy.Constructor = ScrollSpy
+
+  $.fn.scrollspy.defaults = {
+    offset: 10
+  }
+
+
+ /* SCROLLSPY NO CONFLICT
+  * ===================== */
+
+  $.fn.scrollspy.noConflict = function () {
+    $.fn.scrollspy = old
+    return this
+  }
+
+
+ /* SCROLLSPY DATA-API
+  * ================== */
+
+  $(window).on('load', function () {
+    $('[data-spy="scroll"]').each(function () {
+      var $spy = $(this)
+      $spy.scrollspy($spy.data())
+    })
+  })
+
+}(window.jQuery);
+/* ========================================================
+ * bootstrap-tab.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#tabs
+ * ========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ======================================================== */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* TAB CLASS DEFINITION
+  * ==================== */
+
+  var Tab = function (element) {
+    this.element = $(element)
+  }
+
+  Tab.prototype = {
+
+    constructor: Tab
+
+  , show: function () {
+      var $this = this.element
+        , $ul = $this.closest('ul:not(.dropdown-menu)')
+        , selector = $this.attr('data-target')
+        , previous
+        , $target
+        , e
+
+      if (!selector) {
+        selector = $this.attr('href')
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      }
+
+      if ( $this.parent('li').hasClass('active') ) return
+
+      previous = $ul.find('.active:last a')[0]
+
+      e = $.Event('show', {
+        relatedTarget: previous
+      })
+
+      $this.trigger(e)
+
+      if (e.isDefaultPrevented()) return
+
+      $target = $(selector)
+
+      this.activate($this.parent('li'), $ul)
+      this.activate($target, $target.parent(), function () {
+        $this.trigger({
+          type: 'shown'
+        , relatedTarget: previous
+        })
+      })
+    }
+
+  , activate: function ( element, container, callback) {
+      var $active = container.find('> .active')
+        , transition = callback
+            && $.support.transition
+            && $active.hasClass('fade')
+
+      function next() {
+        $active
+          .removeClass('active')
+          .find('> .dropdown-menu > .active')
+          .removeClass('active')
+
+        element.addClass('active')
+
+        if (transition) {
+          element[0].offsetWidth // reflow for transition
+          element.addClass('in')
+        } else {
+          element.removeClass('fade')
+        }
+
+        if ( element.parent('.dropdown-menu') ) {
+          element.closest('li.dropdown').addClass('active')
+        }
+
+        callback && callback()
+      }
+
+      transition ?
+        $active.one($.support.transition.end, next) :
+        next()
+
+      $active.removeClass('in')
+    }
+  }
+
+
+ /* TAB PLUGIN DEFINITION
+  * ===================== */
+
+  var old = $.fn.tab
+
+  $.fn.tab = function ( option ) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('tab')
+      if (!data) $this.data('tab', (data = new Tab(this)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.tab.Constructor = Tab
+
+
+ /* TAB NO CONFLICT
+  * =============== */
+
+  $.fn.tab.noConflict = function () {
+    $.fn.tab = old
+    return this
+  }
+
+
+ /* TAB DATA-API
+  * ============ */
+
+  $(document).on('click.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+
+}(window.jQuery);
+/* ===========================================================
+ * bootstrap-tooltip.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#tooltips
+ * Inspired by the original jQuery.tipsy by Jason Frame
+ * ===========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================== */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* TOOLTIP PUBLIC CLASS DEFINITION
+  * =============================== */
+
+  var Tooltip = function (element, options) {
+    this.init('tooltip', element, options)
+  }
+
+  Tooltip.prototype = {
+
+    constructor: Tooltip
+
+  , init: function (type, element, options) {
+      var eventIn
+        , eventOut
+
+      this.type = type
+      this.$element = $(element)
+      this.options = this.getOptions(options)
+      this.enabled = true
+
+      if (this.options.trigger == 'click') {
+        this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
+      } else if (this.options.trigger != 'manual') {
+        eventIn = this.options.trigger == 'hover' ? 'mouseenter' : 'focus'
+        eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
+        this.$element.on(eventIn + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
+        this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+      }
+
+      this.options.selector ?
+        (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
+        this.fixTitle()
+    }
+
+  , getOptions: function (options) {
+      options = $.extend({}, $.fn[this.type].defaults, options, this.$element.data())
+
+      if (options.delay && typeof options.delay == 'number') {
+        options.delay = {
+          show: options.delay
+        , hide: options.delay
+        }
+      }
+
+      return options
+    }
+
+  , enter: function (e) {
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+
+      if (!self.options.delay || !self.options.delay.show) return self.show()
+
+      clearTimeout(this.timeout)
+      self.hoverState = 'in'
+      this.timeout = setTimeout(function() {
+        if (self.hoverState == 'in') self.show()
+      }, self.options.delay.show)
+    }
+
+  , leave: function (e) {
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+
+      if (this.timeout) clearTimeout(this.timeout)
+      if (!self.options.delay || !self.options.delay.hide) return self.hide()
+
+      self.hoverState = 'out'
+      this.timeout = setTimeout(function() {
+        if (self.hoverState == 'out') self.hide()
+      }, self.options.delay.hide)
+    }
+
+  , show: function () {
+      var $tip
+        , inside
+        , pos
+        , actualWidth
+        , actualHeight
+        , placement
+        , tp
+
+      if (this.hasContent() && this.enabled) {
+        $tip = this.tip()
+        this.setContent()
+
+        if (this.options.animation) {
+          $tip.addClass('fade')
+        }
+
+        placement = typeof this.options.placement == 'function' ?
+          this.options.placement.call(this, $tip[0], this.$element[0]) :
+          this.options.placement
+
+        inside = /in/.test(placement)
+
+        $tip
+          .detach()
+          .css({ top: 0, left: 0, display: 'block' })
+          .insertAfter(this.$element)
+
+        pos = this.getPosition(inside)
+
+        actualWidth = $tip[0].offsetWidth
+        actualHeight = $tip[0].offsetHeight
+
+        switch (inside ? placement.split(' ')[1] : placement) {
+          case 'bottom':
+            tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
+            break
+          case 'top':
+            tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
+            break
+          case 'left':
+            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
+            break
+          case 'right':
+            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
+            break
+        }
+
+        $tip
+          .offset(tp)
+          .addClass(placement)
+          .addClass('in')
+      }
+    }
+
+  , setContent: function () {
+      var $tip = this.tip()
+        , title = this.getTitle()
+
+      $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
+      $tip.removeClass('fade in top bottom left right')
+    }
+
+  , hide: function () {
+      var that = this
+        , $tip = this.tip()
+
+      $tip.removeClass('in')
+
+      function removeWithAnimation() {
+        var timeout = setTimeout(function () {
+          $tip.off($.support.transition.end).detach()
+        }, 500)
+
+        $tip.one($.support.transition.end, function () {
+          clearTimeout(timeout)
+          $tip.detach()
+        })
+      }
+
+      $.support.transition && this.$tip.hasClass('fade') ?
+        removeWithAnimation() :
+        $tip.detach()
+
+      return this
+    }
+
+  , fixTitle: function () {
+      var $e = this.$element
+      if ($e.attr('title') || typeof($e.attr('data-original-title')) != 'string') {
+        $e.attr('data-original-title', $e.attr('title') || '').removeAttr('title')
+      }
+    }
+
+  , hasContent: function () {
+      return this.getTitle()
+    }
+
+  , getPosition: function (inside) {
+      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
+        width: this.$element[0].offsetWidth
+      , height: this.$element[0].offsetHeight
+      })
+    }
+
+  , getTitle: function () {
+      var title
+        , $e = this.$element
+        , o = this.options
+
+      title = $e.attr('data-original-title')
+        || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+
+      return title
+    }
+
+  , tip: function () {
+      return this.$tip = this.$tip || $(this.options.template)
+    }
+
+  , validate: function () {
+      if (!this.$element[0].parentNode) {
+        this.hide()
+        this.$element = null
+        this.options = null
+      }
+    }
+
+  , enable: function () {
+      this.enabled = true
+    }
+
+  , disable: function () {
+      this.enabled = false
+    }
+
+  , toggleEnabled: function () {
+      this.enabled = !this.enabled
+    }
+
+  , toggle: function (e) {
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+      self[self.tip().hasClass('in') ? 'hide' : 'show']()
+    }
+
+  , destroy: function () {
+      this.hide().$element.off('.' + this.type).removeData(this.type)
+    }
+
+  }
+
+
+ /* TOOLTIP PLUGIN DEFINITION
+  * ========================= */
+
+  var old = $.fn.tooltip
+
+  $.fn.tooltip = function ( option ) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('tooltip')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('tooltip', (data = new Tooltip(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.tooltip.Constructor = Tooltip
+
+  $.fn.tooltip.defaults = {
+    animation: true
+  , placement: 'top'
+  , selector: false
+  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , trigger: 'hover'
+  , title: ''
+  , delay: 0
+  , html: false
+  }
+
+
+ /* TOOLTIP NO CONFLICT
+  * =================== */
+
+  $.fn.tooltip.noConflict = function () {
+    $.fn.tooltip = old
+    return this
+  }
+
+}(window.jQuery);
+/* ===========================================================
+ * bootstrap-popover.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#popovers
+ * ===========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =========================================================== */
+
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* POPOVER PUBLIC CLASS DEFINITION
+  * =============================== */
+
+  var Popover = function (element, options) {
+    this.init('popover', element, options)
+  }
+
+
+  /* NOTE: POPOVER EXTENDS BOOTSTRAP-TOOLTIP.js
+     ========================================== */
+
+  Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype, {
+
+    constructor: Popover
+
+  , setContent: function () {
+      var $tip = this.tip()
+        , title = this.getTitle()
+        , content = this.getContent()
+
+      $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
+      $tip.find('.popover-content')[this.options.html ? 'html' : 'text'](content)
+
+      $tip.removeClass('fade top bottom left right in')
+    }
+
+  , hasContent: function () {
+      return this.getTitle() || this.getContent()
+    }
+
+  , getContent: function () {
+      var content
+        , $e = this.$element
+        , o = this.options
+
+      content = $e.attr('data-content')
+        || (typeof o.content == 'function' ? o.content.call($e[0]) :  o.content)
+
+      return content
+    }
+
+  , tip: function () {
+      if (!this.$tip) {
+        this.$tip = $(this.options.template)
+      }
+      return this.$tip
+    }
+
+  , destroy: function () {
+      this.hide().$element.off('.' + this.type).removeData(this.type)
+    }
+
+  })
+
+
+ /* POPOVER PLUGIN DEFINITION
+  * ======================= */
+
+  var old = $.fn.popover
+
+  $.fn.popover = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('popover')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('popover', (data = new Popover(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.popover.Constructor = Popover
+
+  $.fn.popover.defaults = $.extend({} , $.fn.tooltip.defaults, {
+    placement: 'right'
+  , trigger: 'click'
+  , content: ''
+  , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"></div></div></div>'
+  })
+
+
+ /* POPOVER NO CONFLICT
+  * =================== */
+
+  $.fn.popover.noConflict = function () {
+    $.fn.popover = old
+    return this
+  }
+
+}(window.jQuery);
+/* =============================================================
+ * bootstrap-typeahead.js v2.2.2
+ * http://twitter.github.com/bootstrap/javascript.html#typeahead
+ * =============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================ */
+
+
+
+!function($){
+
+  "use strict"; // jshint ;_;
+
+
+ /* TYPEAHEAD PUBLIC CLASS DEFINITION
+  * ================================= */
+
+  var Typeahead = function (element, options) {
+    this.$element = $(element)
+    this.options = $.extend({}, $.fn.typeahead.defaults, options)
+    this.matcher = this.options.matcher || this.matcher
+    this.sorter = this.options.sorter || this.sorter
+    this.highlighter = this.options.highlighter || this.highlighter
+    this.updater = this.options.updater || this.updater
+    this.source = this.options.source
+    this.$menu = $(this.options.menu)
+    this.shown = false
+    this.listen()
+  }
+
+  Typeahead.prototype = {
+
+    constructor: Typeahead
+
+  , select: function () {
+      var val = this.$menu.find('.active').attr('data-value')
+      this.$element
+        .val(this.updater(val))
+        .change()
+      return this.hide()
+    }
+
+  , updater: function (item) {
+      return item
+    }
+
+  , show: function () {
+      var pos = $.extend({}, this.$element.position(), {
+        height: this.$element[0].offsetHeight
+      })
+
+      this.$menu
+        .insertAfter(this.$element)
+        .css({
+          top: pos.top + pos.height
+        , left: pos.left
+        })
+        .show()
+
+      this.shown = true
+      return this
+    }
+
+  , hide: function () {
+      this.$menu.hide()
+      this.shown = false
+      return this
+    }
+
+  , lookup: function (event) {
+      var items
+
+      this.query = this.$element.val()
+
+      if (!this.query || this.query.length < this.options.minLength) {
+        return this.shown ? this.hide() : this
+      }
+
+      items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
+
+      return items ? this.process(items) : this
+    }
+
+  , process: function (items) {
+      var that = this
+
+      items = $.grep(items, function (item) {
+        return that.matcher(item)
+      })
+
+      items = this.sorter(items)
+
+      if (!items.length) {
+        return this.shown ? this.hide() : this
+      }
+
+      return this.render(items.slice(0, this.options.items)).show()
+    }
+
+  , matcher: function (item) {
+      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+    }
+
+  , sorter: function (items) {
+      var beginswith = []
+        , caseSensitive = []
+        , caseInsensitive = []
+        , item
+
+      while (item = items.shift()) {
+        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+        else if (~item.indexOf(this.query)) caseSensitive.push(item)
+        else caseInsensitive.push(item)
+      }
+
+      return beginswith.concat(caseSensitive, caseInsensitive)
+    }
+
+  , highlighter: function (item) {
+      var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
+      return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+        return '<strong>' + match + '</strong>'
+      })
+    }
+
+  , render: function (items) {
+      var that = this
+
+      items = $(items).map(function (i, item) {
+        i = $(that.options.item).attr('data-value', item)
+        i.find('a').html(that.highlighter(item))
+        return i[0]
+      })
+
+      items.first().addClass('active')
+      this.$menu.html(items)
+      return this
+    }
+
+  , next: function (event) {
+      var active = this.$menu.find('.active').removeClass('active')
+        , next = active.next()
+
+      if (!next.length) {
+        next = $(this.$menu.find('li')[0])
+      }
+
+      next.addClass('active')
+    }
+
+  , prev: function (event) {
+      var active = this.$menu.find('.active').removeClass('active')
+        , prev = active.prev()
+
+      if (!prev.length) {
+        prev = this.$menu.find('li').last()
+      }
+
+      prev.addClass('active')
+    }
+
+  , listen: function () {
+      this.$element
+        .on('blur',     $.proxy(this.blur, this))
+        .on('keypress', $.proxy(this.keypress, this))
+        .on('keyup',    $.proxy(this.keyup, this))
+
+      if (this.eventSupported('keydown')) {
+        this.$element.on('keydown', $.proxy(this.keydown, this))
+      }
+
+      this.$menu
+        .on('click', $.proxy(this.click, this))
+        .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
+    }
+
+  , eventSupported: function(eventName) {
+      var isSupported = eventName in this.$element
+      if (!isSupported) {
+        this.$element.setAttribute(eventName, 'return;')
+        isSupported = typeof this.$element[eventName] === 'function'
+      }
+      return isSupported
+    }
+
+  , move: function (e) {
+      if (!this.shown) return
+
+      switch(e.keyCode) {
+        case 9: // tab
+        case 13: // enter
+        case 27: // escape
+          e.preventDefault()
+          break
+
+        case 38: // up arrow
+          e.preventDefault()
+          this.prev()
+          break
+
+        case 40: // down arrow
+          e.preventDefault()
+          this.next()
+          break
+      }
+
+      e.stopPropagation()
+    }
+
+  , keydown: function (e) {
+      this.suppressKeyPressRepeat = ~$.inArray(e.keyCode, [40,38,9,13,27])
+      this.move(e)
+    }
+
+  , keypress: function (e) {
+      if (this.suppressKeyPressRepeat) return
+      this.move(e)
+    }
+
+  , keyup: function (e) {
+      switch(e.keyCode) {
+        case 40: // down arrow
+        case 38: // up arrow
+        case 16: // shift
+        case 17: // ctrl
+        case 18: // alt
+          break
+
+        case 9: // tab
+        case 13: // enter
+          if (!this.shown) return
+          this.select()
+          break
+
+        case 27: // escape
+          if (!this.shown) return
+          this.hide()
+          break
+
+        default:
+          this.lookup()
+      }
+
+      e.stopPropagation()
+      e.preventDefault()
+  }
+
+  , blur: function (e) {
+      var that = this
+      setTimeout(function () { that.hide() }, 150)
+    }
+
+  , click: function (e) {
+      e.stopPropagation()
+      e.preventDefault()
+      this.select()
+    }
+
+  , mouseenter: function (e) {
+      this.$menu.find('.active').removeClass('active')
+      $(e.currentTarget).addClass('active')
+    }
+
+  }
+
+
+  /* TYPEAHEAD PLUGIN DEFINITION
+   * =========================== */
+
+  var old = $.fn.typeahead
+
+  $.fn.typeahead = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('typeahead')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('typeahead', (data = new Typeahead(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.typeahead.defaults = {
+    source: []
+  , items: 8
+  , menu: '<ul class="typeahead dropdown-menu"></ul>'
+  , item: '<li><a href="#"></a></li>'
+  , minLength: 1
+  }
+
+  $.fn.typeahead.Constructor = Typeahead
+
+
+ /* TYPEAHEAD NO CONFLICT
+  * =================== */
+
+  $.fn.typeahead.noConflict = function () {
+    $.fn.typeahead = old
+    return this
+  }
+
+
+ /* TYPEAHEAD DATA-API
+  * ================== */
+
+  $(document).on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
+    var $this = $(this)
+    if ($this.data('typeahead')) return
+    e.preventDefault()
+    $this.typeahead($this.data())
+  })
+
+}(window.jQuery);
+
+
+
+
+
+
+
+
+
+
+
+
+
 (function() {
 
   $(function() {
+    var jRes, stickyPanelOptions;
     if (!("placeholder" in document.createElement("input"))) {
       $("input[placeholder]").each(function() {
         var val;
@@ -25332,14 +28397,53 @@ $.widget( "ui.tooltip", {
         }
       });
     });
-    return $('ul.sortable').sortable({
-      handle: 'i.icon-move',
-      appendTo: 'body',
-      helper: 'clone'
+    jRes = jRespond([
+      {
+        label: "handheld",
+        enter: 0,
+        exit: 767
+      }, {
+        label: "tablet",
+        enter: 768,
+        exit: 10000
+      }
+    ]);
+    stickyPanelOptions = {
+      afterDetachCSSClass: "attached",
+      savePanelSpace: true
+    };
+    $(".navbar").stickyPanel(stickyPanelOptions);
+    jRes.addFunc({
+      breakpoint: "handheld",
+      enter: function() {
+        return $('.content-block h2').fitText(1.1);
+      }
+    });
+    jRes.addFunc({
+      breakpoint: "tablet",
+      enter: function() {
+        return $("body").pageScroller({
+          navigation: ".nav",
+          scrollOffset: -80
+        });
+      }
+    });
+    $('.header-content h2').fitText(.71);
+    return $(".footable").footable({
+      breakpoints: {
+        phone: 320,
+        tablet: 767
+      }
     });
   });
 
 }).call(this);
+
+
+
+
+
+
 
 
 

@@ -1,5 +1,7 @@
 $ ->
 
+
+
     # Make sure older browsers support the HTML5 Placeholder Attribute
     unless "placeholder" of document.createElement("input")
       $("input[placeholder]").each ->
@@ -15,8 +17,48 @@ $ ->
       $(this).find("input[placeholder]").each ->
         @value = ""  if @value is $(this).attr("placeholder")
 
-    $('ul.sortable').sortable
-      handle: 'i.icon-move'
-      appendTo: 'body'
-      helper: 'clone'
-      #  $('<div></div>').text('element').css({ width: 'auto' })
+
+    # call jRespond and add breakpoints
+    jRes = jRespond([
+      label: "handheld"
+      enter: 0
+      exit: 767
+    ,
+      label: "tablet"
+      enter: 768
+      exit: 10000
+    ])
+
+    #Sticky Panel
+    stickyPanelOptions =
+      afterDetachCSSClass: "attached"
+      savePanelSpace: true
+
+    $(".navbar").stickyPanel stickyPanelOptions
+
+    # register enter and exit functions for a single breakpoint
+    jRes.addFunc
+      breakpoint: "handheld"
+      enter: ->
+        $('.content-block h2').fitText(1.1)
+
+    jRes.addFunc
+      breakpoint: "tablet"
+      enter: ->
+        #Page Scroller Plugin
+        $("body").pageScroller
+          navigation: ".nav"
+          scrollOffset: -80
+
+    
+
+    $('.header-content h2').fitText(.71)
+
+    $(".footable").footable breakpoints:
+      phone: 320
+      tablet: 767
+    
+
+
+
+

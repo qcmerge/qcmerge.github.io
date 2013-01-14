@@ -11,15 +11,15 @@ Important Number: 32px (1.778em) @ 1:1.618
 // GLOBAL VALUES
 // --------------------------------------------------
 
-// Background
-$backgroundColor:                  #000;
+
 
 // Grays
 $black:                            #000;
+$almostBlack:                      #101010;
 $grayDarker:                       #222;
 $grayDark:                         #333;
-$gray:                             #555;
-$grayLight:                        #999;
+$gray:                             #9C9C9C;
+$grayLight:                        #B2B2B2;
 $grayLighter:                      #eee;
 $white:                            #fff;
       
@@ -30,7 +30,7 @@ $green:                            #46a546;
 $red:                              #9d261d;
 $yellow:                           #ffc40d;
 $orange:                           #f89406;
-$pink:                             #EA078B;
+$pink:                             #EE219A;
 $purple:                           #7a43b6;
 
 // Links
@@ -38,18 +38,21 @@ $linkColor:                        $pink;
 $linkColorHover:                   darken($linkColor, 15%);
 
 // Typography                    
-$baseFontSize:                     15px;
-$baseFontFamily:                   "droid-serif", Georgia, serif;
+$baseFontSize:                     16px;
+$baseFontFamily:                   "pt-sans", Helvetica, Arial, sans-serif;
 $headlineFontFamily:               "franklin-gothic-urw-comp", "Arial Narrow", Helvetica, Arial, sans-serif;
-$altHeadlineFontFamily:            "franklin-gothic-ext-comp-urw", sans-serif;
-$baseLineHeight:                   1.5em;
-$textColor:                        $black;
+$navFontFamily:                    "franklin-gothic-ext-comp-urw";
+$baseLineHeight:                   1.5;
+$textColor:                        $almostBlack;
+
+// Background
+$backgroundColor:                  $black;
 
 // Buttons                         
 $primaryButtonBackground:          $linkColor;
 
 //Borders
-$borderColor:                      #1a1a1a;
+$borderColor:                      $grayLighter;
 
 // COMPONENT VARIABLES
 // --------------------------------------------------
@@ -60,16 +63,20 @@ $placeholderText:                 $grayLight;
 
 // GRID
 // --------------------------------------------------
+$navbarCollapseWidth:              767px;
 
-$total-columns:                    12;
-$column-width:                     4em; // Loosely taken from modular scale
-$gutter-width:                     1em;
-$side-gutter-width:                1em; // Loosely taken from modular scale
+$total-columns:                    16;
+$column-width:                     2.8125em; 
+$gutter-width:                     1.25em;
+$side-gutter-width:                .625em; 
 
 
 // Imports & Includes
 // **************************************************
 // **************************************************
+
+@import "bootstrap";
+@import "bootstrap/responsive-navbar";
 
 // My Mixins
 @import "partials/custom_mixins";
@@ -80,8 +87,9 @@ $side-gutter-width:                1em; // Loosely taken from modular scale
 //Compass Mixins
 @import "compass/css3";
 
+@import "partials/footable-0.1";
+
 // Include Susy
 @import "susy";
-
-@import "partials/font_awesome";
+@import "partials/font-awesome";
 

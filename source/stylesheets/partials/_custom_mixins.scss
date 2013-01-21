@@ -416,13 +416,13 @@ $breakXLarge: 1199px;
 }
 
 @mixin ie7 {
-  * + html & { // Using browser hacks
+  * + html.lt-ie8 & { // Using browser hacks
     @content;
   }
 }
 
 @mixin ie8 {
-  html.ie8 & { // Using Paul Irish's conditional comments
+  html.lt-ie9 & { // Using Paul Irish's conditional comments
     @content;
   }
 }

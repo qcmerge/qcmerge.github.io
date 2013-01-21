@@ -1,6 +1,5 @@
 @import 'partials/base';
 
-
 // Global
 // --------------------------------------------------
 
@@ -88,6 +87,10 @@ hr {
   &:after {
     float: right;
   }
+  @include ie7 {
+    border: none;
+    @include background(url('../images/img-logo-tiny.png') no-repeat center);
+  }
 }
 
 // Header
@@ -167,6 +170,9 @@ hr {
       font-size: calc-em(100px, 48px);
       display: block;
       color: $white;
+      @include ie7 {
+        padding-bottom: .2em;
+      }
     }
 
     @include span-columns(13 omega);
@@ -300,6 +306,9 @@ hr {
     } //li
 
   } //nav
+  @include ie7 {
+    border-bottom: 1px solid $borderColor;
+  }
 } //navbar
 
 .navbar-inner {
@@ -382,7 +391,6 @@ hr {
   @extend %group;
   overflow: hidden;
   .synopsis {
-
     @include respond-to('medium-screens') {
       @include span-columns(10 omega);
       float: left;
@@ -398,9 +406,19 @@ hr {
     } //medium-screens
 
     input {
-      width: 65%;
     }
-  }
+
+    .mc-field-group {
+      float: left;
+    }
+
+    .subscribe-btn {
+      float: left;
+      width: auto;
+      height: 41px;
+    }
+
+  } //email-reg
 }
 
 .speaker {
@@ -503,7 +521,12 @@ hr {
     @include respond-to('medium-screens') {
       @include span-columns(5 omega);
     } //medium-screens
+    @include ie7 {
+      
+      width: 27.9%;
+    }
   }
+
 } //about-cac
 
 .lodging {
@@ -522,6 +545,9 @@ hr {
     @include respond-to('medium-screens') {
       @include span-columns(5);
     } //medium-screens
+    @include ie7 { 
+      width: 27.9%;
+    }
   }
   p:last-of-type {
     margin-bottom: calc-em(32px);

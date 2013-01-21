@@ -75,6 +75,8 @@ $side-gutter-width:                .625em;
 // **************************************************
 // **************************************************
 
+@import "partials/font-awesome";
+@import "partials/font-awesome-ie7.min";
 @import "bootstrap";
 @import "bootstrap/responsive-navbar";
 
@@ -91,5 +93,4 @@ $side-gutter-width:                .625em;
 
 // Include Susy
 @import "susy";
-@import "partials/font-awesome";
 

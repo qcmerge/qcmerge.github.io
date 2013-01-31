@@ -1,0 +1,59 @@
+
+
+<section class="section schedule">
+
+  <table class="table footable">
+    <thead>
+      <tr>
+        <th class="time-head">
+          Time
+        </th>
+        <th data-hide="phone,tablet">
+          Track 1
+        </th>
+        <th data-hide="phone,tablet">
+          Track 2
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% 5.times do %>
+      <tr>
+        <td class="time">
+          <time>9:00</time> <time>9:45 AM</time>
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'http://placehold.it/55x55' %>
+            </div>
+            <div class="talk-text">
+              <h3>Usability Testing</h3>
+              <p>In imperdiet dictum arcu lacinia tempor. Aliquam erat volutpat. Proin ac odio non est varius feugiat. Curabitur dignissim tortor eu tortor pulvinar pellentesque.</p>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'http://placehold.it/55x55' %>
+            </div>
+            <div class="talk-text">
+              <h3>Usability Testing</h3>
+              <p>In imperdiet dictum arcu lacinia tempor. Aliquam erat volutpat. Proin ac odio non est varius feugiat. Curabitur dignissim tortor eu tortor pulvinar pellentesque.</p>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <!-- /table -->
+</section>
+<!-- /schedule -->
+
+<hr />

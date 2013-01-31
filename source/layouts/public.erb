@@ -62,11 +62,8 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li><a href="#about">About</a></li>
-          <li><a href="#speakers">Speakers</a></li>
           <li><a href="#venue">Venue</a></li>
-          <li><a href="#schedule">Schedule</a></li>
           <li><a href="#sponsors">Sponsors</a></li>
-          <li class="register"><a href="#"><span>Buy Tickets</span></a></li>
         </ul>
         <!-- /nav -->
       </div>
@@ -85,16 +82,8 @@
     <section class="footer-content">
       <div class="more-qcmerge">
         <h3>Want More QCMerge?</h3>
-        <p>Check out some of last year's talks on YouTube:</p>
-        <ul class="unstyled video-list">
-          <% 10.times do %>
-          <li class="video-thumb">
-            <%= link_to image_tag('http://placehold.it/50x50'), '#' %>
-          </li>
-          <!-- /video-thumb -->
-          <% end %>
-        </ul>
-        <!-- video-list -->
+        <p>Check out some of last year's talks on <%= link_to 'YouTube', "https://www.youtube.com/playlist?list=PL2CDtLMcqrFldU4dLHoNv0T2SPetq8WXo", target: '_blank' %></p>
+
       </div>
       <!-- /more-qcmerge -->
       <div class="etc">
@@ -106,13 +95,13 @@
         <hr />
         <div class="last-year">
           <h3>Looking for 2012's site?</h3>
-          <p>It can be found <%= link_to 'here', '#' %>.</p>
+          <p>It can be found <%= link_to 'here', '/2012' %>.</p>
         </div>
       </div>
       <!-- /etc -->
       <div class="help-copy">
         <div class="help-out">
-          <h3>Want to help out?</h3>
+          <h3>Want to know more?</h3>
           <form class="help-form">
             <div class="input-append">
               <label>Drop us a line and we'll be in touch</label>

@@ -82,7 +82,6 @@
     <section class="footer-content">
       <div class="more-qcmerge">
         <h3>Want More QCMerge?</h3>
-        <p>Check out some of last year's talks on <%= link_to 'YouTube', "https://www.youtube.com/playlist?list=PL2CDtLMcqrFldU4dLHoNv0T2SPetq8WXo", target: '_blank' %></p>
         <p>Check out some of last year's talks on YouTube:</p>
         <ul class="unstyled video-list">
           <% video_urls = %w(http://www.youtube.com/watch?v=Fh9ecOkoiOk
@@ -98,7 +97,7 @@
                              http://www.youtube.com/watch?v=H_Cw76S4nLw) %>
           <% video_urls.each do |url| %>
           <li class="video-thumb">
-            <%= link_to image_tag('http://placehold.it/50x50'), url %>
+            <%= link_to(image_tag('http://placehold.it/50x50'), url, target: '_blank') %>
           </li>
           <!-- /video-thumb -->
           <% end %>

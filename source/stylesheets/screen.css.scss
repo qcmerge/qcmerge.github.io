@@ -846,6 +846,18 @@ hr {
 
     width: 20%;
     margin-bottom: calc-em(16px);
+    a {
+      display: block;
+      &:hover {
+        img {
+          border-color: $white;
+        }
+      }
+    }
+    img {
+      border: 1px solid $grayDark;
+      @include transition(.2s all linear);
+    }
   }
 }
 

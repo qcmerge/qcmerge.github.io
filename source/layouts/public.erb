@@ -86,20 +86,23 @@
 
         <p>Check out some of last year's talks on YouTube:</p>
         <ul class="unstyled video-list">
-          <% video_urls = %w(http://www.youtube.com/watch?v=Fh9ecOkoiOk
-                             http://www.youtube.com/watch?v=qmp7aTMnltw
-                             http://www.youtube.com/watch?v=qJJMYhV3BRs
-                             http://www.youtube.com/watch?v=92lAmKocO0E
-                             http://www.youtube.com/watch?v=ak5GDa7lEzA
-                             http://www.youtube.com/watch?v=lQvKJLLM8hM
-                             http://www.youtube.com/watch?v=dTc0Zc5aLQU
-                             http://www.youtube.com/watch?v=PptbmmEzscg
-                             http://www.youtube.com/watch?v=trbOW1TDOao
-                             http://www.youtube.com/watch?v=I8p9jVFL0sQ
-                             http://www.youtube.com/watch?v=H_Cw76S4nLw) %>
-          <% video_urls.each do |url| %>
+
+          <% video_ids = %w( Fh9ecOkoiOk
+                             qmp7aTMnltw
+                             qJJMYhV3BRs
+                             92lAmKocO0E
+                             ak5GDa7lEzA
+                             lQvKJLLM8hM
+                             dTc0Zc5aLQU
+                             PptbmmEzscg
+                             trbOW1TDOao
+                             I8p9jVFL0sQ
+                             H_Cw76S4nLw
+          ) %>
+
+          <% video_ids.each do |id| %>
           <li class="video-thumb">
-            <%= link_to(image_tag('http://placehold.it/50x50'), url, target: '_blank') %>
+            <%= link_to(image_tag("http://img.youtube.com/vi/#{id}/1.jpg", width: '50px', height: '50px'), "http://www.youtube.com/watch?v#{id}", target: '_blank') %>
           </li>
           <!-- /video-thumb -->
           <% end %>

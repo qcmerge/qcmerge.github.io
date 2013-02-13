@@ -810,7 +810,8 @@ hr {
     }
   }
   .help-out,
-  .copyright {
+  .copyright,
+  .become-sponsor {
     @include respond-to('medium-screens') {
       padding-left: gutter(5);
       padding-bottom: calc-em(16px);

@@ -9394,29 +9394,28 @@ html.lt-ie9 .lodging .block-copy {
     .site-footer .help-out input {
       font-size: 14px;
       height: 20px;
-      width: 160px;
-      color: white; }
-    /* line 831, screen.css.scss */
+      width: 160px; }
+    /* line 830, screen.css.scss */
     .site-footer .help-out .btn {
       font-size: 15px;
       height: 30px;
       width: 100px; }
-  /* line 838, screen.css.scss */
+  /* line 837, screen.css.scss */
   .site-footer .copyright {
     font-size: 0.75em; }
 
-/* line 846, screen.css.scss */
+/* line 845, screen.css.scss */
 .video-list .video-thumb {
   float: left;
   width: 20%;
   margin-bottom: 1em; }
-  /* line 851, screen.css.scss */
+  /* line 850, screen.css.scss */
   .video-list .video-thumb a {
     display: block; }
-    /* line 854, screen.css.scss */
+    /* line 853, screen.css.scss */
     .video-list .video-thumb a:hover img {
       border-color: white; }
-  /* line 859, screen.css.scss */
+  /* line 858, screen.css.scss */
   .video-list .video-thumb img {
     border: 1px solid #333333;
     -webkit-transition: 0.2s all linear;

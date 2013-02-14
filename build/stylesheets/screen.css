@@ -9375,46 +9375,48 @@ html.lt-ie9 .lodging .block-copy {
     display: inline;
     margin-right: 0; }
   @media (min-width: 768px) {
-    /* line 813, screen.css.scss */
+    /* line 814, screen.css.scss */
     .site-footer .help-out,
-    .site-footer .copyright {
+    .site-footer .copyright,
+    .site-footer .become-sponsor {
       padding-left: 6.55738%;
       padding-bottom: 1em; } }
   /* line 199, partials/_custom_mixins.scss */
   html.lt-ie9 .site-footer .help-out, html.lt-ie9
-  .site-footer .copyright {
+  .site-footer .copyright, html.lt-ie9
+  .site-footer .become-sponsor {
     padding-left: 6.55738%;
     padding-bottom: 1em; }
-  /* line 821, screen.css.scss */
+  /* line 822, screen.css.scss */
   .site-footer .help-out {
     padding-bottom: 1em; }
-    /* line 824, screen.css.scss */
+    /* line 825, screen.css.scss */
     .site-footer .help-out input {
       font-size: 14px;
       height: 20px;
       width: 160px;
       color: white; }
-    /* line 830, screen.css.scss */
+    /* line 831, screen.css.scss */
     .site-footer .help-out .btn {
       font-size: 15px;
       height: 30px;
       width: 100px; }
-  /* line 837, screen.css.scss */
+  /* line 838, screen.css.scss */
   .site-footer .copyright {
     font-size: 0.75em; }
 
-/* line 845, screen.css.scss */
+/* line 846, screen.css.scss */
 .video-list .video-thumb {
   float: left;
   width: 20%;
   margin-bottom: 1em; }
-  /* line 850, screen.css.scss */
+  /* line 851, screen.css.scss */
   .video-list .video-thumb a {
     display: block; }
-    /* line 853, screen.css.scss */
+    /* line 854, screen.css.scss */
     .video-list .video-thumb a:hover img {
       border-color: white; }
-  /* line 858, screen.css.scss */
+  /* line 859, screen.css.scss */
   .video-list .video-thumb img {
     border: 1px solid #333333;
     -webkit-transition: 0.2s all linear;

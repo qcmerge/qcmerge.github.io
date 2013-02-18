@@ -42,11 +42,11 @@ h4, h5, h6 {
 }
 
 h1 {
-  
+
 }
 
 h2 {
-  
+
 }
 
 h3 {
@@ -101,13 +101,14 @@ hr {
   border-top: 5px solid $black;
   @include background($black url('../images/backgrounds/bg-header.png'));
   background-size: cover;
-  padding: calc-em(64px) 0;
+  padding: calc-em(48px) 0;
   position: fixed;
   width: 100%;
-  
+
   z-index: -9999;
 
   @include respond-to('medium-screens') {
+    padding: calc-em(64px) 0;
     height: calc-em(430px);
   }
 
@@ -118,7 +119,7 @@ hr {
     @include border-radius(2px);
     border: 1px solid rgba(255,255,255,.3);
     padding: calc-em(8px);
-    margin: calc-em(16px) 0;
+    margin: calc-em(16px) 0 calc-em(4px);
     @extend %group;
 
     @include respond-to('medium-screens') {
@@ -134,7 +135,7 @@ hr {
     @include replace-text(81px, 187px, url('../images/img-logo.png') no-repeat top left);
     background-position: center;
     background-size: contain;
-    height: 110px;
+    height: 80px;
     @include span-columns(2);
 
     @include respond-to('most-landscape') {
@@ -191,7 +192,6 @@ hr {
   } //h2
   .loc-time-date {
     @extend %group;
-    display: none;
 
     @include respond-to('medium-screens') {
       @include pad(2,2);
@@ -204,16 +204,28 @@ hr {
       font-family: $navFontFamily;
       margin-right: 0;
       font-size: calc-em(22px);
-      @include span-columns(4,12);  
+      @include span-columns(6,12);
       @include nth-omega(3n);
       font-weight: 400;
-      
+      @include respond-to('medium-screens') {
+        @include span-columns(4,12);
+      }
     } //span
-    .date {     
-      text-align: center; 
+    .building {
+      display: none;
+      @include respond-to('medium-screens') {
+        display: block;
+      } //medium-screens
+
+    }
+    .date {
+      @include respond-to('medium-screens') {
+        text-align: center;
+      }
+
     }
     .loc {
-      text-align: right;      
+      text-align: right;
       margin-right: 0;
     }
   } //loc-time-date
@@ -233,11 +245,11 @@ hr {
   background: $white;
   @include background(linear-gradient($white, darken($white, 3%)));
   @include box-shadow(rgba(0,0,0,.2) 0 2px 4px);
-  
+
   z-index: 9999;
   position: relative;
   border-top: 5px solid $black;
-  
+
   @include respond-to('medium-screens') {
     border-top: none;
     top: calc-em(430px);
@@ -265,7 +277,7 @@ hr {
 
   .nav {
     margin: 0;
-    
+
     @include respond-to('medium-screens') {
       float: right;
     }
@@ -317,10 +329,11 @@ hr {
   @include box-shadow(none);
   @include border-radius(0);
   @extend %container;
-  width: 100%;
   max-width: auto;
   .btn-navbar {
     margin-top: calc-em(12px);
+  }
+  @include respond-to('wide-screens') {
   }
 }
 
@@ -329,7 +342,7 @@ hr {
 
 .main-content {
   @include background($white url('../images/backgrounds/bg-page.png') repeat);
-  margin-top: calc-em(180px);
+  margin-top: calc-em(190px);
   @include respond-to('most-landscape') {
     margin-top: calc-em(280px);
   }
@@ -373,7 +386,7 @@ hr {
   }
 
   label, p {
-    
+
     margin: 0 0 calc-em(18px) 0;
   }
 } //content-block
@@ -397,7 +410,7 @@ hr {
     } //medium-screens
   }
   .email-reg {
-    
+
     @include respond-to('medium-screens') {
       @include span-columns(6 omega);
       float: left;
@@ -423,7 +436,7 @@ hr {
 
 .speaker {
   @extend %group;
-  
+
   overflow: hidden;
   margin-bottom: calc-em(48px);
 
@@ -438,7 +451,7 @@ hr {
 
 
   .speaker-photo {
-    
+
     background-size: cover;
     height: calc-em(160px);
     width: 48%;
@@ -501,7 +514,7 @@ hr {
     @include respond-to('medium-screens') {
       margin-left: 3%;
     }
-    
+
 
   }
 } //speaker
@@ -511,10 +524,10 @@ hr {
   margin-bottom: calc-em(48px);
   .block-copy {
     @include respond-to('medium-screens') {
-      @include span-columns(11);  
+      @include span-columns(11);
     } //medium-screens
   }
-  .block-image { 
+  .block-image {
     height: 305px;
     @include background(url('../images/img-cac.jpg') no-repeat top left);
     background-size: cover;
@@ -522,7 +535,7 @@ hr {
       @include span-columns(5 omega);
     } //medium-screens
     @include ie7 {
-      
+
       width: 27.9%;
     }
   }
@@ -532,7 +545,7 @@ hr {
 .lodging {
   @extend %group;
   .block-copy {
-    
+
     @include respond-to('medium-screens') {
       @include span-columns(11 omega);
     } //medium-screens
@@ -545,7 +558,7 @@ hr {
     @include respond-to('medium-screens') {
       @include span-columns(5);
     } //medium-screens
-    @include ie7 { 
+    @include ie7 {
       width: 27.9%;
     }
   }
@@ -567,7 +580,7 @@ hr {
       @include nth-omega(3n);
       margin-bottom: 0;
     } //medium-screens
-    
+
   } //hotel
   .vcard {
     font-size: calc-em(14px);
@@ -587,10 +600,10 @@ hr {
       @include span-columns(5);
 
       @include nth-omega(3n);
-      
+
       margin-right: calc-em(28px);
     }
-    
+
   }
 } //sponsor-list
 
@@ -605,7 +618,7 @@ hr {
       font-size: calc-em(42px);
       line-height: 1em;
       font-weight: 700;
-      
+
       &.time-head {
         @include respond-to('medium-screens') {
           text-indent: -9999px;
@@ -663,7 +676,7 @@ hr {
     .time {
       @extend %headlineize;
       border: none;
-      
+
       background: $pink;
       color: $white;
       line-height: 1em;
@@ -707,7 +720,7 @@ hr {
   }
 
   input:-moz-placeholder { font-style: italic; }
-  
+
   .btn {
     background: $pink;
     @extend %headlineize;
@@ -725,7 +738,7 @@ hr {
 .site-footer {
   background: $black;
   color: $gray;
-  
+
   .footer-content {
     @extend %container;
     overflow: hidden;
@@ -781,9 +794,9 @@ hr {
     padding-bottom: calc-em(15px);
     @include respond-to('medium-screens') {
       padding-left: gutter(5);
-      
+
     }
-    
+
     a {
       display: inline-block;
       margin-right: calc-em(12px, 24px);
@@ -799,10 +812,10 @@ hr {
       padding-bottom: 0;
       padding-left: gutter(5);
     }
-    
+
   }
   .help-copy {
-    
+
     @include respond-to('medium-screens') {
       padding-top: calc-em(16px);
       @include span-columns(5);
@@ -816,7 +829,7 @@ hr {
       padding-left: gutter(5);
       padding-bottom: calc-em(16px);
     }
-    
+
   }
 
   .help-out {

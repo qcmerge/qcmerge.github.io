@@ -153,13 +153,6 @@ hr {
     padding: calc-em(64px) 0;
     height: calc-em(430px);
   }
-
-
-
-
-
-
-
   hgroup {
     @include background(rgba(255,255,255,.1));
     @include border-radius(2px);
@@ -175,38 +168,12 @@ hr {
     @include respond-to('wide-screens') {
       padding: calc-em(8px) calc-em(24px);
     }
+    img {
+      width: 14%;
+    }
   }
 
   h1 {
-    @include replace-text(81px, 187px, url('../images/img-logo.png') no-repeat top left);
-    background-position: center;
-    background-size: contain;
-    height: 80px;
-    @include span-columns(2);
-
-    @include respond-to('most-landscape') {
-      height: 155px;
-      margin-top: 3%;
-      @include span-columns(3);
-    }
-    @include respond-to('medium-screens') {
-      height: 170px;
-      @include span-columns(2, 12);
-      margin-top: calc-em(12px);
-    }
-
-    @include respond-to('wide-screens') {
-      height: 187px;
-      margin-top: calc-em(24px);
-    }
-
-    @include lt-ie9 {
-      height: 187px;
-      margin-top: calc-em(24px);
-    }
-  }
-
-  h2 {
     @extend %headlineize;
     font-weight: 700;
     color: $pink;
@@ -235,7 +202,7 @@ hr {
       }
     } //medium-screens
 
-  } //h2
+  } //h1
   .loc-time-date {
     @extend %group;
 
@@ -388,9 +355,9 @@ hr {
 
 .main-content {
   @include background($white url('../images/backgrounds/bg-page.png') repeat);
-  margin-top: calc-em(190px);
+  margin-top: calc-em(225px);
   @include respond-to('most-landscape') {
-    margin-top: calc-em(280px);
+    margin-top: calc-em(320px);
   }
   @include respond-to('medium-screens') {
     margin-top: calc-em(430px);
@@ -464,17 +431,29 @@ hr {
       @include equalize-column;
     } //medium-screens
 
+    label {
+      @include respond-to('medium-screens') {
+        margin-bottom: calc-em(32px);
+      }
+    }
+
     input {
     }
 
-    .mc-field-group {
+    .email {
       float: left;
+      width: 54%;
     }
 
     .subscribe-btn {
       float: left;
       width: auto;
       height: 41px;
+      width: 40%;
+    }
+    .input-append {
+      @extend %group;
+      margin-bottom: calc-em(16px);
     }
 
   } //email-reg
@@ -638,18 +617,24 @@ hr {
   } //vcard
 } //hotel-list
 
-.sponsor-list {
+.sponsor-row {
   @extend %group;
-  margin-bottom: calc-em(28px);
+  @include respond-to('medium-screens') {
+    margin-bottom: calc-em(42px);
+  }
   .sponsor {
-    @include respond-to('medium-screens') {
-      @include span-columns(5);
-
-      @include nth-omega(3n);
-
-      margin-right: calc-em(28px);
+    margin: 0 auto calc-em(48px) auto;
+    width: 50%;
+    a {
+      display: block;
     }
-
+    @include respond-to('medium-screens') {
+      @include span-columns(4);
+      @include nth-omega(4n);
+      &.send-grid {
+        padding-top: calc-em(20px);
+      }
+    }
   }
 } //sponsor-list
 

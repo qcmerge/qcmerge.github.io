@@ -50,14 +50,14 @@ $ ->
           navigation: ".nav"
           scrollOffset: -80
 
-    
 
-    $('.header-content h2').fitText(.71)
+
+    $('.header-content h1').fitText(.71)
 
     $(".footable").footable breakpoints:
       phone: 320
       tablet: 767
-    
+
 
 
 

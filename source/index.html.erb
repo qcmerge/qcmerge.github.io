@@ -18,7 +18,7 @@
           <!-- Begin MailChimp Signup Form -->
           <div id="mc_embed_signup">
             <label for="mce-EMAIL">Subscribe to our mailing list</label>
-            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required />
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" class="" placeholder="email address" required />
             <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn subscribe-btn">
           </div>
           <!--End mc_embed_signup-->
@@ -85,7 +85,7 @@
 <hr />
 
 <section class="section sponsors" id="sponsors">
-  <ul class="unstyled sponsor-list">
+  <ul class="unstyled sponsor-row">
 
     <li class="sponsor">
       <%= link_to image_tag('sponsors/img-gaslight.png', alt: 'Gaslight'), 'http://gaslight.co/', target: '_blank' %>
@@ -95,20 +95,22 @@
     <%= link_to image_tag('sponsors/img-ample.png', alt: 'Ample'), 'http://helloample.com/', target: '_blank' %>
    </li>
    <!-- /sponsor -->
-   <li class="sponsor">
+   <li class="sponsor send-grid">
     <%= link_to image_tag('sponsors/img-sendgrid.png', alt: 'SendGrid'), 'http://www.sendgrid.com/', target: '_blank' %>
    </li>
    <!-- /sponsor -->
    <li class="sponsor">
-    <%= link_to image_tag('sponsors/img-moerlein.jpg', alt: 'Christian Moerlein'), 'http://www.christianmoerlein.com/', target: '_blank' %>
+    <%= link_to image_tag('sponsors/img-moerlein.png', alt: 'Christian Moerlein'), 'http://www.christianmoerlein.com/', target: '_blank' %>
    </li>
    <!-- /sponsor -->
+ </ul>
+ <ul class="unstyled sponsor-row">
    <li class="sponsor">
     <%= link_to image_tag('sponsors/img-github.png', alt: 'GitHub'), 'https://github.com/', target: '_blank' %>
    </li>
    <!-- /sponsor -->
    <li class="sponsor">
-    <%= link_to image_tag('sponsors/img-outright.jpg', alt: 'Outright'), 'http://outright.com/', target: '_blank' %>
+    <%= link_to image_tag('sponsors/img-outright.png', alt: 'Outright'), 'http://outright.com/', target: '_blank' %>
    </li>
    <!-- /sponsor -->
    <li class="sponsor">
@@ -119,8 +121,7 @@
     <%= link_to image_tag('sponsors/img-neo.png', alt: 'Neo'), 'http://www.neo.com/', target: '_blank' %>
    </li>
    <!-- /sponsor -->
-  </ul>
-  <!-- /sponsor-list -->
+ </ul>
 </section>
 <!-- /sponsors -->
 

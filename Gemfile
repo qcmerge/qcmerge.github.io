@@ -1,4 +1,4 @@
-source :rubygems
+source "https://rubygems.org"
 
 gem "coffee_cup"
 gem "sass", "~> 3.2.1"

@@ -96,6 +96,48 @@ hr {
 // Header
 // --------------------------------------------------
 
+.what-we-did {
+  display: none;
+  position: absolute;
+  background: $white;
+  @include background($white url('../images/backgrounds/bg-page.png') repeat top left);
+  top: -60px;
+  right: -190px;
+  padding: 7em 0 3em 0;
+  width: calc-em(390px);
+  @include rotate(45deg);
+  z-index: 20;
+  @include box-shadow(rgba(0,0,0,.4) 0 2px 3px);
+  @include ie8 {
+    display: none;
+  }
+  @include respond-to('wide-screens') {
+    display: block;
+  }
+  h3 {
+    text-align: center;
+    font-size: calc-em(18px);
+    line-height: calc-em(27px, 18px);
+    font-family: $headlineFontFamily;
+    text-transform: uppercase;
+    color: $pink;
+    width: 33%;
+    position: relative;
+    top: 29px;
+    margin: 0;
+    left: 90px;
+    font-weight: bold;
+    z-index: 9999999;
+    a {
+      display: block;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+  } //h3
+} //what-we-did
+
 .site-header {
 
   border-top: 5px solid $black;
@@ -111,6 +153,10 @@ hr {
     padding: calc-em(64px) 0;
     height: calc-em(430px);
   }
+
+
+
+
 
 
 

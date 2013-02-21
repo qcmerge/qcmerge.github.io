@@ -1,4 +1,4 @@
-/* 
+/*
 
 Perfect Fifth:
 http://modularscale.com/scale/?px1=18&px2=32&ra1=1.618&ra2=0
@@ -22,8 +22,8 @@ $gray:                             #9C9C9C;
 $grayLight:                        #B2B2B2;
 $grayLighter:                      #eee;
 $white:                            #fff;
-      
-// Accent colors                   
+
+// Accent colors
 $blue:                             #049cdb;
 $blueDark:                         #0064cd;
 $green:                            #46a546;
@@ -37,7 +37,7 @@ $purple:                           #7a43b6;
 $linkColor:                        $pink;
 $linkColorHover:                   darken($linkColor, 15%);
 
-// Typography                    
+// Typography
 $baseFontSize:                     16px;
 $baseFontFamily:                   "pt-sans", Helvetica, Arial, sans-serif;
 $headlineFontFamily:               "franklin-gothic-urw-comp", "Arial Narrow", Helvetica, Arial, sans-serif;
@@ -48,7 +48,7 @@ $textColor:                        $almostBlack;
 // Background
 $backgroundColor:                  $black;
 
-// Buttons                         
+// Buttons
 $primaryButtonBackground:          $linkColor;
 
 //Borders
@@ -66,9 +66,9 @@ $placeholderText:                 $grayLight;
 $navbarCollapseWidth:              767px;
 
 $total-columns:                    16;
-$column-width:                     2.8125em; 
+$column-width:                     2.8125em;
 $gutter-width:                     1.25em;
-$side-gutter-width:                .625em; 
+$side-gutter-width:                .625em;
 
 
 // Imports & Includes

@@ -4,6 +4,7 @@
 //= require libs/jquery.fittext
 //= require libs/jquery.pagescroller.lite
 //= require libs/jrespond
+//= require libs/jquery.modal
 //= require libs/footable-0.1
 //= require bootstrap
 //= require_tree ./public

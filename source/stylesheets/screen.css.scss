@@ -93,6 +93,14 @@ hr {
   }
 }
 
+//  Icons
+//  *************************************
+
+[class^="icon-"], [class*=" icon-"]{
+  background-image:none;
+}
+
+
 // Header
 // --------------------------------------------------
 
@@ -373,6 +381,9 @@ hr {
   &.light,
   &.dark {
     color: $white;
+    a {
+      color: $black;
+    }
   }
   &.light {
     background: $pink;
@@ -383,10 +394,16 @@ hr {
   }
   &.dark {
     background: $black;
+    a {
+      color: $pink;
+    }
   }
   .block-copy {
     padding: calc-em(16px);
     box-sizing: border-box;
+    a {
+      font-weight: 700;
+    }
   } //block-copy
   .block-image {
   } //block-image
@@ -482,9 +499,9 @@ hr {
     width: 48%;
     float: left;
 
-    @each $speaker in alex, ben, jen, lb, marty, rob, sara, sarah{
+    @each $speaker in  jessica, elmer, doug, tim, greg, question, question-reverse {
       &.#{$speaker} {
-        @include background(url('../images/speakers/#{$speaker}.jpeg') no-repeat top left);
+        @include background(url('../images/speakers/#{$speaker}.png') no-repeat top left);
       }
     }
 
@@ -503,6 +520,8 @@ hr {
     }
     h4 {
       font-weight: 700;
+      line-height: 1.25em;
+      margin-bottom: .677em;
     }
     h5 {
       font-weight: 400;
@@ -513,6 +532,9 @@ hr {
   &.light {
     background: $pink;
     .speaker-name {
+      color: $white;
+    }
+    a {
       color: $white;
     }
   }
@@ -906,3 +928,46 @@ hr {
   }
 }
 
+
+.modal {
+  h3 {
+    @extend %headlineize;
+    font-size: calc-em(34px);
+    line-height: 1em;
+    font-weight: 700;
+  }
+
+  h4 {
+    @extend %headlineize;
+    font-size: calc-em(21px);
+    line-height: 1em;
+    font-weight: 500;
+    margin-bottom: calc-em(10px, 21px);
+  }
+
+  hr {
+    margin: calc-em(14px) 0;
+  }
+
+  p {
+    margin-bottom: 1em;
+  }
+
+  .connect-speaker {
+    a {
+      color: $pink;
+      &:hover,
+      &:active,
+      &:focus, {
+        color: $black;
+        text-decoration: none;
+      }
+    }
+    ul li {
+      display: inline-block;
+    }
+  } //connect-speaker
+
+
+
+} //modal

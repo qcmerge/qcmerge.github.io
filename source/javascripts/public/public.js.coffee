@@ -1,6 +1,8 @@
 $ ->
 
-
+    $('.modal-btn').click ->
+      modal = $(this).attr('href')
+      $(modal).modal 'show'
 
     # Make sure older browsers support the HTML5 Placeholder Attribute
     unless "placeholder" of document.createElement("input")
@@ -50,15 +52,8 @@ $ ->
           navigation: ".nav"
           scrollOffset: -80
 
-
-
     $('.header-content h1').fitText(.71)
 
     $(".footable").footable breakpoints:
       phone: 320
       tablet: 767
-
-
-
-
-

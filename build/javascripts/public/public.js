@@ -27,6 +27,11 @@
         }
       });
     });
+    stickyPanelOptions = {
+      afterDetachCSSClass: "attached",
+      savePanelSpace: true
+    };
+    $(".navbar").stickyPanel(stickyPanelOptions);
     jRes = jRespond([
       {
         label: "handheld",
@@ -38,11 +43,6 @@
         exit: 10000
       }
     ]);
-    stickyPanelOptions = {
-      afterDetachCSSClass: "attached",
-      savePanelSpace: true
-    };
-    $(".navbar").stickyPanel(stickyPanelOptions);
     jRes.addFunc({
       breakpoint: "handheld",
       enter: function() {

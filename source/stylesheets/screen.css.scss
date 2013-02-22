@@ -248,6 +248,9 @@ hr {
     .loc {
       text-align: right;
       margin-right: 0;
+      @include ie8 {
+        width: 28%;
+      }
     }
   } //loc-time-date
 } //site-header
@@ -295,12 +298,17 @@ hr {
       margin-bottom: 0;
     }
   } //brand
-
-  .nav {
-    margin: 0;
+  .nav-collapse {
 
     @include respond-to('medium-screens') {
       float: right;
+    }
+  }
+  .nav {
+    margin: 0;
+    margin-bottom: calc-em(18px);
+    @include respond-to('medium-screens') {
+      margin: 0;
     }
 
 
@@ -325,20 +333,30 @@ hr {
           @include box-shadow(none);
         }
       } //active
-      &.register {
-        a {
-          color: $white;
-          text-shadow: none;
-          span {
-            background: $pink;
-            padding: calc-em(3px) calc-em(6px);
-          }
-        }
-
-      }
+      
     } //li
 
   } //nav
+
+  .buy-link {
+    @extend %headlineize;
+    font-weight: 700;
+    color: $white;
+    font-size: calc-em(24px);
+    text-shadow: none;
+    display: block;
+    margin-bottom: calc-em(18px, 24px);
+    @include respond-to('medium-screens') {
+      margin: 0;
+      padding: calc-em(19px, 24px) 0 calc-em(19px, 24px) calc-em(15px, 24px);
+      float: right;
+    }
+    span {
+      background: $pink;
+      padding: calc-em(3px) calc-em(6px);
+    }
+  }
+
   @include ie7 {
     border-bottom: 1px solid $borderColor;
   }
@@ -447,6 +465,17 @@ hr {
       width: 38.23525%;
       @include equalize-column;
     } //medium-screens
+
+    .block-copy {
+      > a{
+        @extend %headlineize;
+        color: $white;
+        font-size: calc-em(24px);
+        font-weight: 700;
+        padding: calc-em(3px) calc-em(6px);
+        background: $pink;
+      }
+    }
 
     label {
       @include respond-to('medium-screens') {
@@ -655,6 +684,11 @@ hr {
       @include nth-omega(4n);
       &.send-grid {
         padding-top: calc-em(20px);
+      }
+    }
+    &.last {
+      @include ie8 {
+        margin-right: 0;
       }
     }
   }

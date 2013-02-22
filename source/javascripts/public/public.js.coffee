@@ -1,8 +1,8 @@
 $ ->
 
-    $('.modal-btn').click ->
-      modal = $(this).attr('href')
-      $(modal).modal 'show'
+    # $('.modal-btn').click ->
+    #   modal = $(this).attr('href')
+    #   $(modal).modal 'show'
 
     # Make sure older browsers support the HTML5 Placeholder Attribute
     unless "placeholder" of document.createElement("input")
@@ -20,6 +20,13 @@ $ ->
         @value = ""  if @value is $(this).attr("placeholder")
 
 
+    #Sticky Panel
+    stickyPanelOptions =
+      afterDetachCSSClass: "attached"
+      savePanelSpace: true
+
+    $(".navbar").stickyPanel stickyPanelOptions
+
     # call jRespond and add breakpoints
     jRes = jRespond([
       label: "handheld"
@@ -30,13 +37,6 @@ $ ->
       enter: 768
       exit: 10000
     ])
-
-    #Sticky Panel
-    stickyPanelOptions =
-      afterDetachCSSClass: "attached"
-      savePanelSpace: true
-
-    $(".navbar").stickyPanel stickyPanelOptions
 
     # register enter and exit functions for a single breakpoint
     jRes.addFunc

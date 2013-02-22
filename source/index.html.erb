@@ -12,20 +12,9 @@
 
   <div class="email-reg content-block dark">
     <div class="block-copy">
-      <h2>Keep me posted</h2>
-      <form action="http://qcmerge.us4.list-manage1.com/subscribe/post?u=8c64d42f5af77dfcaa8d23c71&amp;id=2583a69c7d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-        <label>I must know when tickets are going on sale for QCMerge 2013!</label>
-        <div class="input-append">
-          <!-- Begin MailChimp Signup Form -->
-          <div id="mc_embed_signup">
-            <label for="mce-EMAIL">Subscribe to our mailing list</label>
-            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" class="" placeholder="email address" required />
-            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn subscribe-btn">
-          </div>
-          <!--End mc_embed_signup-->
-        </div>
-      </form>
-      <!-- /email-form -->
+      <h2>Register Now</h2>
+      <p>Sign-up today so you don’t miss out on the special early-bird rate.</p>
+      <%= link_to 'Get Your Tickets Now', 'http://qcm13.eventbrite.com/', title: 'Get Your Tickets Now' %>
     </div>
     <!-- /block-copy -->
   </div>
@@ -43,18 +32,14 @@
     </div>
     <!-- /speaker-photo -->
     <div class="speaker-name">
-      <h3><a href="#myModal" class="modal-btn">Jessica Ivins</a></h3>
+      <h3>Jessica Ivins</h3>
       <h4>UX Designer &amp; Researcher</h4>
       <h5><%= link_to 'Aweber', 'http://www.aweber.com/', target: '_blank' %></h5>
     </div>
     <!-- /speaker-name -->
-    <div class="speaker-bio">
-
-    </div>
-    <!-- /speaker-bio -->
 
     <!-- Modal -->
-    <div id="myModal" class="modal hide fade">
+    <div id="jessicaModal" class="modal hide fade">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Jessica Ivins</h3>
@@ -83,6 +68,7 @@
         <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>
     </div>
+    <!-- /jessica-modal -->
   </div>
   <!-- /speaker -->
 
@@ -96,10 +82,34 @@
       <h5><%= link_to 'SendGrid', 'http://sendgrid.com/', target: '_blank' %></h5>
     </div>
     <!-- /speaker-name -->
-    <div class="speaker-bio">
-
+    <!-- Modal -->
+    <div id="elmerModal" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Elmer Thomas</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          Elmer Thomas is a Developer Evangelist at SendGrid. He works with developers at hackdays and conferences to further simplify the process of integrating with SendGrid's APIs and to discover what new email challenges need to be conquered. When not on the road, he works on making life for developers using SendGrid frictionless.
+        </p>
+        <hr />
+        <div class="connect-speaker">
+          <h4>Connect with Elmer</h4>
+          <ul class="unstlyed">
+            <%= content_tag :li, link_to('<i class="icon-github-alt"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-twitter"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-linkedin"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-google-plus-sign"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-facebook"></i>', '#') %>
+          </ul>
+        </div>
+        <!-- /connect-speaker -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
     </div>
-    <!-- /speaker-bio -->
+    <!-- /elmer-modal -->
   </div>
   <!-- /speaker -->
 
@@ -109,14 +119,41 @@
     <!-- /speaker-photo -->
     <div class="speaker-name">
       <h3>Doug Alcorn</h3>
-      <h4>Developer</h4>
+      <h4>Co-Founder at Gaslight</h4>
       <h5><%= link_to 'Gaslight', 'http://gaslight.co', target: '_blank' %></h5>
     </div>
     <!-- /speaker-name -->
-    <div class="speaker-bio">
+    <!-- Modal -->
+    <div id="dougModal" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Doug Alcorn</h3>
+      </div>
+      <div class="modal-body">
+        <p>
 
+        </p>
+        <p>
+          
+        </p>
+        <hr />
+        <div class="connect-speaker">
+          <h4>Connect with Doug</h4>
+          <ul class="unstlyed">
+            <%= content_tag :li, link_to('<i class="icon-github-alt"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-twitter"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-linkedin"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-google-plus-sign"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-facebook"></i>', '#') %>
+          </ul>
+        </div>
+        <!-- /connect-speaker -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
     </div>
-    <!-- /speaker-bio -->
+    <!-- /doug-modal -->
   </div>
   <!-- /speaker -->
 
@@ -128,14 +165,41 @@
     <!-- /speaker-photo -->
     <div class="speaker-name">
       <h3>Tim <br />Falls</h3>
-      <h4>???</h4>
+      <h4>Community Guy</h4>
       <h5><%= link_to 'SendGrid', 'http://sendgrid.com/', target: '_blank' %></h5>
     </div>
     <!-- /speaker-name -->
-    <div class="speaker-bio">
-
+    <!-- Modal -->
+    <div id="timModal" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Tim Falls</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          
+        </p>
+        <p>
+          
+        </p>
+        <hr />
+        <div class="connect-speaker">
+          <h4>Connect with Tim</h4>
+          <ul class="unstlyed">
+            <%= content_tag :li, link_to('<i class="icon-github-alt"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-twitter"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-linkedin"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-google-plus-sign"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-facebook"></i>', '#') %>
+          </ul>
+        </div>
+        <!-- /connect-speaker -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
     </div>
-    <!-- /speaker-bio -->
+    <!-- /tim-modal -->
   </div>
   <!-- /speaker -->
 
@@ -149,10 +213,37 @@
       <h5><%= link_to 'Christian Moerlein', 'http://www.christianmoerlein.com/', target: '_blank' %></h5>
     </div>
     <!-- /speaker-name -->
-    <div class="speaker-bio">
-
+    <!-- Modal -->
+    <div id="gregModal" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Greg Hardman</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          
+        </p>
+        <p>
+          
+        </p>
+        <hr />
+        <div class="connect-speaker">
+          <h4>Connect with Tim</h4>
+          <ul class="unstlyed">
+            <%= content_tag :li, link_to('<i class="icon-github-alt"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-twitter"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-linkedin"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-google-plus-sign"></i>', '#') %>
+            <%= content_tag :li, link_to('<i class="icon-facebook"></i>', '#') %>
+          </ul>
+        </div>
+        <!-- /connect-speaker -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
     </div>
-    <!-- /speaker-bio -->
+    <!-- /greg-modal -->
   </div>
   <!-- /speaker -->
 
@@ -241,7 +332,7 @@
     <%= link_to image_tag('sponsors/img-sendgrid.png', alt: 'SendGrid'), 'http://www.sendgrid.com/', target: '_blank' %>
    </li>
    <!-- /sponsor -->
-   <li class="sponsor">
+   <li class="sponsor last">
     <%= link_to image_tag('sponsors/img-moerlein.png', alt: 'Christian Moerlein'), 'http://www.christianmoerlein.com/', target: '_blank' %>
    </li>
    <!-- /sponsor -->
@@ -259,7 +350,7 @@
     <%= link_to image_tag('sponsors/img-gigit.png', alt: 'Gigit Jobs'), 'http://www.gigitjobs.com/', target: '_blank' %>
    </li>
    <!-- /sponsor -->
-   <li class="sponsor">
+   <li class="sponsor last">
     <%= link_to image_tag('sponsors/img-neo.png', alt: 'Neo'), 'http://www.neo.com/', target: '_blank' %>
    </li>
    <!-- /sponsor -->

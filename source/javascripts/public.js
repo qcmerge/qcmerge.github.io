@@ -6,5 +6,6 @@
 //= require libs/jrespond
 //= require libs/jquery.modal
 //= require libs/footable-0.1
+//= require libs/lettering.js
 //= require bootstrap
 //= require_tree ./public

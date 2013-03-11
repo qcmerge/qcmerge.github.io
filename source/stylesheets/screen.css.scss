@@ -528,7 +528,7 @@ hr {
     width: 48%;
     float: left;
 
-    @each $speaker in  jessica, elmer, doug, tim, greg, question, question-reverse {
+    @each $speaker in  chris, sara, jessica, elmer, doug, tim, greg, question, question-reverse {
       &.#{$speaker} {
         @include background(url('../images/speakers/#{$speaker}.png') no-repeat top left);
       }
@@ -690,6 +690,9 @@ hr {
       @include ie8 {
         margin-right: 0;
       }
+    }
+    &.follower {
+      padding-top: calc-em(30px);
     }
   }
 } //sponsor-list

@@ -9023,6 +9023,12 @@ hr {
     width: 48%;
     float: left; }
     /* line 532, screen.css.scss */
+    .speaker .speaker-photo.chris {
+      background: url("../images/speakers/chris.png") no-repeat top left; }
+    /* line 532, screen.css.scss */
+    .speaker .speaker-photo.sara {
+      background: url("../images/speakers/sara.png") no-repeat top left; }
+    /* line 532, screen.css.scss */
     .speaker .speaker-photo.jessica {
       background: url("../images/speakers/jessica.png") no-repeat top left; }
     /* line 532, screen.css.scss */
@@ -9264,14 +9270,17 @@ html.lt-ie9 .sponsor-row {
   /* line 425, partials/_custom_mixins.scss */
   html.lt-ie9 .sponsor-row .sponsor.last {
     margin-right: 0; }
+  /* line 694, screen.css.scss */
+  .sponsor-row .sponsor.follower {
+    padding-top: 1.875em; }
 
-/* line 697, screen.css.scss */
+/* line 700, screen.css.scss */
 .table {
   background: white; }
-  /* line 699, screen.css.scss */
+  /* line 702, screen.css.scss */
   .table thead {
     background: black; }
-    /* line 701, screen.css.scss */
+    /* line 704, screen.css.scss */
     .table thead th {
       color: white;
       border: none;
@@ -9279,45 +9288,45 @@ html.lt-ie9 .sponsor-row {
       line-height: 1em;
       font-weight: 700; }
       @media (min-width: 768px) {
-        /* line 709, screen.css.scss */
+        /* line 712, screen.css.scss */
         .table thead th.time-head {
           text-indent: -9999px; } }
       /* line 199, partials/_custom_mixins.scss */
       html.lt-ie9 .table thead th.time-head {
         text-indent: -9999px; }
-  /* line 718, screen.css.scss */
+  /* line 721, screen.css.scss */
   .table tbody td {
     border: none;
     border-bottom: 1px solid #eeeeee;
     padding: 3em; }
-    /* line 723, screen.css.scss */
+    /* line 726, screen.css.scss */
     .table tbody td:nth-child(2n) {
       border-right: 1px solid #eeeeee; }
-    /* line 726, screen.css.scss */
+    /* line 729, screen.css.scss */
     .table tbody td.footable-cell-detail {
       padding: 1em; }
-    /* line 731, screen.css.scss */
+    /* line 734, screen.css.scss */
     .table tbody td .footable-row-detail-inner div {
       width: 100%;
       margin-bottom: .5em; }
-  /* line 740, screen.css.scss */
+  /* line 743, screen.css.scss */
   .table tbody tr:last-child td {
     border-bottom: none; }
-  /* line 746, screen.css.scss */
+  /* line 749, screen.css.scss */
   .table tbody .talk-photo {
     float: left;
     width: 3.4375em;
     margin-right: 1em; }
-  /* line 751, screen.css.scss */
+  /* line 754, screen.css.scss */
   .table tbody .talk-text {
     float: left;
     width: 20.35714em;
     font-size: 0.875em; }
-    /* line 755, screen.css.scss */
+    /* line 758, screen.css.scss */
     .table tbody .talk-text h3 {
       font-size: 1.5em;
       font-weight: 700; }
-  /* line 763, screen.css.scss */
+  /* line 766, screen.css.scss */
   .table tbody .time {
     border: none;
     background: #ee219a;
@@ -9327,7 +9336,7 @@ html.lt-ie9 .sponsor-row {
     padding: 0.5em 0.25em;
     border-bottom: 1px solid #cc107f; }
     @media (min-width: 768px) {
-      /* line 763, screen.css.scss */
+      /* line 766, screen.css.scss */
       .table tbody .time {
         width: 10.78431%;
         font-size: 1.375em;
@@ -9337,14 +9346,14 @@ html.lt-ie9 .sponsor-row {
       width: 10.78431%;
       font-size: 1.375em;
       padding: 2.18182em 1.09091em; }
-  /* line 783, screen.css.scss */
+  /* line 786, screen.css.scss */
   .table.breakpoint tr .time {
     background: #ee219a url("../images/parts/arw-right.png") no-repeat 90% 50%; }
-  /* line 789, screen.css.scss */
+  /* line 792, screen.css.scss */
   .table.breakpoint .footable-detail-show .time {
     background: #ee219a url("../images/parts/arw-down.png") no-repeat 90% 50%; }
 
-/* line 798, screen.css.scss */
+/* line 801, screen.css.scss */
 .input-append input,
 .input-append .btn:last-child {
   font-size: 22px;
@@ -9353,21 +9362,21 @@ html.lt-ie9 .sponsor-row {
   -ms-border-radius: 0;
   -o-border-radius: 0;
   border-radius: 0; }
-/* line 802, screen.css.scss */
+/* line 805, screen.css.scss */
 .input-append input {
   /* firefox 19+ */
   font-size: 18px;
   height: 31px; }
-  /* line 803, screen.css.scss */
+  /* line 806, screen.css.scss */
   .input-append input::-webkit-input-placeholder {
     font-style: italic; }
-  /* line 804, screen.css.scss */
+  /* line 807, screen.css.scss */
   .input-append input::-moz-placeholder {
     font-style: italic; }
-/* line 809, screen.css.scss */
+/* line 812, screen.css.scss */
 .input-append input:-moz-placeholder {
   font-style: italic; }
-/* line 811, screen.css.scss */
+/* line 814, screen.css.scss */
 .input-append .btn {
   background: #ee219a;
   color: white;
@@ -9377,34 +9386,34 @@ html.lt-ie9 .sponsor-row {
   border: none;
   text-shadow: none; }
 
-/* line 825, screen.css.scss */
+/* line 828, screen.css.scss */
 .site-footer {
   background: black;
   color: #9c9c9c; }
-  /* line 829, screen.css.scss */
+  /* line 832, screen.css.scss */
   .site-footer .footer-content {
     overflow: hidden; }
-  /* line 835, screen.css.scss */
+  /* line 838, screen.css.scss */
   .site-footer h3 {
     color: #9c9c9c;
     font-size: 1.75em;
     font-weight: 700;
     margin-bottom: 0.21429em; }
-  /* line 842, screen.css.scss */
+  /* line 845, screen.css.scss */
   .site-footer hr {
     background: none;
     height: 1px;
     background: #333333; }
-    /* line 847, screen.css.scss */
+    /* line 850, screen.css.scss */
     .site-footer hr:before, .site-footer hr:after {
       content: none; }
-  /* line 851, screen.css.scss */
+  /* line 854, screen.css.scss */
   .site-footer .more-qcmerge {
     padding-top: 1em;
     border-bottom: 1px solid #333333;
     margin-bottom: 1em; }
     @media (min-width: 768px) {
-      /* line 851, screen.css.scss */
+      /* line 854, screen.css.scss */
       .site-footer .more-qcmerge {
         width: 36.27451%;
         float: left;
@@ -9426,11 +9435,11 @@ html.lt-ie9 .sponsor-row {
       border: none;
       border-right: 1px solid #333333;
       padding-bottom: 1em; }
-    /* line 865, screen.css.scss */
+    /* line 868, screen.css.scss */
     .site-footer .more-qcmerge p {
       margin-bottom: 1em; }
   @media (min-width: 768px) {
-    /* line 869, screen.css.scss */
+    /* line 872, screen.css.scss */
     .site-footer .etc {
       width: 29.90196%;
       float: left;
@@ -9454,28 +9463,28 @@ html.lt-ie9 .sponsor-row {
     padding-bottom: 1em;
     margin-bottom: -99999px;
     padding-bottom: 99999px; }
-  /* line 880, screen.css.scss */
+  /* line 883, screen.css.scss */
   .site-footer .social {
     padding-bottom: 0.9375em; }
     @media (min-width: 768px) {
-      /* line 880, screen.css.scss */
+      /* line 883, screen.css.scss */
       .site-footer .social {
         padding-left: 6.55738%; } }
     /* line 199, partials/_custom_mixins.scss */
     html.lt-ie9 .site-footer .social {
       padding-left: 6.55738%; }
-    /* line 887, screen.css.scss */
+    /* line 890, screen.css.scss */
     .site-footer .social a {
       display: inline-block;
       margin-right: 0.5em;
       font-size: 1.5em; }
-  /* line 893, screen.css.scss */
+  /* line 896, screen.css.scss */
   .site-footer .last-year {
     border-bottom: 1px solid #333333;
     padding-bottom: 1em;
     margin-bottom: 1em; }
     @media (min-width: 768px) {
-      /* line 893, screen.css.scss */
+      /* line 896, screen.css.scss */
       .site-footer .last-year {
         border: none;
         padding-bottom: 0;
@@ -9486,7 +9495,7 @@ html.lt-ie9 .sponsor-row {
       padding-bottom: 0;
       padding-left: 6.55738%; }
   @media (min-width: 768px) {
-    /* line 904, screen.css.scss */
+    /* line 907, screen.css.scss */
     .site-footer .help-copy {
       padding-top: 1em;
       width: 29.90196%;
@@ -9503,7 +9512,7 @@ html.lt-ie9 .sponsor-row {
     display: inline;
     margin-right: 0; }
   @media (min-width: 768px) {
-    /* line 914, screen.css.scss */
+    /* line 917, screen.css.scss */
     .site-footer .help-out,
     .site-footer .copyright,
     .site-footer .become-sponsor {
@@ -9515,35 +9524,35 @@ html.lt-ie9 .sponsor-row {
   .site-footer .become-sponsor {
     padding-left: 6.55738%;
     padding-bottom: 1em; }
-  /* line 922, screen.css.scss */
+  /* line 925, screen.css.scss */
   .site-footer .help-out {
     padding-bottom: 1em; }
-    /* line 925, screen.css.scss */
+    /* line 928, screen.css.scss */
     .site-footer .help-out input {
       font-size: 14px;
       height: 20px;
       width: 160px; }
-    /* line 930, screen.css.scss */
+    /* line 933, screen.css.scss */
     .site-footer .help-out .btn {
       font-size: 15px;
       height: 30px;
       width: 100px; }
-  /* line 937, screen.css.scss */
+  /* line 940, screen.css.scss */
   .site-footer .copyright {
     font-size: 0.75em; }
 
-/* line 945, screen.css.scss */
+/* line 948, screen.css.scss */
 .video-list .video-thumb {
   float: left;
   width: 20%;
   margin-bottom: 1em; }
-  /* line 950, screen.css.scss */
+  /* line 953, screen.css.scss */
   .video-list .video-thumb a {
     display: block; }
-    /* line 953, screen.css.scss */
+    /* line 956, screen.css.scss */
     .video-list .video-thumb a:hover img {
       border-color: white; }
-  /* line 958, screen.css.scss */
+  /* line 961, screen.css.scss */
   .video-list .video-thumb img {
     border: 1px solid #333333;
     -webkit-transition: 0.2s all linear;
@@ -9551,30 +9560,30 @@ html.lt-ie9 .sponsor-row {
     -o-transition: 0.2s all linear;
     transition: 0.2s all linear; }
 
-/* line 967, screen.css.scss */
+/* line 970, screen.css.scss */
 .modal h3 {
   font-size: 2.125em;
   line-height: 1em;
   font-weight: 700; }
-/* line 974, screen.css.scss */
+/* line 977, screen.css.scss */
 .modal h4 {
   font-size: 1.3125em;
   line-height: 1em;
   font-weight: 500;
   margin-bottom: 0.47619em; }
-/* line 982, screen.css.scss */
+/* line 985, screen.css.scss */
 .modal hr {
   margin: 0.875em 0; }
-/* line 986, screen.css.scss */
+/* line 989, screen.css.scss */
 .modal p {
   margin-bottom: 1em; }
-/* line 991, screen.css.scss */
+/* line 994, screen.css.scss */
 .modal .connect-speaker a {
   color: #ee219a; }
-  /* line 995, screen.css.scss */
+  /* line 998, screen.css.scss */
   .modal .connect-speaker a:hover, .modal .connect-speaker a:active, .modal .connect-speaker a:focus {
     color: black;
     text-decoration: none; }
-/* line 1000, screen.css.scss */
+/* line 1003, screen.css.scss */
 .modal .connect-speaker ul li {
   display: inline-block; }

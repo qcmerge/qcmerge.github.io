@@ -91,6 +91,16 @@ hr {
     border: none;
     @include background(url('../images/img-logo-tiny.png') no-repeat center);
   }
+  &.sub {
+    background: none;
+    background: #C0C0C0;
+    @include box-shadow(rgba(255,255,255,1) 0 1px 0);
+    height: 1px;
+    &:before,
+    &:after {
+      content: none;
+    }
+  }
 }
 
 //  Icons
@@ -645,6 +655,19 @@ hr {
 
 .sponsors {
   margin-bottom: 0;
+  h3 {
+    @extend %headlineize;
+    font-weight: 800;
+    color: #959595;
+    font-size: calc-em(28px);
+    margin-bottom: calc-em(28px, 28px);
+  }
+  .ample {
+    margin-left: calc-em(60px);
+  }
+  .sub {
+    margin-bottom: calc-em(40px);
+  }
 }
 
 .hotel-list {
@@ -675,7 +698,9 @@ hr {
   }
   .sponsor {
     margin: 0 auto calc-em(48px) auto;
-    width: 50%;
+    img {
+      width: auto;
+    }
     a {
       display: block;
     }

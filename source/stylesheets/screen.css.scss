@@ -548,7 +548,7 @@ hr {
   .speaker-name {
     float: right;
     width: 46%;
-    padding-top: 5%;
+    padding-top: 3%;
     padding-bottom: 5%;
     padding-left: 2%;
     padding-right: 2%;
@@ -584,9 +584,10 @@ hr {
     background: $white;
     .speaker-name {
       color: $black;
-      h4 {
+      h4, h5 {
         color: $pink;
       }
+
     }
   }
   &.dark {

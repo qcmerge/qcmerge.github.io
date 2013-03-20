@@ -2,6 +2,12 @@
 
   $(function() {
     var jRes, stickyPanelOptions;
+    $('.modal-btn').click(function(e) {
+      var modal;
+      e.preventDefault();
+      modal = $(this).attr('href');
+      return $(modal).modal('show');
+    });
     if (!("placeholder" in document.createElement("input"))) {
       $("input[placeholder]").each(function() {
         var val;

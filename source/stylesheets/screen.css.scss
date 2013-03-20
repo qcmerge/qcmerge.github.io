@@ -700,8 +700,14 @@ hr {
   @include respond-to('medium-screens') {
     margin-bottom: calc-em(42px);
   }
+  .presenting-sponsors & {
+    li.sponsor {
+      width: 48%;
+    }
+  }
   .sponsor {
     margin: 0 auto calc-em(48px) auto;
+    text-align: center;
     img {
       width: auto;
     }

@@ -44,10 +44,15 @@ $ ->
       breakpoint: "handheld"
       enter: ->
         $('.content-block h2').fitText(1.1)
+        $('.modal-btn').unbind() 
 
     jRes.addFunc
       breakpoint: "tablet"
       enter: ->
+        $('.modal-btn').click (e) ->
+          modal = $(this).attr('href')
+          $(modal).modal('show')
+          #($(this).attr('href')).modal('show')
         #Page Scroller Plugin
         $("body").pageScroller
           navigation: ".nav"

@@ -538,7 +538,7 @@ hr {
     width: 48%;
     float: left;
 
-    @each $speaker in  chris, sara, jessica, elmer, doug, tim, greg, nate, question, question-reverse {
+    @each $speaker in  chris, sara, jessica, elmer, doug, tim, greg, nate, todd, question, question-reverse {
       &.#{$speaker} {
         @include background(url('../images/speakers/#{$speaker}.png') no-repeat top left);
       }

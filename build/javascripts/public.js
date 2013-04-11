@@ -27402,12 +27402,18 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
     jRes.addFunc({
       breakpoint: "handheld",
       enter: function() {
-        return $('.content-block h2').fitText(1.1);
+        $('.content-block h2').fitText(1.1);
+        return $('.modal-btn').unbind();
       }
     });
     jRes.addFunc({
       breakpoint: "tablet",
       enter: function() {
+        $('.modal-btn').click(function(e) {
+          var modal;
+          modal = $(this).attr('href');
+          return $(modal).modal('show');
+        });
         return $("body").pageScroller({
           navigation: ".nav",
           scrollOffset: -80

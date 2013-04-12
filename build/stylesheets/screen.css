@@ -9058,6 +9058,9 @@ hr {
     .speaker .speaker-photo.nate {
       background: url("../images/speakers/nate.png") no-repeat top left; }
     /* line 542, screen.css.scss */
+    .speaker .speaker-photo.todd {
+      background: url("../images/speakers/todd.png") no-repeat top left; }
+    /* line 542, screen.css.scss */
     .speaker .speaker-photo.question {
       background: url("../images/speakers/question.png") no-repeat top left; }
     /* line 542, screen.css.scss */

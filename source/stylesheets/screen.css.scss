@@ -402,6 +402,40 @@ hr {
 
 } //main-content
 
+.cta {
+  background: $pink;
+  text-align: center;
+  padding: calc-em(18px) 0; 
+  margin-bottom: calc-em(48px);
+  @include respond-to('medium-screens') {
+    padding: calc-em(34px) 0;
+  }
+  h2 {
+    color: $white;
+    text-align: center;
+    font-size: calc-em(18px);
+    margin-bottom: 1em;
+    @include respond-to('medium-screens') {
+      font-size: calc-em(32px); 
+    }
+  }
+  .cta-content {
+    @extend %container;
+  
+  }
+  .btn {
+    background: $black;
+    @extend %headlineize;
+    color: $white;
+    @include box-shadow(none);
+    border: none;
+    @include text-shadow(none);
+    font-size: calc-em(27px);
+    @include border-radius(0);
+    margin: 0 auto;
+    font-weight: bold;
+  }
+}
 
 .content-block {
   @extend %group;
@@ -462,11 +496,27 @@ hr {
   @extend %group;
   overflow: hidden;
   .synopsis {
-    @include respond-to('medium-screens') {
-      @include span-columns(10 omega);
-      float: left;
-    } //medium-screens
+    .block-copy {
+      @include respond-to('medium-screens') {
+        @include span-columns(11 omega);
+        float: left;
+      } //medium-screens
+    }
   }
+  
+  .block-image {
+    height: 400px;
+    @include background(url('../images/img-crowd.png') no-repeat top );
+    background-size: cover;
+    @include respond-to('medium-screens') {
+      @include span-columns(5 omega);
+    } //medium-screens
+    @include ie7 {
+
+      width: 27.9%;
+    }
+  }
+
   .email-reg {
 
     @include respond-to('medium-screens') {
@@ -486,6 +536,7 @@ hr {
         background: $pink;
       }
     }
+
 
     label {
       @include respond-to('medium-screens') {

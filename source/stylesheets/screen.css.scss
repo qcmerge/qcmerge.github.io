@@ -1043,6 +1043,7 @@ hr {
     @include respond-to('medium-screens') {
       @include span-columns(5);
       margin-right: 0;
+      float: right;
       padding-top: calc-em(16px);
     }
   }
@@ -1058,7 +1059,6 @@ hr {
 
   .help-out {
     padding-bottom: calc-em(16px);
-
     input {
       width: 160px;
       height: 20px;

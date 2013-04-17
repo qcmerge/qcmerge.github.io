@@ -463,8 +463,368 @@
   </div>
   <!-- /speaker --> 
 
+    <div class="speaker light">
+  <a class="speaker-photo ample modal-btn" href="#ampleModal">
+    </a>
+    <!-- /speaker-photo -->
+    <div class="speaker-name">
+      <h3><a href="#ampleModal" class="modal-btn">Rob Sloan <br />&amp; Kevin Comer</a></h3>
+      <h4>
+      Partners
+      </h4>
+      <h5><%= link_to 'Ample', 'http://helloample.com', target: '_blank' %></h5>
+    </div>
+    <!-- /speaker-name -->
+    <!-- Modal -->
+    <div id="ampleModal" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="ampleLabel">Ample</h3>
+      </div>
+      <div class="modal-body">
+        <p>Ample creates interaction. Whether it’s software, an app or a website — you’ll find yourself pointing, clicking and tapping. We blend beautiful design with elegantly crafted code to create practical user experiences that transform viewers into users.</p>
+        <hr />
+        <div class="connect-speaker">
+          <h4>Connect with Ample</h4>
+          <ul class="unstlyed">
+            <%= content_tag :li, link_to('<i class="icon-twitter"></i>', 'https://twitter.com/helloample') %>
+            <%= content_tag :li, link_to('<i class="icon-github"></i>', 'http://github.com/ample') %>
+            <%= content_tag :li, link_to('<i class="icon-facebook"></i>', 'https://www.facebook.com/helloample') %>
+          </ul>
+        </div>
+        <!-- /connect-speaker -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+    <!-- /greg-modal -->
+  </div>
+  <!-- /speaker -->
+
+  <!-- /speaker -->
+
+  <div class="speaker lightest">
+    <a class="speaker-photo erin modal-btn" href="#erinModal"></a>
+    <!-- /speaker-photo -->
+    <div class="speaker-name">
+      <h3><a href="#erinModal" class="modal-btn">Erin Kidwell</a></h3>
+      <h4>
+        Director of Ops
+      </h4>
+      <h5>
+        <%= link_to 'Girl Develop It', 'http://girldevelopit.com/', target: '_blank' %>
+      </h5>
+    </div>
+    <!-- /speaker-name -->
+    <!-- Modal -->
+    <div id="erinModal" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="nateWestheimerLabel">Erin Kidwell</h3>
+      </div>
+      <div class="modal-body">
+        <p>Erin recognizes the need for more talent in the software industry and wants to encourage women to learn technical skills in a supportive and collaborative environment. She's spent years in treasury and enterprise software and as an independent consultant training businesses on back-end programming and business development. She’s dedicated to Girl Develop It's vision to teach women from diverse backgrounds to learn software development, thereby improving their careers and confidence in their everyday lives. Of note, Erin is also the Chapter Leader of the GDI Cincinnati chapter.</p>
+        <hr />
+        <div class="connect-speaker">
+          <h4>Connect with Erin</h4>
+          <ul class="unstlyed">
+            <%= content_tag :li, link_to('<i class="icon-twitter"></i>', 'https://twitter.com/erinmkidwell') %>
+          </ul>
+        </div>
+        <!-- /connect-speaker -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+    <!-- /nate-modal -->
+  </div>
+  <!-- /speaker -->
+
+ <div class="speaker dark">
+    <a class="speaker-photo morgan modal-btn" href="#morganModal"></a>
+    <!-- /speaker-photo -->
+    <div class="speaker-name">
+      <h3><a href="#morganModal" class="modal-btn">Sara Morgan</a></h3>
+      <h4>Founder</h4>
+      <h5><%= link_to 'ElevenElevenPR', 'https://www.facebook.com/ElevenElevenPr', target: '_blank' %></h5>
+    </div>
+    <!-- /speaker-name -->
+    <!-- Modal -->
+    <div id="morganModal" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="saraMorganLabel">Sara Morgan</h3>
+      </div>
+      <div class="modal-body">
+        <p>A wedding industry veteran, and lover of all things fashion, Sara founded Tailored with a mission to change the way brides shop for their weddings. Sara is an entrepreneur at heart, believes strongly in loving what you do, and is truly passionate about her work. She handles PR, Marketing, and Brand Strategy for Tailored and her background in media and broadcast journalism have helped her become a formidable source on writing and delivering a message that will have an impact.</p>
+
+        <p>Sara's entrepreneurial spirit was ignited when she served as the Director of Marketing for Weddzilla.com, where she handled business development and brand strategy. It was there that she met her co-founder, Aaron Hall, and the two have been working side by side to bring new technologies to the industry ever since. A Broadcast News Major from the University of Georgia, Sara has been featured in such renowned publications as The Huffington Post, InStyle Magazine, Glamour Magazine, MSN, Forbes, and more.</p>
+        
+        
+        <hr />
+        <div class="connect-speaker">
+          <h4>Connect with Sara</h4>
+          <ul class="unstlyed">
+            <%= content_tag :li, link_to('<i class="icon-twitter"></i>', 'https://twitter.com/saramorgansf') %>
+          </ul>
+        </div>
+        <!-- /connect-speaker -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+    <!-- /tim-modal -->
+  </div>
+  <!-- /speaker --> 
+
 </section>
 <!-- /speakers -->
+
+<hr />
+
+<section class="section schedule">
+
+  <table class="table footable">
+    <thead>
+      <tr>
+        <th class="time-head">
+          Time
+        </th>
+        <th data-hide="phone,tablet">
+          Thursday, May 9
+        </th>
+        <th data-hide="phone,tablet">
+          Friday, May 10
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr class="breakfast">
+        <td class="time">
+          <time>9 AM</time> &ndash; <time>10 AM</time>
+        </td>
+        <td colspan="2">
+          <div class="talk">
+            <div class="talk-text">
+              <h3>Welcome and Breakfast</h3>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+      </tr>
+      
+      <tr>
+        <td class="time">
+          <time>10 AM</time> &ndash; <time>Noon</time>
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/jessica-small.png', alt: "Greg Hardman" %>
+            </div>
+            <div class="talk-text">
+              <h3>Jessica Ivins &mdash; UX Experience</h3>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/erin-small.png', alt: "Greg Hardman" %>
+            </div>
+            <div class="talk-text">
+              <h3>Erin Kidwell &mdash; Intro to Development</h3>
+              <p>In this class, we will walk through the fundamentals of web development in layman terms. We won't be writing code, this is intended as a lecture to take you through various components of the web and how they work together.</p>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/ample-small.png', alt: "Greg Hardman" %>
+            </div>
+            <div class="talk-text">
+              <h3>Ample </h3>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/elmer-small.png', alt: "Greg Hardman" %>
+            </div>
+            <div class="talk-text">
+              <h3>Sendgrid &mdash; Email Marketing</h3>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+      </tr>
+      
+      <tr class="lunch">
+        <td class="time">
+          <time>Noon</time> &ndash; <time>1 PM</time>
+        </td>
+        <td colspan="2">
+          <div class="talk lunch">
+            <div class="talk-text">
+              <h3>Lunch</h3>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+      </tr>
+      
+      <tr>
+        <td class="time">
+          <time>1 PM</time> &ndash; <time>2 PM</time>
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/morgan-small.png', alt: "Sara Morgan" %>
+            </div>
+            <div class="talk-text">
+              <h3>Sara Morgan</h3>
+              <p>I will be speaking about finding your brand's voice and building a community with strategic (but genuine) marketing, public relations, and social media efforts!</p>
+              <p>I want people to take their passion for the business and focus it outward to get others as excited as you are. As a founder of couple of startups and now a PR firm created for an entrepreneur, by an entrepreneur, I want to bring my experience to QCMerge to talk about how to keep build a company from the ground up, secure press placements, engage in social media, and keep an honest and consistent voice across all mediums.</p>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/sara-small.png', alt: "Greg Hardman" %>
+            </div>
+            <div class="talk-text">
+              <h3>Sara Chipps</h3>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+      </tr>
+
+      <tr>
+        <td class="time">
+          <time>2 PM</time> &ndash; <time>3 PM</time>
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/nate-small.png', alt: "Greg Hardman" %>
+
+            </div>
+            <div class="talk-text">
+              <h3>Nate West</h3>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/chris-small.png', alt: "Greg Hardman" %>
+
+            </div>
+            <div class="talk-text">
+              <h3>Chris Glass</h3>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="time">
+          <time>3 PM</time> &ndash; <time>4 PM</time>
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/todd-small.png', alt: "Greg Hardman" %>
+            </div>
+            <div class="talk-text">
+              <h3>Todd Henry</h3>
+              <p>Creating great work under pressure is tough. Todd Henry will share insights from his book The Accidental Creative to help you stay prolific, brilliant, and healthy.</p>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/doug-small.png', alt: "Greg Hardman" %>
+            </div>
+            <div class="talk-text">
+              <h3>Doug Alcorn</h3>
+              <p>Building custom applications is hard, expensive, and risky; but it's the custom code that differentiates our businesses. How can we mitigate the risk and get the most of the money we spend on development? Very few projects fail because of technology problems. The number one success criteria for a project is the level of engagement between stakeholders and the development team. This talk explores that relationship. We'll talk about ways to evaluate your relationships and techniques to improve them. By the end of the presentation you should have a better understanding of what highly effective teams look like and how to engage with them.</p>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+      </tr>
+
+      <tr>
+        <td class="time">
+          <time>4 PM</time> &ndash; <time>5 PM</time>
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/tim-small.png', alt: "Greg Hardman" %>
+            </div>
+            <div class="talk-text">
+              <h3>Tim Falls &mdash; The Big Red Machine Startup Community</h3>
+              <p>How can each individual within the Cincinatti area startup community help make it better? Based on experience building communities around geographies, interests, products, and companies, Tim will provide QC Merge attendees with tangible takeaways to guide each person's contribution to a more awesome community for all.</p>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+        <td>
+          <div class="talk">
+            <div class="talk-photo">
+              <%= image_tag 'speakers/greg-small.png', alt: "Greg Hardman" %>
+            </div>
+            <div class="talk-text">
+              <h3>Greg Hardman</h3>
+              <p>Greg will talk about the revitalization of Cincinnati’s brewing
+          heritage and how his Christian Moerlein Brewing Company has taken a
+          leadership position in bringing back a city's brewing culture. He
+          will explore the Brewery District's strategic master plan and how it
+          will create a new energy for the city and be an economic driver
+          through heritage tourism.</p>
+            </div>
+            <!-- /talk-text -->
+          </div>
+          <!-- /talk -->
+        </td>
+      </tr>
+
+      
+    </tbody>
+  </table>
+  <!-- /table -->
+</section>
+<!-- /schedule -->
 
 <hr />
 
@@ -542,6 +902,20 @@
      <li class="sponsor follower">
       <%= link_to image_tag('sponsors/img-follower.png', alt: 'Follower.io'), 'http://follower.io/', target: '_blank' %>
      </li>
+     <li class="sponsor hype">
+      <%= link_to image_tag('sponsors/img-hype.png', alt: 'Hype'), 'http://www.cincinnatichamber.com/Connect/HYPE/HYPE.aspx', target: '_blank' %>
+     </li>
+     <li class="sponsor brandhub last">
+      <%= link_to image_tag('sponsors/img-brandhub.png', alt: 'Brandhub'), 'http://www.cincinnatiusa.org/industry-clusters/consumer-products-and-brand-management/', target: '_blank' %>
+     </li>
+    </ul>
+    <ul class="unstyled sponsor-row">
+      <li class="sponsor chargify">
+      <%= link_to image_tag('sponsors/img-chargify.png', alt: 'Chargify'), 'http://chargify.com/', target: '_blank' %>
+      </li>
+      <li class="sponsor red212">
+      <%= link_to image_tag('sponsors/img-red212.png', alt: 'Red212'), 'http://red212.com/', target: '_blank' %>
+      </li>
     </ul>
   </div>
   <!-- /reds-sponsors -->

@@ -869,6 +869,9 @@ hr {
       margin-right: calc-em(16px);
       margin-bottom: calc-em(7px);
       width: calc-em(55px);
+      img {
+        border: 1px solid $grayLighter;
+      }
     }
     .talk-text {
       float: left;

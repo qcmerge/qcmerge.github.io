@@ -1,0 +1,7 @@
+.DS_Store
+.bundle
+.sass-cache
+.rvmrc
+tmp/
+bin
+vendor/ruby

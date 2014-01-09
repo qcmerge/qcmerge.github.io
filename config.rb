@@ -16,3 +16,5 @@ helpers do
 end
 
 page "*", :layout => "public"
+
+ignore 'source'

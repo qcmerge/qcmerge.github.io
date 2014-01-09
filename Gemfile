@@ -7,6 +7,7 @@ gem "middleman", "~> 3.0.7"
 gem 'middleman-smusher'
 gem "compass", "~> 0.12.2"
 gem "bootstrap-sass", "~> 2.2.2.0"
+gem "middleman-gh-pages"
 
 group :production do
   gem "rack-rewrite", :require => "rack/rewrite"

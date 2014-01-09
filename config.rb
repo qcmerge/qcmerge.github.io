@@ -15,9 +15,4 @@ helpers do
   
 end
 
-
-configure :build do
-  activate :relative_assets
-end
-
 page "*", :layout => "public"

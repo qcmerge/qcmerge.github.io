@@ -1,14 +1,11 @@
 source "https://rubygems.org"
 
+gem "middleman", "~> 3.2"
+gem "middleman-smusher"
+gem "middleman-gh-pages"
+
 gem "coffee_cup"
 gem "sass", "~> 3.2.1"
 gem "susy", "~> 1.0.5"
-gem "middleman", "~> 3.0.7"
-gem 'middleman-smusher'
 gem "compass", "~> 0.12.2"
-gem "bootstrap-sass", "~> 2.2.2.0"
-gem "middleman-gh-pages"
-
-group :production do
-  gem "rack-rewrite", :require => "rack/rewrite"
-end
+gem "bootstrap-sass", "~> 3.0.3.0"

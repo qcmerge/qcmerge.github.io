@@ -13,6 +13,10 @@ helpers do
     end
   end
   
+  def active_class(section)
+    'active' if current_page.data.section.eql?(section)
+  end
+  
 end
 
 page "*", :layout => "public"

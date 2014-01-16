@@ -16,9 +16,9 @@ Built using [Middleman](http://middlemanapp.com/guides/getting-started) to allow
     # Start the middleman server
     $ middleman
 
-### Generate static assets for release
+### Deploy
 
-    $ middleman build
+    $ rake publish
     
 ### Contributing
 

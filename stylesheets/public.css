@@ -6307,11 +6307,11 @@ td.visible-print {
   th.hidden-print,
   td.hidden-print {
     display: none !important; } }
-/* line 3, /Users/uhlenbrock/Sites/qcmerge.github.io/source/stylesheets/public/base.css.scss */
+/* line 1, /Users/uhlenbrock/Sites/qcmerge.github.io/source/stylesheets/public/_base.css.scss */
 body {
   padding-top: 70px; }
 
-/* line 7, /Users/uhlenbrock/Sites/qcmerge.github.io/source/stylesheets/public/base.css.scss */
+/* line 5, /Users/uhlenbrock/Sites/qcmerge.github.io/source/stylesheets/public/_base.css.scss */
 footer {
   background: #eeeeee;
   margin-top: 70px;

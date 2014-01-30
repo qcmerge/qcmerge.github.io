@@ -19,6 +19,7 @@ helpers do
   
 end
 
-page "*", :layout => "public"
+page '*', layout: 'public'
 
-ignore 'source'
+ignore  'source'
+activate :directory_indexes

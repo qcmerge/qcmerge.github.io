@@ -1,4 +1,4 @@
-# queencitymerge.com
+# qcmerge.com
 
 Built using [Middleman](http://middlemanapp.com/guides/getting-started) to allow for ERB, SASS & CoffeeScript.
 
@@ -7,8 +7,8 @@ Built using [Middleman](http://middlemanapp.com/guides/getting-started) to allow
 ### Setup
 
     # Checkout the repo
-    $ git clone git@github.com:qcmerge/qcm.git
-    $ cd qcm
+    $ git clone git@github.com:qcmerge/qcmerge.github.io.git
+    $ cd qcmerge.github.io
     $ bundle
 
 ### Running the server
@@ -24,4 +24,4 @@ Built using [Middleman](http://middlemanapp.com/guides/getting-started) to allow
 
 ## Questions?
 
-Contact bobby@helloample.com
+Contact [bobby@helloample.com](mailto:bobby@helloample.com)
